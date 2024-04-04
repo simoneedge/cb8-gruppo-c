@@ -1,0 +1,16 @@
+.CardSport {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 170px;
+  margin: 2%;
+
+  img {
+    position: relative;
+    width: 100%;
+    bottom: 15%;
+  }
+}

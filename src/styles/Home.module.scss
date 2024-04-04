@@ -1,1 +1,23 @@
+.body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .header {
+      position: absolute;
+      top: 13%;
+      display: flex;
+      margin-top: 30px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+}
