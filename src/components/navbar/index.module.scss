@@ -1,0 +1,38 @@
+@import "./../../styles/variables.scss";
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2%;
+  box-shadow: $box-shadow;
+}
+
+.menu {
+  width: 50%;
+  height: 100%;
+  display: none;
+  background-color: #b2d2b6;
+  z-index: 1;
+  overflow: hidden;
+
+  .lists {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-left: 1%;
+    gap: 30px;
+    list-style-type: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 2%;
+    }
+  }
+
+  &.open {
+    display: block;
+  }
+}
