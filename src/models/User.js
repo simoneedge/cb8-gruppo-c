@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  img: {
+    type: String,
+    required: true,
+  },
   birthdate: {
     type: Date,
     required: false,
@@ -32,6 +36,18 @@ const userSchema = new mongoose.Schema({
   roles: {
     type: Array,
     required: false,
+  },
+  matchPlayedCount: {
+    type: Number,
+    required: true,
+  },
+  avarageRating: {
+    type: Number,
+    required: true,
+  },
+  ratingGames: {
+    type: [Number],
+    required: true,
   },
 });
 
