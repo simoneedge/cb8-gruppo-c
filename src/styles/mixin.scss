@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@mixin display(
+  $display: inherit,
+  $fledirection: inherit,
+  $justify-content: inherit,
+  $align-items: inherit,
+  $gap: 0px,
+  $margin: 0px
+) {
+  display: $display;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  margin: $margin;
+}
+
+@mixin font($family: "Montserrat", $weight: normal, $margin: 0, $line: 0) {
+  font-family: $family;
+  font-weight: $weight;
+  margin: $margin;
+  line-height: $line;
+}
