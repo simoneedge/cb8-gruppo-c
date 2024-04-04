@@ -16,7 +16,11 @@ const FullHeightWrapper = ({ children }) => {
   }, []);
 
   return (
-    <div style={{ height: `${height}px`, overflowY: "auto" }}>{children}</div>
+    <div
+      style={{ minHeight: `${height}px`, height: "100%", overflowY: "hidden" }}
+    >
+      {children}
+    </div>
   );
 };
 
