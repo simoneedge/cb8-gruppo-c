@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 2%;
+  padding: 2%;
   box-shadow: $box-shadow;
 }
 
@@ -15,6 +15,7 @@
   background-color: #b2d2b6;
   z-index: 1;
   overflow: hidden;
+  box-shadow: $box-shadow;
 
   .lists {
     position: absolute;
