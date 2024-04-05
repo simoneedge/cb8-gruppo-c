@@ -1,23 +1,18 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
 .body {
   height: 100vh;
   display: flex;
   flex-direction: column;
 
   .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include display(flex, column, center, center, 0, 0);
 
     .header {
+      @include display(flex, column, center, center, 20px, 30px 0 0 0);
       position: absolute;
       top: 13%;
-      display: flex;
-      margin-top: 30px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
     }
   }
 }
