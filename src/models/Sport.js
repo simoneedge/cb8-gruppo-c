@@ -5,6 +5,10 @@ const sportSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: String,
+    required: true,
+  },
   playerCount: {
     type: Number,
     required: true,
