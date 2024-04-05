@@ -1,27 +1,30 @@
 @import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
 
 .CardSport {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid black;
+  box-shadow: $box-shadow;
   border-radius: 20px;
   overflow: hidden;
-  height: 170px;
+  height: 100px;
+  width: 22.3rem;
   margin: 2%;
+  margin-left: 0;
 
   //avevo aggiunto un effetto grow però si sbilancia verso destra la card, chiara aiutami
 
-  // transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  // &:hover {
-  //   transform: scale(1.02);
-  // }
+  &:hover {
+    transform: scale(1.02);
+  }
 
   img {
-    position: relative;
+    position: absolute;
     width: 100%;
-    // bottom: 15%;
   }
 
   .title {
