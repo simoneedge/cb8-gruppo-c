@@ -3,8 +3,20 @@ import styles from "@/styles/Home.module.scss";
 import Navbar from "@/components/navbar";
 import CardSport from "@/components/cardSport";
 import Button from "@/components/button";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [sportData, setSportData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/sports")
+      .then((res) => res.json())
+      .then((data) => setSportData(data.data))
+      .catch((error) => {
+        console.error("Error fetching sports data:", error);
+      });
+  }, []);
+
   return (
     <>
       <Head>
@@ -19,7 +31,15 @@ export default function Home() {
           <div className={styles.header}>
             <Button />
             <h2 className={styles.h2}>Vuoi organizzare?</h2>
-            <CardSport />
+            <div className={styles.CardSports}>
+              {sportData.map((sport) => (
+                <CardSport
+                  key={sport._id}
+                  sport={sport.sportName}
+                  image={sport.img}
+                />
+              ))}
+            </div>
           </div>
         </main>
       </div>
