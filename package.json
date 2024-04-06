@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "boring-avatars": "^1.10.1",
     "express": "^4.19.2",
     "firebase": "^10.10.0",
     "hamburger-react": "^2.5.0",

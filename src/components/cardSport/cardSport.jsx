@@ -1,12 +1,14 @@
 import Image from "next/image";
 import styles from "./index.module.scss";
-import { useState, useEffect } from "react";
+import Link from "next/link";
 
-export default function CardSport({ sport, image }) {
+export default function CardSport({ title, image }) {
   return (
-    <div className={styles.CardSport}>
-      <img src={image} alt={sport} />
-      <p className={styles.title}>{sport}</p>
-    </div>
+    <Link href="/organizeMatch">
+      <div className={styles.CardSport}>
+        <img src={image} alt={title} />
+        <p className={styles.title}>{title}</p>
+      </div>
+    </Link>
   );
 }
