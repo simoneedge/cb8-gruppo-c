@@ -49,6 +49,10 @@ const userSchema = new mongoose.Schema({
     type: [Number],
     required: true,
   },
+  friends: {
+    type: Array,
+    required: false,
+  },
 });
 
 module.exports = mongoose.models.User || mongoose.model("User", userSchema);
