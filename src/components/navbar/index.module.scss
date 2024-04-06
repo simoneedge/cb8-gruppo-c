@@ -4,18 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2%;
+  padding: 3%;
   box-shadow: $box-shadow;
+  background-color: $petrol;
 }
 
 .menu {
-  width: 50%;
-  height: 100%;
   display: none;
-  background-color: #b2d2b6;
-  z-index: 1;
-  overflow: hidden;
-  box-shadow: $box-shadow;
 
   .lists {
     position: absolute;
@@ -25,11 +20,23 @@
     padding-left: 1%;
     gap: 30px;
     list-style-type: none;
+    background-color: #b2d2b6;
+    z-index: 1;
+    height: 100%;
+    width: 50%;
+    box-shadow: $box-shadow;
+    overflow: hidden;
 
     li {
       display: flex;
       flex-direction: column;
       gap: 2%;
+
+      &:hover,
+      &active {
+        text-decoration: underline;
+        color: $petrol;
+      }
     }
   }
 

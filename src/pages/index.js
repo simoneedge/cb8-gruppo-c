@@ -1,22 +1,10 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
-import Navbar from "@/components/navbar";
+
 import CardSport from "@/components/cardSport";
 import Button from "@/components/button";
-import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [sportData, setSportData] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/sports")
-      .then((res) => res.json())
-      .then((data) => setSportData(data.data))
-      .catch((error) => {
-        console.error("Error fetching sports data:", error);
-      });
-  }, []);
-
   return (
     <>
       <Head>
@@ -26,19 +14,15 @@ export default function Home() {
         <link rel="icon" href="/logo.png" />
       </Head>
       <div className={styles.body}>
-        <Navbar />
         <main className={styles.main}>
           <div className={styles.header}>
-            <Button />
+            <Button text="Partecipa" />
             <h2 className={styles.h2}>Vuoi organizzare?</h2>
             <div className={styles.CardSports}>
-              {sportData.map((sport) => (
-                <CardSport
-                  key={sport._id}
-                  sport={sport.sportName}
-                  image={sport.img}
-                />
-              ))}
+              <CardSport image="./Soccer.jpg" title="Calcio" />
+              <CardSport image="./Tennis.jpg" title="Tennis" />
+              <CardSport image="./Volley.jpg" title="Pallavolo" />
+              <CardSport image="./Basket.jpg" title="Basket" />
             </div>
           </div>
         </main>

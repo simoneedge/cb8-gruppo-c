@@ -1,0 +1,40 @@
+@import "./../../styles/mixins.scss";
+
+.container {
+  position: relative;
+  padding: 3%;
+  margin: 0 auto;
+  @include display(flex, inherit, center, center, 0, 0);
+  flex-wrap: wrap;
+
+  .container_image {
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  h4 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 23px;
+
+    padding-top: 3%;
+  }
+
+  .form {
+    @include display(flex, inherit, center, center, 20px, 12px);
+    position: absolute;
+    flex-wrap: wrap;
+    top: 13rem;
+
+    input {
+      text-align: center;
+      width: 45%;
+      border-radius: 20px;
+      height: 2rem;
+    }
+
+    .sport {
+      width: 94%;
+    }
+  }
+}
