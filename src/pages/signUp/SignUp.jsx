@@ -1,9 +1,11 @@
-import styles from "./index.module.css";
+import RegistrationForm from "../components/RegistrationForm";
 
-export default function Signup() {
+const SignUpPage = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Signup</h1>
+      <RegistrationForm />
     </div>
   );
-}
+};
+
+export default SignUpPage;

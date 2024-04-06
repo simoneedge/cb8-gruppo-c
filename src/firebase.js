@@ -2,14 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "process.env,FIREBASE_KEY",
-  authDomain: "todoapp-eeeb7.firebaseapp.com",
-  projectId: "todoapp-eeeb7",
-  storageBucket: "todoapp-eeeb7.appspot.com",
-  messagingSenderId: "1072574112522",
-  appId: "1:1072574112522:web:65fc4e184aed9894dc90f3",
+  apiKey: "AIzaSyCWKVTZruDLINwIGOFDWlsthzl0Wz7aRWQ",
+  authDomain: "justplay-419212.firebaseapp.com",
+  projectId: "justplay-419212",
+  storageBucket: "justplay-419212.appspot.com",
+  messagingSenderId: "768864592271",
+  appId: "1:768864592271:web:d672d9efa03454f43eabfa"
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export default app;
+export const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseAuth = getAuth(firebaseApp);
+//export default app;
