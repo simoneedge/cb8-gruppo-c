@@ -1,5 +1,5 @@
 import dbConnect from "../../../../utils/dbConnect";
-import Sport from "../../../models/Sport";
+import Match from "../../../models/Match";
 
 export default async function handler(req, res) {
   const {
@@ -12,12 +12,12 @@ export default async function handler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const sport = await Sport.findById(id);
+        const match = await Match.findById(id);
 
-        if (!sport) {
+        if (!match) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: sport });
+        res.status(200).json({ success: true, data: match });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
@@ -25,21 +25,21 @@ export default async function handler(req, res) {
     case "PUT":
       try {
         const body = req.body;
-        const sport = await Sport.findByIdAndUpdate(id, body);
+        const match = await CardSport.findByIdAndUpdate(id, body);
 
         if (!sport) {
-          return res.status(400).json({ success: false });
+          res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: sport });
+        res.status(200).json({ success: true, data: match });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
       break;
     case "DELETE":
       try {
-        const deleteSport = await Sport.deleteOne({ _id: id });
+        const deleteMatch = await Match.deleteOne({ _id: id });
 
-        if (!deleteSport) {
+        if (!deleteMatch) {
           return res.status(400).json({ success: false });
         }
         res.status(200).json({ success: true, data: {} });
