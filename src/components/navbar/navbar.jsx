@@ -14,7 +14,12 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.Navbar}>
-        <Hamburger toggled={isOpen} toggle={setOpen} onClick={handleClick} />
+        <Hamburger
+          className={styles.hamburger}
+          toggled={isOpen}
+          toggle={setOpen}
+          onClick={handleClick}
+        />
         <Image src="/logo.png" width={95} height={60} alt="logo" />
       </nav>
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
