@@ -1,12 +1,7 @@
-import RegistrationForm from "../../components/registrationForm";
 import styles from "./index.module.scss";
 
 const SignUpPage = () => {
-  return (
-    <div className={styles.container}>
-      <RegistrationForm />
-    </div>
-  );
+  return <div className={styles.container}></div>;
 };
 
 export default SignUpPage;
