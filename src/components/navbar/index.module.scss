@@ -20,7 +20,7 @@
     padding-left: 1%;
     gap: 30px;
     list-style-type: none;
-    background-color: #b2d2b6;
+    background-color: $petrol;
     z-index: 1;
     height: 100%;
     width: 50%;
@@ -31,13 +31,22 @@
       display: flex;
       flex-direction: column;
       gap: 2%;
+      color: $whiteSmoke;
+      font-size: 1.2rem;
 
       &:hover,
       &active {
-        text-decoration: underline;
-        color: $petrol;
+        // text-decoration: underline;
+        color: $mint;
       }
     }
+
+    // button {
+    //   width: 80%;
+    //   height: 3.5%;
+    //   border: none;
+    //   background-color: $petrol;
+    // }
   }
 
   &.open {
