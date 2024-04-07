@@ -1,4 +1,5 @@
-import RegistrationForm from "../components/RegistrationForm";
+import RegistrationForm from "../../components/registrationForm";
+import styles from "./index.module.scss";
 
 const SignUpPage = () => {
   return (
