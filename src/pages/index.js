@@ -19,7 +19,7 @@ export default function Home() {
       <div className={styles.body}>
         <main className={styles.main}>
           <div className={styles.header}>
-            <Button text="Partecipa" />
+            <Button text="Partecipa" className={styles.homeButton} />
             <h2 className={styles.h2}>Vuoi organizzare?</h2>
             <div className={styles.CardSports}>
               <CardSport

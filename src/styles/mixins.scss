@@ -16,9 +16,22 @@
   margin: $margin;
 }
 
-@mixin font($family: "Montserrat", $weight: normal, $margin: 0, $line: 0) {
+@mixin font(
+  $family: "Montserrat",
+  $weight: normal,
+  $font-size: 1rem,
+  $text-decoration: inherit,
+  $text-transform: inherit,
+  $letter-spacing: inherit,
+  $margin: 0,
+  $line: 0
+) {
   font-family: $family;
   font-weight: $weight;
+  font-size: $font-size;
+  text-decoration: $text-decoration;
+  text-transform: $text-transform;
+  letter-spacing: $letter-spacing;
   margin: $margin;
   line-height: $line;
 }
