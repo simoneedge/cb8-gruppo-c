@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
-import Button from "@/components/button";
 
 export default function Home() {
   const handleCardClick = (title) => {
@@ -19,8 +18,11 @@ export default function Home() {
       <div className={styles.body}>
         <main className={styles.main}>
           <div className={styles.header}>
-            <Button text="Partecipa" className={styles.homeButton} />
-            <h2 className={styles.h2}>Vuoi organizzare?</h2>
+            <h3>JustPlay: gioca o organizza partite!</h3>
+            <p>
+              Trova e partecipa a partite vicino a te o organizza la tua.
+              Connetti con appassionati di sport e scopri nuove sfide!
+            </p>{" "}
             <div className={styles.CardSports}>
               <CardSport
                 image="./Soccer.jpg"

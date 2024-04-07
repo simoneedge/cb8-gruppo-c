@@ -1,0 +1,34 @@
+@import "./../../styles/variables.scss";
+@import "./../../styles/mixins.scss";
+
+.orgButton {
+  @include display(flex, column, center, center, 0, 0);
+  @include font("Montserrat", 600, 1.3rem, none, uppercase, 1px, 0, 0);
+  width: 100%;
+  color: $whiteSmoke;
+  padding: 8% 3%;
+  border-radius: 10px;
+  border: none;
+  box-shadow: $box-shadow;
+  background: linear-gradient(90deg, $petrol 0%, $mint 50%, $lightGreen 100%);
+  background-size: 400% 400%;
+  animation: AnimationGradient 10s linear infinite;
+  transition: background-color 0.35s;
+}
+
+@keyframes AnimationGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.orgButton:hover {
+  background-color: $petrol;
+  animation: none;
+}
