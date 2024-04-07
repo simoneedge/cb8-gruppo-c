@@ -2,13 +2,52 @@
 import { firebaseApp, firebaseAuth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
+import sha256 from "../../utils/cryptoUtils";
+
+export async function registerNewUserToDb(userData, password) {
+  try {
+    /* Bisogna fare chiamare l'API per creare un utente (una POST) con questo oggetto: */
+    let hashedPassword = await sha256(password); // Ottengo l'hash 256 della password da salvare nel db
+    userData.password = hashedPassword;
+
+    console.log(
+      "Registering user to db via API call: " + JSON.stringify(userData)
+    );
+
+    fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.status >= 200 && response.status <= 204) {
+          return response.json();
+        } else {
+          console.log("Received invalid HTTP response: " + response.statusText);
+        }
+      })
+      .then((data) => {
+        console.log("Risposta dal server: " + data);
+        return data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (e) {
+    console.log(
+      `An error occurred while saving user '${userData.email}' : ${e}`
+    );
+  }
+}
 
 const RegistrationForm = () => {
   // User data
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
-  const [img, setImg] = useState("");
+  const [imageBase64String, setImageBase64String] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +57,7 @@ const RegistrationForm = () => {
   const [error, setError] = useState("");
   const [onSuccess, setOnSuccess] = useState(null);
 
-  const handleRegister = async (e) => {
+  const handleFirebaseRegistration = async (e) => {
     e.preventDefault();
     try {
       let userCredential = await createUserWithEmailAndPassword(
@@ -34,42 +73,20 @@ const RegistrationForm = () => {
       setError("");
       setOnSuccess(true);
       // if all goes ok, then save user into the mongodb collection (via API call)
-      try {
-        /* Bisogna fare chiamare l'API per creare un utente (una POST) con questo oggetto: */
-        const data = {
-          name: firstName,
-          surname: lastName,
-          username: username,
-          img: img,
-          birthdate: birthDate,
-          email: email,
-          location: city,
-        };
+      const userData = {
+        name: firstName,
+        surname: lastName,
+        username: username,
+        // googleToken: "",
+        // emailToken: "",
+        img: imageBase64String,
+        birthdate: birthDate,
+        email: email,
+        location: city,
+      };
 
-        fetch("/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(
-                "Qualcosa è andato storto..." + response.statusText
-              );
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log("Risposta dal server: " + data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (e) {
-        console.log(`An error occurred while saving user '${email}' : ${e}`);
-      }
+      const userObj = await registerNewUserToDb(userData, password);
+      console.log("Registered user: " + JSON.stringify(userObj));
     } catch (error) {
       setError(`L'utente con email '${email}' è già registrato`);
       setOnSuccess(false);
@@ -81,12 +98,30 @@ const RegistrationForm = () => {
     }
   };
 
+  const handleImageSelected = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImageBase64String(reader.result);
+      console.log(`image in base64: ${imageBase64String}`);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageDelete = (event) => {
+    setImageBase64String(null);
+  };
+
   return (
-    <div>
+    <div className="registration-form">
       <h2>Registrazione Utente</h2>
       {<div>{error.length > 0 ? error : ""}</div>}
       {<div>{onSuccess && `Utente ${email} registrato con successo`}</div>}
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleFirebaseRegistration}>
         <div>
           <label>Nome:</label>
           <input
@@ -122,10 +157,18 @@ const RegistrationForm = () => {
         <div>
           <label>Image:</label>
           <input
-            type="image"
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
+            type="file"
+            accept="image/gif, image/jpeg, image/png"
+            onChange={(e) => handleImageSelected(e)}
           />
+          {imageBase64String && (
+            <div>
+              <button onClick={(e) => handleImageDelete(e)}>
+                Elimina immagine
+              </button>
+              <img src={imageBase64String} alt="Preview" />
+            </div>
+          )}
         </div>
         <div>
           <label>Email:</label>
