@@ -1,11 +1,14 @@
 import Head from "next/head";
+import HomePage from "@/layout";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
+import RegistrationForm from "@/components/registrationForm";
+import SignIn from "./signIn";
+import { useState } from "react";
 
 export default function Home() {
-  const handleCardClick = (title) => {
-    localStorage.setItem("selectedSport", title);
-  };
+  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <>
@@ -15,39 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
       </Head>
-      <div className={styles.body}>
-        <main className={styles.main}>
-          <div className={styles.header}>
-            <h3>JustPlay: gioca o organizza partite!</h3>
-            <p>
-              Trova e partecipa a partite vicino a te o organizza la tua.
-              Connetti con appassionati di sport e scopri nuove sfide!
-            </p>{" "}
-            <div className={styles.CardSports}>
-              <CardSport
-                image="./Soccer.jpg"
-                title="Calcio"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Tennis.jpg"
-                title="Tennis"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Volley.jpg"
-                title="Pallavolo"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Basket.jpg"
-                title="Basket"
-                onClick={handleCardClick}
-              />
-            </div>
-          </div>
-        </main>
-      </div>
+      {!isAuthenticated ? <SignIn auth={setIsAuthenticated} /> : <HomePage /> }      
     </>
   );
 }

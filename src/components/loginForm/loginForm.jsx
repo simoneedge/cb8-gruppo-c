@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import styles from "./index.module.scss";
 
-import { firebaseApp, firebaseAuth } from "../../firebase";
+import { firebaseApp, firebaseAuth } from "../../../utils/firebase";
 import React, { useState } from "react";
 import { registerNewUserToDb } from "../registrationForm";
 
@@ -21,7 +21,7 @@ const checkUserAuthenticatedWithGoogle = async (email, googleToken) => {
   return data && true;
 };
 
-export default function LoginForm() {
+export default function LoginForm(setIsAuthenticated) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -46,6 +46,7 @@ export default function LoginForm() {
         const additionalUserInfo = getAdditionalUserInfo(result);
         // Qui bisogna prendere le informazioni dall'account google dell'utente tramite l'oggetto additionalUserInfo,
         // se non è registrato bisogna registrarlo
+        setIsAuthenticated(true);
         if (checkUserAuthenticatedWithGoogle(userData.email, googleAuthToken)) {
           console.log(
             "Utente precedentemente autenticato e registrato con Google"
@@ -91,6 +92,7 @@ export default function LoginForm() {
       setError("");
       setOnSuccess(true);
       console.log(`Authentication with email ${email} successful!`);
+      setIsAuthenticated(true);
     } catch (error) {
       setError(`Credenziali errate.`);
       setOnSuccess(false);

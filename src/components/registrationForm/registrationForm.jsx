@@ -1,5 +1,5 @@
 // import styles from "@/index.module.css";
-import { firebaseApp, firebaseAuth } from "../../firebase";
+import { firebaseApp, firebaseAuth } from "../../../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import sha256 from "../../../utils/cryptoUtils";
