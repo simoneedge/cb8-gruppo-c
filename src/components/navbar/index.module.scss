@@ -1,9 +1,8 @@
 @import "./../../styles/variables.scss";
+@import "./../../styles/mixins.scss";
 
 .Navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include display(flex, inherit, space-between, center, 0, 0);
   padding: 3%;
   box-shadow: $box-shadow;
   background-color: $petrol;
@@ -13,34 +12,46 @@
   display: none;
 
   .lists {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding-top: 5%;
-    padding-left: 1%;
-    gap: 30px;
+    @include display(flex, column, inherit, inherit, 20px, 0);
+    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 16px);
+    color: $whiteSmoke;
     list-style-type: none;
-    background-color: #b2d2b6;
-    z-index: 1;
-    height: 100%;
-    width: 50%;
+    background-color: $petrol;
     box-shadow: $box-shadow;
-    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    padding: 3% 0;
+    width: 60%;
+    height: 100%;
 
     li {
-      display: flex;
-      flex-direction: column;
-      gap: 2%;
+      @include display(flex, column, flex-start, flex-start, 0, 0);
+      padding: 0;
 
       &:hover,
       &active {
-        text-decoration: underline;
-        color: $petrol;
+        color: $mint;
       }
     }
   }
 
   &.open {
-    display: block;
+    @include display(flex, column, flex-start, flex-start, 0, 0);
+    padding: 0 3%;
+  }
+
+  .navbarButton {
+    @include display(flex, column, center, center, 0, 0);
+    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 0);
+    color: $whiteSmoke;
+    background-color: $mint;
+    padding: 20px 20px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: $box-shadow;
+    transition: background-color 0.35s;
+  }
+  .navbarButton:hover {
+    background-color: $petrol;
   }
 }
