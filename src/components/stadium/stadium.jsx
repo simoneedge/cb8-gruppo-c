@@ -31,7 +31,7 @@ const Stadium = ({}) => {
 
       const input = searchTextFieldRef.current;
       const autocomplete = new window.google.maps.places.Autocomplete(input, {
-        componentRestrictions: { country: "IT" }, // Limita la ricerca alle città italiane
+        componentRestrictions: { country: "IT" },
       });
 
       autocomplete.bindTo("bounds", map);
@@ -46,18 +46,16 @@ const Stadium = ({}) => {
             return;
           }
 
-          const excludedLanguages = ["en", "it"]; // Array di codici linguistici da escludere
-
+          const includedLanguages = ["en", "it"];
           const request = {
             location: place.geometry.location,
-            radius: "50000", // Aumenta il raggio della ricerca per includere strutture sportive nella città
+            radius: "50000",
             keyword: sport,
-            language: "en", // Imposta la lingua su inglese come fallback
+            language: "en",
           };
 
-          // Aggiungi il parametro language solo se ci sono lingue da escludere
-          if (excludedLanguages.length > 0) {
-            request.language = excludedLanguages
+          if (includedLanguages.length > 0) {
+            request.language = includedLanguages
               .map((lang) => `-${lang}`)
               .join("|");
           }
