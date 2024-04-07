@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const Stadium = () => {
+const Stadium = ({}) => {
   const searchTextFieldRef = useRef(null);
   const [sportFacilities, setSportFacilities] = useState([]);
   let map;
   let service;
+  const sport = localStorage.getItem("selectedSport");
 
   useEffect(() => {
     const loadMap = async () => {
@@ -50,7 +51,7 @@ const Stadium = () => {
           const request = {
             location: place.geometry.location,
             radius: "50000", // Aumenta il raggio della ricerca per includere strutture sportive nella città
-            keyword: "campo sportivo|centro sportivo",
+            keyword: sport,
             language: "en", // Imposta la lingua su inglese come fallback
           };
 
