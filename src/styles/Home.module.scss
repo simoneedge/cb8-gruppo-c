@@ -2,7 +2,7 @@
 @import "./variables.scss";
 
 .body {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -10,7 +10,7 @@
     @include display(flex, column, center, center, 0, 0);
 
     .header {
-      @include display(flex, column, center, center, 15px, 30px 0 0 0);
+      @include display(flex, column, center, center, 15px, 15px 0 0 0);
       position: absolute;
       top: 13%;
 
