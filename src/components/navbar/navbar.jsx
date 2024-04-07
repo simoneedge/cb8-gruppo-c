@@ -3,15 +3,29 @@ import { useState, useEffect } from "react";
 import Hamburger from "hamburger-react";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Button from "../button";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setOpen(false);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <>
@@ -22,7 +36,9 @@ export default function Navbar() {
           toggle={setOpen}
           onClick={handleClick}
         />
-        <Image src="/logo.png" width={95} height={60} alt="logo" />
+        <Link href="/">
+          <Image src="/justPlay.svg" width={105} height={60} alt="logo" />
+        </Link>
       </nav>
       {isOpen && (
         <div className={`${styles.menu} ${styles.open}`}>
@@ -53,6 +69,24 @@ export default function Navbar() {
           </ul>
         </div>
       )}
+
+      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
+        <ul className={styles.lists}>
+          <Link href="/profile">
+            <li>Profilo</li>
+          </Link>
+          <Link href="/matchDetails">
+            <li>Partita in corso</li>
+          </Link>
+          <Link href="/organizeMatch">
+            <li>Organizza partita</li>
+          </Link>
+          <Link href="/profile">
+            <Button text="About" className={styles.navbarButton} />
+          </Link>
+          {/* <button text="About">About</button> */}
+        </ul>
+      </div>
     </>
   );
 }

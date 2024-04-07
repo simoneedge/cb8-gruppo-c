@@ -30,9 +30,25 @@
 
       &:hover,
       &active {
+      display: flex;
+      flex-direction: column;
+      gap: 2%;
+      color: $whiteSmoke;
+      font-size: 1.2rem;
+
+      &:hover,
+      &active {
+        // text-decoration: underline;
         color: $mint;
       }
     }
+
+    // button {
+    //   width: 80%;
+    //   height: 3.5%;
+    //   border: none;
+    //   background-color: $petrol;
+    // }
   }
 
   &.open {
