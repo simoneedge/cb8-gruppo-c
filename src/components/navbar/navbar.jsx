@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Hamburger from "hamburger-react";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import Button from "../button";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Navbar() {
             <li>Organizza partita</li>
           </Link>
           <Link href="/profile">
-            <li>About</li>
+            <Button text="About" className={styles.navbarButton} />
           </Link>
         </ul>
       </div>
