@@ -1,15 +1,1 @@
 @import "./../../styles/variables.scss";
-
-.button {
-  display: flex;
-  background-color: $mint;
-  width: 100%;
-  height: 55px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 28px;
-  border: none;
-  box-shadow: $box-shadow;
-  color: whitesmoke;
-  font-size: 26px;
-}

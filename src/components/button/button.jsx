@@ -1,9 +1,9 @@
 import styles from "./index.module.scss";
 
-export default function Button({ text }) {
+export default function Button({ text, className }) {
   return (
     <>
-      <button className={`button ${styles.button}`}>{text}</button>
+      <button className={className}>{text}</button>
     </>
   );
 }

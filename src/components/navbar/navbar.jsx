@@ -51,7 +51,7 @@ export default function Navbar() {
             <li>Organizza partita</li>
           </Link>
           <Link href="/profile">
-            <li>About</li>
+            <Button text="About" className={styles.navbarButton} />
           </Link>
           {/* <button text="About">About</button> */}
         </ul>
