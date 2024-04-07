@@ -5,53 +5,29 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .main {
-    @include display(flex, column, center, center, 0, 0);
+    @include display(flex, column, inherit, inherit, 0, 0);
 
     .header {
+      width: 100%;
+      @include display(flex, column, inherit, inherit, 10px, 0);
       @include display(flex, column, center, center, 15px, 15px 0 0 0);
       position: absolute;
-      top: 13%;
+      top: 10%;
+      padding: 8% 3%;
 
-      .h2 {
-        color: whitesmoke;
-      }
-      .homeButton {
-        @include display(flex, column, center, center, 0, 0);
-        @include font("Montserrat", 600, 1.4rem, none, uppercase, 2px, 0, 0);
-        width: 100%;
+      h3 {
         color: $whiteSmoke;
-        padding: 8% 3%;
-        border-radius: 10px;
-        border: none;
-        box-shadow: $box-shadow;
-        background: linear-gradient(
-          90deg,
-          $petrol 0%,
-          $mint 50%,
-          $lightGreen 100%
-        );
-        background-size: 400% 400%;
-        animation: AnimationGradient 10s linear infinite;
-        transition: background-color 0.35s;
+        font-weight: 600;
+        text-align: left;
+        line-height: inherit;
       }
 
-      @keyframes AnimationGradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .homeButton:hover {
-        background-color: $petrol;
-        animation: none;
+      p {
+        color: $whiteSmoke;
+        font-weight: 400;
       }
     }
   }
