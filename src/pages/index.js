@@ -1,10 +1,13 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
-
 import CardSport from "@/components/cardSport";
 import Button from "@/components/button";
 
 export default function Home() {
+  const handleCardClick = (title) => {
+    localStorage.setItem("selectedSport", title);
+  };
+
   return (
     <>
       <Head>
@@ -19,10 +22,26 @@ export default function Home() {
             <Button text="Partecipa" />
             <h2 className={styles.h2}>Vuoi organizzare?</h2>
             <div className={styles.CardSports}>
-              <CardSport image="./Soccer.jpg" title="Calcio" />
-              <CardSport image="./Tennis.jpg" title="Tennis" />
-              <CardSport image="./Volley.jpg" title="Pallavolo" />
-              <CardSport image="./Basket.jpg" title="Basket" />
+              <CardSport
+                image="./Soccer.jpg"
+                title="Calcio"
+                onClick={handleCardClick}
+              />
+              <CardSport
+                image="./Tennis.jpg"
+                title="Tennis"
+                onClick={handleCardClick}
+              />
+              <CardSport
+                image="./Volley.jpg"
+                title="Pallavolo"
+                onClick={handleCardClick}
+              />
+              <CardSport
+                image="./Basket.jpg"
+                title="Basket"
+                onClick={handleCardClick}
+              />
             </div>
           </div>
         </main>
