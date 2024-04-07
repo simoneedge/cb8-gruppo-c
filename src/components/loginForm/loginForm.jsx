@@ -4,9 +4,11 @@ import {
   signInWithPopup,
   getAdditionalUserInfo,
 } from "firebase/auth";
-import { firebaseApp, firebaseAuth } from "../firebase";
+import styles from "./index.module.scss";
+
+import { firebaseApp, firebaseAuth } from "../../firebase";
 import React, { useState } from "react";
-import { registerNewUserToDb } from "./registrationForm";
+import { registerNewUserToDb } from "../registrationForm";
 
 const checkUserAuthenticatedWithGoogle = async (email, googleToken) => {
   const result = await fetch(`/api/user/${email}`, {
@@ -19,7 +21,7 @@ const checkUserAuthenticatedWithGoogle = async (email, googleToken) => {
   return data && true;
 };
 
-const LoginForm = () => {
+export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -101,7 +103,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-form">
+    <div className={styles.container}>
       <h2>Autenticazione Utente</h2>
       {<div>{error.length > 0 ? error : ""}</div>}
       {<div>{onSuccess && `Utente '${email}' autenticato con successo`}</div>}
@@ -127,6 +129,4 @@ const LoginForm = () => {
       </form>
     </div>
   );
-};
-
-export default LoginForm;
+}

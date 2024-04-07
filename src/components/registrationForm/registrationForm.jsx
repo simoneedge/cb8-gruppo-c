@@ -1,8 +1,9 @@
 // import styles from "@/index.module.css";
-import { firebaseApp, firebaseAuth } from "../firebase";
+import { firebaseApp, firebaseAuth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import sha256 from "../../utils/cryptoUtils";
+import sha256 from "../../../utils/cryptoUtils";
+import styles from "./index.module.scss";
 
 export async function registerNewUserToDb(userData, password) {
   try {
@@ -42,7 +43,7 @@ export async function registerNewUserToDb(userData, password) {
   }
 }
 
-const RegistrationForm = () => {
+export default function RegistrationForm() {
   // User data
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -117,7 +118,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="registration-form">
+    <div className={styles.container}>
       <h2>Registrazione Utente</h2>
       {<div>{error.length > 0 ? error : ""}</div>}
       {<div>{onSuccess && `Utente ${email} registrato con successo`}</div>}
@@ -198,6 +199,4 @@ const RegistrationForm = () => {
       </form>
     </div>
   );
-};
-
-export default RegistrationForm;
+}
