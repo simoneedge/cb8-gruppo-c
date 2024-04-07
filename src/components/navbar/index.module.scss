@@ -9,43 +9,38 @@
 }
 
 .menu {
-  display: none;
-
   .lists {
-    @include display(flex, column, inherit, inherit, 20px, 0);
-    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 16px);
-    color: $whiteSmoke;
-    list-style-type: none;
-    background-color: $petrol;
     box-shadow: $box-shadow;
     position: fixed;
     z-index: 1;
-    padding: 3% 0;
     width: 60%;
     height: 100%;
 
+    .listsDetail {
+      padding: 10% 10%;
+
+      @include display(flex, column, inherit, inherit, 20px, 0);
+      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 16px);
+      color: $whiteSmoke;
+      list-style-type: none;
+      background-color: $petrol;
+      width: 100%;
+      height: 100%;
+    }
+
     li {
       @include display(flex, column, flex-start, flex-start, 0, 0);
-      padding: 0;
 
       &:hover,
       &active {
-        display: flex;
-        flex-direction: column;
-        gap: 2%;
-        color: $whiteSmoke;
-        font-size: 1.2rem;
+        color: $mint;
+        font-size: 0.8rem;
 
         &:hover,
         &active {
           color: $mint;
         }
       }
-    }
-
-    &.open {
-      @include display(flex, column, flex-start, flex-start, 0, 0);
-      padding: 0 3%;
     }
 
     .navbarButton {

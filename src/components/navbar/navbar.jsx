@@ -48,7 +48,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className={styles.lists}
+              className={styles.listsDetail}
             >
               <Link href="/">
                 <li>Home</li>
@@ -69,24 +69,6 @@ export default function Navbar() {
           </ul>
         </div>
       )}
-
-      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
-        <ul className={styles.lists}>
-          <Link href="/profile">
-            <li>Profilo</li>
-          </Link>
-          <Link href="/matchDetails">
-            <li>Partita in corso</li>
-          </Link>
-          <Link href="/organizeMatch">
-            <li>Organizza partita</li>
-          </Link>
-          <Link href="/profile">
-            <Button text="About" className={styles.navbarButton} />
-          </Link>
-          {/* <button text="About">About</button> */}
-        </ul>
-      </div>
     </>
   );
 }
