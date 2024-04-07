@@ -30,44 +30,37 @@
 
       &:hover,
       &active {
-      display: flex;
-      flex-direction: column;
-      gap: 2%;
-      color: $whiteSmoke;
-      font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2%;
+        color: $whiteSmoke;
+        font-size: 1.2rem;
 
-      &:hover,
-      &active {
-        // text-decoration: underline;
-        color: $mint;
+        &:hover,
+        &active {
+          color: $mint;
+        }
       }
     }
 
-    // button {
-    //   width: 80%;
-    //   height: 3.5%;
-    //   border: none;
-    //   background-color: $petrol;
-    // }
-  }
+    &.open {
+      @include display(flex, column, flex-start, flex-start, 0, 0);
+      padding: 0 3%;
+    }
 
-  &.open {
-    @include display(flex, column, flex-start, flex-start, 0, 0);
-    padding: 0 3%;
-  }
-
-  .navbarButton {
-    @include display(flex, column, center, center, 0, 0);
-    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 0);
-    color: $whiteSmoke;
-    background-color: $mint;
-    padding: 20px 20px;
-    border-radius: 10px;
-    border: none;
-    box-shadow: $box-shadow;
-    transition: background-color 0.35s;
-  }
-  .navbarButton:hover {
-    background-color: $petrol;
+    .navbarButton {
+      @include display(flex, column, center, center, 0, 0);
+      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0, 0);
+      color: $whiteSmoke;
+      background-color: $mint;
+      padding: 20px 20px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: $box-shadow;
+      transition: background-color 0.35s;
+    }
+    .navbarButton:hover {
+      background-color: $petrol;
+    }
   }
 }
