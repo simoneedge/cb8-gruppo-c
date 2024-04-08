@@ -1,2 +1,35 @@
+@import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
+
 .container {
+  @include display(flex, column, center, center, 0, 0);
+  height: 100vh;
+
+  .form {
+    @include display(flex, column, center, center, 0, 0);
+
+    input,
+    .button {
+      border: none;
+      width: 17rem;
+      height: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      margin: 10px;
+      font-size: large;
+    }
+
+    .button {
+      background-color: $lightGreen;
+      font-weight: bold;
+    }
+  }
+
+  .link {
+    color: $whiteSmoke;
+
+    &:hover {
+      color: $lightGreen;
+    }
+  }
 }

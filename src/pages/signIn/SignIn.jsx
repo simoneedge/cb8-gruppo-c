@@ -2,17 +2,18 @@ import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function SignIn({ username }) {
   const router = useRouter();
   const { msg } = router.query;
   return (
-    <>
-      <Link href="/">Home</Link>
-      <br />
+    <div className={styles.container}>
+      <Image src="/JustPlay.svg" alt="logo" width={300} height={300} />
+
       {msg ? <h3 className="red">{msg}</h3> : <></>}
-      <h2>Log in</h2>
-      <form action="/api/login" method="POST">
+      <h4 className={styles.title}>Log in</h4>
+      <form action="/api/login" method="POST" className={styles.form}>
         <input
           minLength="3"
           name="username"
@@ -21,7 +22,6 @@ export default function SignIn({ username }) {
           placeholder="username"
           required
         ></input>
-        <br />
         <input
           minLength="5"
           name="password"
@@ -30,10 +30,12 @@ export default function SignIn({ username }) {
           placeholder="password"
           required
         ></input>
-        <br />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Sign In" className={styles.button} />
       </form>
-    </>
+      <Link href="/signUp" className={styles.link}>
+        or SignUp
+      </Link>
+    </div>
   );
 }
 
