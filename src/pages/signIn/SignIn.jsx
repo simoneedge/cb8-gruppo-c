@@ -19,7 +19,7 @@ export default function SignIn({ username }) {
           name="username"
           id="username"
           type="text"
-          placeholder="username"
+          placeholder="Username"
           required
         ></input>
         <input
@@ -27,7 +27,7 @@ export default function SignIn({ username }) {
           name="password"
           id="password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           required
         ></input>
         <input type="submit" value="Sign In" className={styles.button} />

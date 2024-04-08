@@ -2,26 +2,66 @@ import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function SignUpPage({ username }) {
   const router = useRouter();
   const { msg } = router.query;
   return (
-    <>
-      <Link href="/">Home</Link>
-      <br />
+    <div className={styles.container}>
+      <Image
+        src="/JustPlay.svg"
+        alt="logo"
+        width={300}
+        height={300}
+        className={styles.Image}
+      />
       {msg ? <h3 className="red">{msg}</h3> : <></>}
-      <h2>Sign up</h2>
-      <form action="/api/signup" method="POST">
+      <h4 className={styles.title}>Sign up</h4>
+      <form action="/api/signup" method="POST" className={styles.form}>
+        <input
+          minLength="4"
+          id="nome"
+          type="text"
+          placeholder="Nome"
+          required
+        ></input>
+        <input
+          minLength="3"
+          id="cognome"
+          type="text"
+          placeholder="Cognome"
+          required
+        ></input>
         <input
           minLength="3"
           name="username"
           id="username"
           type="text"
-          placeholder="username"
+          placeholder="Username"
           required
         ></input>
-        <br />
+        <input
+          minLength="3"
+          id="città"
+          type="text"
+          placeholder="Città"
+          required
+        ></input>
+        <input
+          minLength="3"
+          id="sport"
+          type="text"
+          placeholder="Sport"
+          required
+        ></input>
+        <input
+          minLength="3"
+          id="email"
+          type="text"
+          placeholder="email"
+          required
+        ></input>
         <input
           minLength="5"
           name="password"
@@ -30,10 +70,12 @@ export default function SignUpPage({ username }) {
           placeholder="password"
           required
         ></input>
-        <br />
-        <input type="submit" value="Signup" />
+        <input type="submit" value="Signup" className={styles.button} />
       </form>
-    </>
+      <Link href="/signIn" className={styles.link}>
+        or SignIn
+      </Link>
+    </div>
   );
 }
 
