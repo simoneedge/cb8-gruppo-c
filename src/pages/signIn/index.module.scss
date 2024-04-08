@@ -3,7 +3,7 @@
 
 .container {
   @include display(flex, column, center, center, 0, 0);
-  height: 100vh;
+  height: 100%;
 
   .form {
     @include display(flex, column, center, center, 0, 0);
@@ -17,6 +17,7 @@
       text-align: center;
       margin: 10px;
       font-size: large;
+      box-shadow: $box-shadow;
     }
 
     .button {

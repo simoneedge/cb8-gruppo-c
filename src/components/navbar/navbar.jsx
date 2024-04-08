@@ -50,9 +50,6 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className={styles.listsDetail}
             >
-              <Link href="/">
-                <li>Home</li>
-              </Link>
               <Link href="/profile">
                 <li>Profilo</li>
               </Link>
