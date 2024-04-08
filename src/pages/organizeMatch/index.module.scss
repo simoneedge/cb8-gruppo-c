@@ -3,7 +3,7 @@
 
 .orgButton {
   @include display(flex, column, center, center, 0, 0);
-  @include font("Montserrat", 600, 1.3rem, none, uppercase, 1px, 0, 0);
+  @include font("Montserrat", 600, 1.3rem, none, uppercase, 1px, 0);
   width: 100%;
   color: $whiteSmoke;
   padding: 8% 3%;
