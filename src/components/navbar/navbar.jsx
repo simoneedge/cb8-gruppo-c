@@ -62,6 +62,7 @@ export default function Navbar() {
               <Link href="/organizeMatch">
                 <li>Organizza partita</li>
               </Link>
+              <Link href="/api/logout">Logout</Link>
               <Link href="/profile">
                 <Button text="About" className={styles.navbarButton} />
               </Link>

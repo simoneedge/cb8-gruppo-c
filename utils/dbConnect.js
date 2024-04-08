@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 
+let client;
+let clientPromise;
 const connection = {};
 
 async function dbConnect() {
@@ -7,6 +10,19 @@ async function dbConnect() {
     return;
   }
 
+  // MongoDB connection
+  if (!process.env.MONGODB_URI) {
+    throw new Error("Add Mongo URI to env file");
+  }
+  client = new MongoClient(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: process.env.DB_NAME,
+  });
+  clientPromise = client.connect();
+  await clientPromise;
+
+  // Mongoose connection
   const db = await mongoose.connect(process.env.MONGODB_URI, {
     dbName: process.env.DB_NAME,
   });
@@ -21,3 +37,4 @@ async function dbConnect() {
 }
 
 export default dbConnect;
+export { client, clientPromise }; // Exporting client and clientPromise for external use
