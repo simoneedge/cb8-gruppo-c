@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
+import { getCookie } from "cookies-next";
+import Link from "next/link";
 
-export default function Home() {
+export default function Home({ username }) {
   const handleCardClick = (title) => {
     localStorage.setItem("selectedSport", title);
   };
@@ -18,36 +20,62 @@ export default function Home() {
       <div className={styles.body}>
         <main className={styles.main}>
           <div className={styles.header}>
-            <h3>JustPlay: gioca o organizza partite!</h3>
-            <p>
-              Trova e partecipa a partite vicino a te o organizza la tua.
-              Connetti con appassionati di sport e scopri nuove sfide!
-            </p>{" "}
-            <div className={styles.CardSports}>
-              <CardSport
-                image="./Soccer.jpg"
-                title="Calcio"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Tennis.jpg"
-                title="Tennis"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Volley.jpg"
-                title="Pallavolo"
-                onClick={handleCardClick}
-              />
-              <CardSport
-                image="./Basket.jpg"
-                title="Basket"
-                onClick={handleCardClick}
-              />
-            </div>
+            {username ? (
+              <>
+                <h3>JustPlay: gioca o organizza partite!</h3>
+                <p>
+                  Trova e partecipa a partite vicino a te o organizza la tua.
+                  Connetti con appassionati di sport e scopri nuove sfide!
+                </p>
+                <div className={styles.CardSports}>
+                  <CardSport
+                    image="./Soccer.jpg"
+                    title="Calcio"
+                    onClick={handleCardClick}
+                  />
+                  <CardSport
+                    image="./Tennis.jpg"
+                    title="Tennis"
+                    onClick={handleCardClick}
+                  />
+                  <CardSport
+                    image="./Volley.jpg"
+                    title="Pallavolo"
+                    onClick={handleCardClick}
+                  />
+                  <CardSport
+                    image="./Basket.jpg"
+                    title="Basket"
+                    onClick={handleCardClick}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <h3>JustPlay: gioca o organizza partite!</h3>
+                <p>
+                  lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                </p>{" "}
+                <div>
+                  <Link href="/signIn">Login</Link>
+                  <br />
+                  <Link href="/signup">Signup</Link>
+                </div>
+              </>
+            )}
           </div>
         </main>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const req = context.req;
+  const res = context.res;
+  let username = getCookie("username", { req, res });
+  if (username === undefined) {
+    username = false;
+  }
+  return { props: { username } };
 }
