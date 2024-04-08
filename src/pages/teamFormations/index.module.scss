@@ -1,0 +1,38 @@
+.TeamFormations {
+  padding: 20px;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.teamTitle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.team {
+  margin-bottom: 30px;
+
+  .teamTitle {
+  }
+}
+.vs {
+  position: relative;
+  top: -250px;
+}
