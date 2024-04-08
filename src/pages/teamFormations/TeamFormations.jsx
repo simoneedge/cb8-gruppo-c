@@ -5,9 +5,9 @@ import Image from "next/image";
 
 import User from "../../components/user/User";
 import Button from "../../components/button";
-import BlueShield from "./Blue-shield.svg";
-import RedShield from "./Red-shield.svg";
-import Versus from "./Versus.svg";
+import BlueShield from "../../../public/Blue-shield.svg";
+import RedShield from "../../../public/Red-shield.svg";
+import Versus from "../../../public/Versus.svg";
 
 import styles from "./index.module.scss";
 
@@ -53,12 +53,10 @@ export default function TeamFormations() {
       </div>{" "}
       <Link href={"/"}>
         {" "}
-        <a>
-          <Button
-            className={styles.button_formation}
-            text="Salva e vai alla home"
-          />
-        </a>
+        <Button
+          className={styles.button_formation}
+          text="Salva e vai alla home"
+        />
       </Link>
     </>
   );
