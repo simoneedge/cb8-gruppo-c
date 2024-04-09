@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import styles from "./index.module.scss";
 
 const Stadium = ({}) => {
   const searchTextFieldRef = useRef(null);
@@ -10,6 +11,9 @@ const Stadium = ({}) => {
   useEffect(() => {
     const loadMap = async () => {
       const script = document.createElement("script");
+      const capitalizeFirstLetter = (string) => {
+        return string.replace(/\b\w/g, (char) => char.toUpperCase());
+      };
       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
       script.async = true;
       script.defer = true;
@@ -82,7 +86,11 @@ const Stadium = ({}) => {
                   });
                 })
               ).then((places) => {
-                setSportFacilities(places);
+                const capitalizedPlaces = places.map((place) => ({
+                  ...place,
+                  name: capitalizeFirstLetter(place.name),
+                }));
+                setSportFacilities(capitalizedPlaces);
               });
             }
           });
@@ -94,18 +102,19 @@ const Stadium = ({}) => {
   }, []);
 
   return (
-    <div>
+    <form className={styles.form}>
       <input
         id="searchTextField"
         type="text"
         size="50"
-        placeholder="Enter a city"
+        placeholder="Inserisci una città"
         ref={searchTextFieldRef}
       />
-      <div>
+      <div className={styles.container}>
         {sportFacilities.map((facility, index) => (
           <div
             key={index}
+            className={styles.detail}
             style={{
               marginBottom: "20px",
               padding: "10px",
@@ -125,7 +134,7 @@ const Stadium = ({}) => {
           </div>
         ))}
       </div>
-    </div>
+    </form>
   );
 };
 
