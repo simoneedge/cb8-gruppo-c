@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import Link from "next/link";
 import Image from "next/image";
-
+import styles from "./index.module.scss";
 import User from "../../components/user/User";
 import Button from "../../components/button";
 import BlueShield from "../../../public/Blue-shield.svg";
 import RedShield from "../../../public/Red-shield.svg";
 import Versus from "../../../public/Versus.svg";
-
-import styles from "./index.module.scss";
 
 export default function TeamFormations() {
   const [blueTeam, setBlueTeam] = useState([]);
@@ -41,7 +39,13 @@ export default function TeamFormations() {
           ))}
         </div>
         <div className={styles.vs}>
-          <Image src={Versus} alt="Versus" width={195} height={134} />
+          <Image
+            src={Versus}
+            alt="Versus"
+            width={195}
+            height={134}
+            className={styles.imgVs}
+          />
         </div>
         <div className={styles.team}>
           <Image src={RedShield} alt="Team Red" width={295} height={234} />
@@ -51,13 +55,11 @@ export default function TeamFormations() {
           ))}
         </div>
       </div>{" "}
-      <Link href={"/"}>
-        {" "}
-        <Button
-          className={styles.button_formation}
-          text="Salva e vai alla home"
-        />
-      </Link>
+      <div className={styles.buttonContainer}>
+        <Link href={"/"}>
+          <Button text="Torna alla Home" className={styles.button_formation} />
+        </Link>
+      </div>
     </>
   );
 }

@@ -1,39 +1,72 @@
 @import "./../../styles/mixins.scss";
 @import "./../../styles/variables.scss";
 
-.container {
+.wrapper {
   @include display(flex, column, center, center, 0, 0);
   height: 100%;
+  width: 100%;
+}
 
-  .Image {
-    height: 100%;
-    padding-top: 7%;
-    padding-bottom: 7%;
+.Image {
+  width: 250px;
+  height: auto;
+}
+.container {
+  @include display(flex, column, center, center, 0, 0);
+  width: 80%;
+  .form {
+    @include display(flex, column, center, center, 10px, 0);
+    width: 100%;
+    input {
+      @include font("Montserrat", 500, inherit, none, none, 0, 0);
+
+      border: none;
+      width: 100%;
+      height: 2rem;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: $box-shadow;
+      width: 100%;
+    }
+
+    .button {
+      @include display(flex, column, center, center, 0, 0);
+      @include font(
+        "Montserrat",
+        600,
+        0.9rem,
+        none,
+        uppercase,
+        1px,
+        20px 0 10px 0
+      );
+      color: $whiteSmoke;
+      padding: 4% 3%;
+      border-radius: 5px;
+      border: none;
+      box-shadow: $box-shadow;
+      transition: all 0.55s;
+      background: $mint;
+    }
+
+    .button:hover {
+      background: rgba($mint, 0.6);
+    }
   }
 
-  .form {
-    @include display(flex, column, center, center, 0, 0);
-
-    input,
-    .button {
-      border: none;
-      width: 17rem;
-      height: 2rem;
-      border-radius: 20px;
-      text-align: center;
-      margin: 10px;
-      font-size: large;
-      box-shadow: $box-shadow;
-    }
-
-    .button {
-      background-color: $lightGreen;
-      font-weight: bold;
-    }
+  .title {
+    @include font("Montserrat", 500, 1.2rem, none, none, 1px, 20px 0 15px 0);
+    text-align: center;
+    color: $whiteSmoke;
+    width: 100%;
+  }
+  .paragraph {
+    color: $whiteSmoke;
   }
 
   .link {
-    color: $whiteSmoke;
+    color: $lightGreen;
+    font-weight: 500;
 
     &:hover {
       color: $lightGreen;
