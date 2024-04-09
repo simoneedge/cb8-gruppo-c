@@ -4,69 +4,56 @@
 .wrapper {
   @include display(flex, column, center, center, 0, 0);
   height: 100%;
+}
 
-  .logo {
-    width: 250px;
-    height: auto;
-  }
-  .container {
-    h4 {
-      @include font("Montserrat", 500, 1.1rem, none, none, 1px, 20px 0 15px 0);
-      text-align: left;
-      color: $whiteSmoke;
+.logo {
+  width: 250px;
+  height: auto;
+}
+.container {
+  @include display(flex, column, center, center, 0, 0);
   .form {
     @include display(flex, column, center, center, 0, 0);
-
-    input,
-    .button {
+    input {
       border: none;
       width: 17rem;
       height: 2rem;
-      border-radius: 20px;
+      border-radius: 10px;
       text-align: center;
       margin: 10px;
-      font-size: large;
       box-shadow: $box-shadow;
     }
 
-    .form {
-      @include display(flex, column, center, flex-start, 0, 0);
-
-      input {
-        @include font("Montserrat", 600, 0.7rem, none, none, 1px, 0);
-        border: none;
-        width: 100%;
-        border-radius: 5px;
-        text-align: left;
-        margin-bottom: 10px;
-        padding: 3% 3%;
-      }
-
-      .button {
-        @include display(flex, column, center, center, 0, 0);
-        @include font(
-          "Montserrat",
-          600,
-          0.9rem,
-          none,
-          uppercase,
-          1px,
-          20px 0 10px 0
-        );
-        color: $whiteSmoke;
-        padding: 4% 3%;
-        border-radius: 10px;
-        border: none;
-        box-shadow: $box-shadow;
-        transition: all 0.55s;
-        background: $mint;
-      }
-
-      .button:hover {
-        background: rgba($mint, 0.6);
-      }
+    .button {
+      @include display(flex, column, center, center, 0, 0);
+      @include font(
+        "Montserrat",
+        600,
+        0.9rem,
+        none,
+        uppercase,
+        1px,
+        20px 0 10px 0
+      );
+      color: $whiteSmoke;
+      padding: 4% 3%;
+      border-radius: 10px;
+      border: none;
+      box-shadow: $box-shadow;
+      transition: all 0.55s;
+      background: $mint;
     }
-    p {
+
+    .button:hover {
+      background: rgba($mint, 0.6);
+    }
+
+    .title {
+      @include font("Montserrat", 500, 1.1rem, none, none, 1px, 20px 0 15px 0);
+      text-align: left;
+      color: $whiteSmoke;
+    }
+    .paragraph {
       color: $whiteSmoke;
     }
 
@@ -79,4 +66,4 @@
       }
     }
   }
-}  }  }
+}
