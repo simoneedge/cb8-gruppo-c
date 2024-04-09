@@ -6,7 +6,8 @@ import User from "../../models/User";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { username, password } = req.body;
+    const { username, password, name, surname, location, sports, email } =
+      req.body;
 
     if (!username || !password) {
       res.redirect("/signup?msg=The two passwords don't match");
@@ -28,6 +29,11 @@ export default async function handler(req, res) {
       const newUser = new User({
         username: username,
         password: password_hash,
+        name: name,
+        surname: surname,
+        location: location,
+        sports: sports,
+        email: email,
       });
 
       await collection.insertOne(newUser);

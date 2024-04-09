@@ -20,14 +20,14 @@ export default function SignUpPage({ username }) {
       <h4 className={styles.title}>Sign up</h4>
       <form action="/api/signup" method="POST" className={styles.form}>
         <input
-          minLength="4"
+          name="name"
           id="nome"
           type="text"
           placeholder="Nome"
           required
         ></input>
         <input
-          minLength="3"
+          name="surname"
           id="cognome"
           type="text"
           placeholder="Cognome"
@@ -42,21 +42,21 @@ export default function SignUpPage({ username }) {
           required
         ></input>
         <input
-          minLength="3"
+          name="location"
           id="città"
           type="text"
           placeholder="Città"
           required
         ></input>
         <input
-          minLength="3"
+          name="sports"
           id="sport"
           type="text"
           placeholder="Sport"
           required
         ></input>
         <input
-          minLength="3"
+          name="email"
           id="email"
           type="text"
           placeholder="email"

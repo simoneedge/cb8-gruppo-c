@@ -1,12 +1,12 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import Link from "next/link";
 
 export default function Home({ username }) {
   const handleCardClick = (title) => {
-    localStorage.setItem("selectedSport", title);
+    setCookie("selectedSport", title);
   };
 
   return (
@@ -60,7 +60,7 @@ export default function Home({ username }) {
                 <div>
                   <Link href="/signIn">Login</Link>
                   <br />
-                  <Link href="/signup">Signup</Link>
+                  <Link href="/signUp">Signup</Link>
                 </div>
               </>
             )}
