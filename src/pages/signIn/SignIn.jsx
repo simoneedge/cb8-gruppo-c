@@ -49,29 +49,6 @@ export default function SignIn({ username }) {
           </Link>
         </p>
       </div>
-      <h4 className={styles.title}>Log in</h4>
-      <form action="/api/login" method="POST" className={styles.form}>
-        <input
-          minLength="3"
-          name="username"
-          id="username"
-          type="text"
-          placeholder="Username"
-          required
-        ></input>
-        <input
-          minLength="5"
-          name="password"
-          id="password"
-          type="password"
-          placeholder="Password"
-          required
-        ></input>
-        <input type="submit" value="Sign In" className={styles.button} />
-      </form>
-      <Link href="/signUp" className={styles.link}>
-        or SignUp
-      </Link>
     </div>
   );
 }
