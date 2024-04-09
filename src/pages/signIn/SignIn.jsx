@@ -19,16 +19,14 @@ export default function SignIn({ username }) {
 
       {msg ? <h3 className="red">{msg}</h3> : <></>}
       <div className={styles.container}>
-        <h4 className={styles.title}>
-          Ciao,<br></br> accedi per continuare
-        </h4>
+        <h4 className={styles.title}>Ciao, accedi per continuare</h4>
         <form action="/api/login" method="POST" className={styles.form}>
           <input
             minLength="3"
             name="username"
             id="username"
             type="text"
-            placeholder="username"
+            placeholder="Username"
             required
           ></input>
           <input
@@ -36,7 +34,7 @@ export default function SignIn({ username }) {
             name="password"
             id="password"
             type="password"
-            placeholder="password"
+            placeholder="Password"
             required
           ></input>
           <input type="submit" value="Sign In" className={styles.button} />
