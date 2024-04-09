@@ -11,7 +11,13 @@ const MainLayout = ({ children }) => {
   return (
     <>
       {!authentication && <Navbar />}
-      <div className={styles.mainLayout}>{children}</div>
+      <div
+        className={`${styles.mainLayout} ${
+          authentication ? styles.fullHeight : ""
+        }`}
+      >
+        {children}
+      </div>
     </>
   );
 };
