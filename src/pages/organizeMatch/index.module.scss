@@ -1,34 +1,67 @@
 @import "./../../styles/variables.scss";
 @import "./../../styles/mixins.scss";
 
-.orgButton {
-  @include display(flex, column, center, center, 0, 0);
-  @include font("Montserrat", 600, 1.3rem, none, uppercase, 1px, 0);
+.container {
   width: 100%;
-  color: $whiteSmoke;
-  padding: 8% 3%;
-  border-radius: 10px;
-  border: none;
-  box-shadow: $box-shadow;
-  background: linear-gradient(90deg, $petrol 0%, $mint 50%, $lightGreen 100%);
-  background-size: 400% 400%;
-  animation: AnimationGradient 10s linear infinite;
-  transition: background-color 0.35s;
-}
+  @include display(flex, column, space-between, inherit, 5px, 15px 0 0 0);
+  position: absolute;
+  top: 10%;
+  padding: 1% 3%;
 
-@keyframes AnimationGradient {
-  0% {
-    background-position: 0% 50%;
+  .title {
+    @include font("Montserrat", 600, 1.5rem, none, none, 0, 0);
+    text-align: left;
+    color: $whiteSmoke;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+
+  p {
+    color: $whiteSmoke;
   }
 }
 
-.orgButton:hover {
+.fixed {
+  padding: 10px 3% 20px 3%;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
   background-color: $petrol;
-  animation: none;
+
+  .orgButton {
+    width: 100%;
+
+    @include font("Montserrat", 600, 0.9rem, none, uppercase, 1px, 0);
+    color: $whiteSmoke;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $mint;
+    box-shadow: $box-shadow;
+    background: linear-gradient(90deg, $petrol 0%, $mint 50%, $lightGreen 100%);
+    background-size: 400% 400%;
+    animation: AnimationGradient 6s linear infinite;
+    transition: background-color 0.35s;
+    margin: 0 auto;
+  }
+
+  @keyframes AnimationGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .orgButton:hover {
+    background-color: $petrol;
+    animation: none;
+  }
+
+  h4 {
+    @include font("Montserrat", 500, 1rem, none, none, 0, 0 0 10px 0);
+    color: $whiteSmoke;
+    text-align: center;
+  }
 }
