@@ -20,7 +20,6 @@ export default function SignIn({ username }) {
       {msg ? <h3 className="red">{msg}</h3> : <></>}
       <div className={styles.container}>
         <h4 className={styles.title}>
-          {" "}
           Ciao,<br></br> accedi per continuare
         </h4>
         <form action="/api/login" method="POST" className={styles.form}>
@@ -42,8 +41,8 @@ export default function SignIn({ username }) {
           ></input>
           <input type="submit" value="Sign In" className={styles.button} />
         </form>
-        <p>
-          Non hai ancora un account?{" "}
+        <p className={styles.paragraph}>
+          Non hai ancora un account?
           <Link href="/signUp" className={styles.link}>
             Iscriviti qui
           </Link>
