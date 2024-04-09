@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import styles from "./index.module.scss";
 
 const User = () => {
-  const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
+  const name = `${faker.person.firstName()} ${faker.person.lastName()}`;
 
   return (
     <div className={styles.user}>
