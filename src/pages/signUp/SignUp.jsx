@@ -8,7 +8,7 @@ export default function SignUpPage({ username }) {
   const router = useRouter();
   const { msg } = router.query;
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       <Image
         src="/JustPlay.svg"
         alt="logo"
@@ -17,64 +17,72 @@ export default function SignUpPage({ username }) {
         className={styles.Image}
       />
       {msg ? <h3 className="red">{msg}</h3> : <></>}
-      <h4 className={styles.title}>Sign up</h4>
-      <form action="/api/signup" method="POST" className={styles.form}>
-        <input
-          minLength="4"
-          id="nome"
-          type="text"
-          placeholder="Nome"
-          required
-        ></input>
-        <input
-          minLength="3"
-          id="cognome"
-          type="text"
-          placeholder="Cognome"
-          required
-        ></input>
-        <input
-          minLength="3"
-          name="username"
-          id="username"
-          type="text"
-          placeholder="Username"
-          required
-        ></input>
-        <input
-          minLength="3"
-          id="città"
-          type="text"
-          placeholder="Città"
-          required
-        ></input>
-        <input
-          minLength="3"
-          id="sport"
-          type="text"
-          placeholder="Sport"
-          required
-        ></input>
-        <input
-          minLength="3"
-          id="email"
-          type="text"
-          placeholder="email"
-          required
-        ></input>
-        <input
-          minLength="5"
-          name="password"
-          id="password"
-          type="password"
-          placeholder="password"
-          required
-        ></input>
-        <input type="submit" value="Signup" className={styles.button} />
-      </form>
-      <Link href="/signIn" className={styles.link}>
-        or SignIn
-      </Link>
+
+      <div className={styles.container}>
+        <h4 className={styles.title}>
+          Benvenuto, inserisci i tuoi dati e inizia a giocare
+        </h4>
+        <form action="/api/signup" method="POST" className={styles.form}>
+          <input
+            minLength="4"
+            id="nome"
+            type="text"
+            placeholder="Nome"
+            required
+          ></input>
+          <input
+            minLength="3"
+            id="cognome"
+            type="text"
+            placeholder="Cognome"
+            required
+          ></input>
+          <input
+            minLength="3"
+            name="username"
+            id="username"
+            type="text"
+            placeholder="Username"
+            required
+          ></input>
+          <input
+            minLength="3"
+            id="città"
+            type="text"
+            placeholder="Città"
+            required
+          ></input>
+          <input
+            minLength="3"
+            id="sport"
+            type="text"
+            placeholder="Sport"
+            required
+          ></input>
+          <input
+            minLength="3"
+            id="email"
+            type="text"
+            placeholder="Email"
+            required
+          ></input>
+          <input
+            minLength="5"
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Password"
+            required
+          ></input>
+          <input type="submit" value="Signup" className={styles.button} />
+        </form>
+        <p className={styles.paragraph}>
+          Se sei già iscritto, allora{" "}
+          <Link href="/signIn" className={styles.link}>
+            torna al login
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
