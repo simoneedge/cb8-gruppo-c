@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
 import { getCookie, setCookie } from "cookies-next";
-import Link from "next/link";
+import SignIn from "./signIn";
 
 export default function Home({ username }) {
   const handleCardClick = (title) => {
@@ -53,15 +53,7 @@ export default function Home({ username }) {
               </>
             ) : (
               <>
-                <h3>JustPlay: gioca o organizza partite!</h3>
-                <p>
-                  lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                </p>{" "}
-                <div>
-                  <Link href="/signIn">Login</Link>
-                  <br />
-                  <Link href="/signUp">Signup</Link>
-                </div>
+                <SignIn />
               </>
             )}
           </div>
