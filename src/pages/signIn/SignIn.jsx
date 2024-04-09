@@ -42,7 +42,7 @@ export default function SignIn({ username }) {
           <input type="submit" value="Sign In" className={styles.button} />
         </form>
         <p className={styles.paragraph}>
-          Non hai ancora un account?
+          Non hai ancora un account?{" "}
           <Link href="/signUp" className={styles.link}>
             Iscriviti qui
           </Link>
