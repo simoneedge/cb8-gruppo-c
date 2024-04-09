@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
+import { getCookie } from "cookies-next";
 
 const Stadium = ({}) => {
   const searchTextFieldRef = useRef(null);
   const [sportFacilities, setSportFacilities] = useState([]);
   let map;
   let service;
-  const sport = localStorage.getItem("selectedSport");
+  const sport = getCookie("selectedSport");
 
   useEffect(() => {
     const loadMap = async () => {

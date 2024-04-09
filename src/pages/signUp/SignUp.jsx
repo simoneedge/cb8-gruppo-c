@@ -17,7 +17,6 @@ export default function SignUpPage({ username }) {
         className={styles.Image}
       />
       {msg ? <h3 className="red">{msg}</h3> : <></>}
-
       <div className={styles.container}>
         <h4 className={styles.title}>
           Benvenuto, inserisci i tuoi dati e inizia a giocare
