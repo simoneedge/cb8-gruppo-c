@@ -124,11 +124,11 @@ const Stadium = ({}) => {
           >
             <h3>{facility.name}</h3>
             <p>
-              <strong>Address:</strong> {facility.formatted_address}
+              <strong>Indirizzo:</strong> {facility.formatted_address}
             </p>
             {facility.formatted_phone_number && (
               <p>
-                <strong>Phone:</strong> {facility.formatted_phone_number}
+                <strong>Telefono:</strong> {facility.formatted_phone_number}
               </p>
             )}
           </div>
