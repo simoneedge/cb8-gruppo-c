@@ -37,7 +37,7 @@ export default function Navbar() {
           onClick={handleClick}
         />
         <Link href="/">
-          <Image src="/justPlay.svg" width={105} height={60} alt="logo" />
+          <Image src="/justPlay.svg" width={140} height={60} alt="logo" />
         </Link>
       </nav>
       {isOpen && (
@@ -56,9 +56,7 @@ export default function Navbar() {
               <Link href="/matchDetails">
                 <li>Partita in corso</li>
               </Link>
-              <Link href="/organizeMatch">
-                <li>Organizza partita</li>
-              </Link>
+
               <Link href="/api/logout">Logout</Link>
               <Link href="/profile">
                 <Button text="About" className={styles.navbarButton} />
