@@ -1,5 +1,6 @@
 @import "./../styles/variables.scss";
 
-// .mainLayout {
-//   background-color: $petrol;
-// }
+.mainLayout {
+  overflow-x: hidden;
+  height: 90vh;
+}

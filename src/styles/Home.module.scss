@@ -1,34 +1,25 @@
 @import "./mixins.scss";
 @import "./variables.scss";
 
-.body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.main {
+  .CardSports {
+    @include display(flex, inherit, inherit, inherit, 16px, 10px 0 10px 0);
+  }
+  .header {
+    width: 100%;
+    @include display(flex, column, space-between, center, 5px, 15px 0 0 0);
+    position: absolute;
+    top: 10%;
+    padding: 1% 3%;
+    height: 80vh;
 
-  .main {
-    @include display(flex, column, inherit, inherit, 0, 0);
-
-    .header {
-      width: 100%;
-      @include display(flex, column, inherit, inherit, 10px, 0);
-      @include display(flex, column, center, center, 15px, 15px 0 0 0);
-      position: absolute;
-      top: 10%;
-      padding: 8% 3%;
-
-      h3 {
-        color: $whiteSmoke;
-        font-weight: 600;
-        text-align: left;
-        line-height: inherit;
-      }
-
-      p {
-        color: $whiteSmoke;
-        font-weight: 400;
-      }
+    h3 {
+      color: $whiteSmoke;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    .paragraph {
+      color: $whiteSmoke;
     }
   }
 }
