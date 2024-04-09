@@ -4,28 +4,30 @@ import { getCookie } from "cookies-next";
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
-  const user = getCookie("username");
+  const user = getCookie("userData");
 
   useEffect(() => {
-    fetch(`/api/users`)
+    fetch(`/api/${user}`)
       .then((res) => res.json())
-      .then((data) => setUserData(data.data[16]));
+      .then((data) => setUserData(data.data));
   }, []);
-
   console.log(userData);
 
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>Profilo</h1>
-      <p>
-        {" "}
-        nome:{userData.name} cognome {userData.surname}
-      </p>
-      <p>username:{userData.username}</p>
-      <p>città:{userData.location}</p>
-      <p>ratingGames:{userData.ratingGames}</p>
-      <p>ruolo:{userData.roles}</p>
-      <p>sport:{userData.sports}</p>
+      {userData && (
+        <>
+          <p>
+            nome:{userData.name} cognome {userData.surname}
+          </p>
+          <p>username:{userData.username}</p>
+          <p>città:{userData.location}</p>
+          <p>ratingGames:{userData.ratingGames}</p>
+          <p>ruolo:{userData.roles}</p>
+          <p>sport:{userData.sports}</p>
+        </>
+      )}
     </div>
   );
 }
