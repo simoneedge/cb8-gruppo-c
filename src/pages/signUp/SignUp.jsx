@@ -24,6 +24,7 @@ export default function SignUpPage({ username }) {
         <form action="/api/signup" method="POST" className={styles.form}>
           <input
             minLength="4"
+            name="name"
             id="nome"
             type="text"
             placeholder="Nome"
@@ -31,6 +32,7 @@ export default function SignUpPage({ username }) {
           ></input>
           <input
             minLength="3"
+            name="surname"
             id="cognome"
             type="text"
             placeholder="Cognome"
@@ -46,6 +48,7 @@ export default function SignUpPage({ username }) {
           ></input>
           <input
             minLength="3"
+            name="location"
             id="città"
             type="text"
             placeholder="Città"
@@ -53,6 +56,7 @@ export default function SignUpPage({ username }) {
           ></input>
           <input
             minLength="3"
+            name="sports"
             id="sport"
             type="text"
             placeholder="Sport"
@@ -60,6 +64,7 @@ export default function SignUpPage({ username }) {
           ></input>
           <input
             minLength="3"
+            name="email"
             id="email"
             type="text"
             placeholder="Email"

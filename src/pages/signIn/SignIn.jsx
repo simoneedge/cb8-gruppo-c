@@ -1,10 +1,16 @@
 import styles from "./index.module.scss";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-export default function SignIn({ username }) {
+export default function SignIn() {
+  const handleBtnClick = () => {
+    const usernameInput = document.getElementById("username");
+    const username = usernameInput.value;
+    setCookie("userData", username);
+  };
+
   const router = useRouter();
   const { msg } = router.query;
   return (
@@ -37,7 +43,12 @@ export default function SignIn({ username }) {
             placeholder="Password"
             required
           ></input>
-          <input type="submit" value="Sign In" className={styles.button} />
+          <input
+            type="submit"
+            value="Sign In"
+            className={styles.button}
+            onClick={handleBtnClick}
+          />
         </form>
         <p className={styles.paragraph}>
           Non hai ancora un account?{" "}
