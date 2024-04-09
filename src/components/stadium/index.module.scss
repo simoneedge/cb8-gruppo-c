@@ -23,7 +23,7 @@
     box-shadow: $box-shadow;
 
     h3 {
-      @include font("Montserrat", 600, 1.3rem, none, none, 0, 0);
+      @include font("Montserrat", 500, 1.1rem, none, none, 0, 0);
       text-align: left;
       color: $petrol;
     }
