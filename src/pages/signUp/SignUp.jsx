@@ -3,7 +3,6 @@ import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import FullHeightLayout from "@/components/fullHeightLayout/fullHeightLayout";
 
 export default function SignUpPage() {
   const router = useRouter();
