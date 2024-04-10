@@ -9,7 +9,6 @@ export default function SignUpPage() {
   const router = useRouter();
   const { msg } = router.query;
   return (
-    <FullHeightLayout>
       <div className={styles.signUp}>
         {msg ? <h3 className="red">{msg}</h3> : <></>}
         <div className={styles.wrapper}>
@@ -91,9 +90,7 @@ export default function SignUpPage() {
             </p>
           </div>
         </div>
-      </div>
-    </FullHeightLayout>
-  );
+      </div>  );
 }
 
 export async function getServerSideProps(context) {
