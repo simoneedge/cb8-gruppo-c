@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const MainLayout = ({ children }) => {
   const router = useRouter();
@@ -11,13 +12,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       {!authentication && <Navbar />}
-      <div
-        className={`${styles.mainLayout} ${
-          authentication ? styles.fullHeight : ""
-        }`}
-      >
-        {children}
-      </div>
+      <div className={styles.mainLayout}>{children}</div>
     </>
   );
 };

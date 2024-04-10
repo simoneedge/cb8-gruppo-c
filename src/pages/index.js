@@ -2,12 +2,21 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import CardSport from "@/components/cardSport";
 import { getCookie, setCookie } from "cookies-next";
-import SignIn from "./signIn";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home({ username }) {
+  console.log("Valore di username:", username);
+  const router = useRouter();
   const handleCardClick = (title) => {
     setCookie("selectedSport", title);
   };
+
+  useEffect(() => {
+    if (!username) {
+      router.push("/signIn");
+    }
+  }, [username]);
 
   return (
     <>
@@ -51,11 +60,7 @@ export default function Home({ username }) {
                   />
                 </div>
               </>
-            ) : (
-              <>
-                <SignIn />
-              </>
-            )}
+            ) : null}
           </div>
         </main>
       </div>
