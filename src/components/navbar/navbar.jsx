@@ -37,7 +37,7 @@ export default function Navbar() {
           onClick={handleClick}
         />
         <Link href="/">
-          <Image src="/justPlay.svg" width={140} height={60} alt="logo" />
+          <Image src="./justPlay.svg" width={140} height={60} alt="logo" />
         </Link>
       </nav>
       {isOpen && (
