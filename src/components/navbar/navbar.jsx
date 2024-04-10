@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "../button";
 import { motion } from "framer-motion";
+import { logo } from "./../../../public/JustPlay.svg";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Navbar() {
           onClick={handleClick}
         />
         <Link href="/">
-          <Image src="/justPlay.svg" width={140} height={60} alt="logo" />
+          <Image src={logo} width={140} height={60} alt="logo" />
         </Link>
       </nav>
       {isOpen && (
