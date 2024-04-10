@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "../button";
 import { motion } from "framer-motion";
-import { logo } from "./../../../public/JustPlay.svg";
+import logo from "./../../../public/JustPlay.svg";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
