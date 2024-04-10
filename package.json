@@ -25,7 +25,8 @@
     "react-datepicker": "^6.6.0",
     "react-dom": "^18",
     "react-hook-form": "^7.51.2",
-    "sass": "^1.74.1"
+    "sass": "^1.74.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",

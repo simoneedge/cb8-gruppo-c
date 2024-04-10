@@ -1,16 +1,27 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const matchSchema = new mongoose.Schema({
+  matchID: {
+    type: String,
+    default: uuidv4,
+    unique: true,
+    required: true,
+  },
   team1: {
     type: Array,
-    required: true,
+    required: false,
   },
   team2: {
     type: Array,
-    required: true,
+    required: false,
   },
   sport: {
     type: String,
+    required: true,
+  },
+  players: {
+    type: Number,
     required: true,
   },
   date: {
@@ -27,7 +38,7 @@ const matchSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true,
+    required: false,
   },
   phoneNumber: {
     type: String,
