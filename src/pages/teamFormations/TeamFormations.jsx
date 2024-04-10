@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.scss";
-import User from "../../components/user/User";
+import User from "@/components/user";
 import Button from "../../components/button";
 import BlueShield from "../../../public/Blue-shield.svg";
 import RedShield from "../../../public/Red-shield.svg";
