@@ -54,7 +54,7 @@ const matchSchema = new mongoose.Schema({
   },
   inProgress: {
     type: Boolean,
-    required: true,
+    required: false,
   },
 });
 
