@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@multiavatar/multiavatar": "^1.0.7",
     "boring-avatars": "^1.10.1",
     "cookies": "^0.9.1",
     "cookies-next": "^4.1.1",
