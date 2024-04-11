@@ -12,19 +12,19 @@ export default function EditProfile() {
           variant="beam"
           colors={["#E7DD96", "#E16639", "#AD860A", "#B7023F", "#55024A"]}
         />
+        <h4>Modifica i tuoi dati personali</h4>
       </div>
-      <h4>Modifica i tuoi dati personali</h4>
       <form className={styles.form} action="">
         <input type="text" placeholder="Nome" />
         <input type="text" placeholder="Cognome" />
         <input type="text" placeholder="Username" />
         <input type="text" placeholder="Città" />
-        <input className={styles.sport} type="text" placeholder="Sport 1" />
-        <input className={styles.sport} type="text" placeholder="Sport 2" />
+        <input type="text" placeholder="Sport 1" />
+        <input type="text" placeholder="Sport 2" />
         <input type="text" placeholder="Email" />
         <input type="text" placeholder="Password" />
-        <Button text="Salva le modifiche" />
       </form>
+      <Button text="Salva le modifiche" className={styles.button} />
     </div>
   );
 }
