@@ -5,8 +5,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import Button from "@/components/button";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
 
 const ModalMatch = ({ isOpen }) => {
+  const location = getCookie("location");
+  const locationAddress = getCookie("locationAddress");
+  const locationPhoneNumber = getCookie("locationPhoneNumber");
+  const locationLongitude = getCookie("locationLongitude");
+  const locationLatitude = getCookie("locationLatitude");
+
   //props onClose?
   const [sport, setSport] = useState("");
   const [date, setDate] = useState(new Date());
