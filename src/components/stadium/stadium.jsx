@@ -1,13 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 
-const Stadium = ({}) => {
+const Stadium = ({ onClick }) => {
   const searchTextFieldRef = useRef(null);
   const [sportFacilities, setSportFacilities] = useState([]);
   let map;
   let service;
   const sport = getCookie("selectedSport");
+  const handleLocationClick = (facility) => {
+    const locationName = facility.name
+      ? facility.name.replace(/\s/g, " ")
+      : null;
+    const locationAddress = facility.formatted_address
+      ? facility.formatted_address.replace(/\s/g, " ")
+      : null;
+    const locationPhoneNumber = facility.formatted_phone_number
+      ? facility.formatted_phone_number.replace(/\s/g, " ")
+      : null;
+    const locationLongitude = facility.geometry.viewport.Zh.hi
+      ? facility.geometry.viewport.Zh.hi
+      : null;
+    const locationLatitude = facility.geometry.viewport.Jh.hi
+      ? facility.geometry.viewport.Jh.hi
+      : null;
+
+    setCookie("location", locationName);
+    setCookie("locationAddress", locationAddress);
+    setCookie("locationPhoneNumber", locationPhoneNumber);
+    setCookie("locationLongitude", locationLongitude);
+    setCookie("locationLatitude", locationLatitude);
+  };
+
+  console.log(sportFacilities);
 
   useEffect(() => {
     const loadMap = async () => {
@@ -28,7 +53,7 @@ const Stadium = ({}) => {
 
       await loadScript;
 
-      const pyrmont = new window.google.maps.LatLng(41.8719, 12.5674); // Coordinate di Roma come esempio
+      const pyrmont = new window.google.maps.LatLng(41.8719, 12.5674); // Coordinate di Roma come esempio!!!
       map = new window.google.maps.Map(document.createElement("div"), {
         center: pyrmont,
         zoom: 15,
@@ -111,9 +136,10 @@ const Stadium = ({}) => {
         placeholder="Inserisci una città"
         ref={searchTextFieldRef}
       />
-      <div className={styles.container}>
+      <div className={styles.container} onClick={onClick}>
         {sportFacilities.map((facility, index) => (
           <div
+            onClick={() => handleLocationClick(facility)}
             key={index}
             className={styles.detail}
             style={{

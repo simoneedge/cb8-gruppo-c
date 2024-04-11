@@ -17,10 +17,11 @@ export default function OrganizeMatch() {
           Inserisci la città in cui vuoi giocare e seleziona la struttura
           sportiva che hai prenotato
         </p>
-        <Stadium />
-        {/* isOpen={isModalOpen} dovrebbe aprirsi al click selezionando lo stadio
-        isOpen={true}  la modale compare sulla pagina  */}
-        <ModalMatch isOpen={true} onClose={() => setIsModalOpen(false)} />
+        <Stadium onClick={() => setIsModalOpen(true)} />
+        <ModalMatch
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
       <div className={styles.fixed}>
         <h4>oppure</h4>
