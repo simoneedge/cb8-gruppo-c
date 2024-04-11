@@ -24,13 +24,34 @@ export default async function handler(req, res) {
       break;
     case "PUT":
       try {
-        const body = req.body;
-        const match = await CardSport.findByIdAndUpdate(id, body);
-
-        if (!sport) {
-          res.status(400).json({ success: false });
+        const { team } = req.query;
+        if (!team || (team !== "team1" && team !== "team2")) {
+          return res
+            .status(400)
+            .json({ success: false, error: "Invalid team specified" });
         }
-        res.status(200).json({ success: true, data: match });
+        const { playerName } = req.body;
+        if (!playerName) {
+          return res
+            .status(400)
+            .json({ success: false, error: "Player name is required" });
+        }
+
+        const updateQuery = {};
+        updateQuery[team] = playerName;
+
+        const updatedMatch = await Match.findByIdAndUpdate(
+          id,
+          { $push: updateQuery },
+          { new: true }
+        );
+
+        if (!updatedMatch) {
+          return res
+            .status(404)
+            .json({ success: false, error: "Match not found" });
+        }
+        res.status(200).json({ success: true, data: updatedMatch });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }

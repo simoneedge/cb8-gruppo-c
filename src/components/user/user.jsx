@@ -14,7 +14,7 @@ const User = () => {
           name={name}
           variant="beam"
           square={true} // false la rende tonda
-          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+          colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
         />
       </div>
       <div className={styles.details}>
