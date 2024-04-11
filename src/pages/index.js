@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Home({ username }) {
-  console.log("Valore di username:", username);
   const router = useRouter();
   const handleCardClick = (title) => {
     setCookie("selectedSport", title);

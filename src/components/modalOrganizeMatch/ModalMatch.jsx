@@ -1,10 +1,10 @@
-// ModalMatch.js
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import Button from "@/components/button";
 import { useRouter } from "next/router";
+import { setCookie } from "cookies-next";
 
 const ModalMatch = ({ isOpen }) => {
   //props onClose?
@@ -25,7 +25,7 @@ const ModalMatch = ({ isOpen }) => {
     Basket: [10],
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       sport,
@@ -35,21 +35,26 @@ const ModalMatch = ({ isOpen }) => {
       players: playersRequired[0],
       inProgress: true,
     };
-    fetch("/api/matches", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+
+    try {
+      const response = await fetch("/api/matches", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-    router.push("/matchDetails");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const responseData = await response.json();
+      console.log("dati response: ===>", responseData);
+      const matchID = responseData.data.matchID;
+      setCookie("matchID", matchID);
+      router.push("/matchDetails");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   if (!isOpen) return null;
