@@ -36,7 +36,6 @@ export default async function handler(req, res) {
               .json({ success: false, error: "Username is required" });
           }
 
-          // Assuming you have the updated user data in the request body
           const updatedUserData = req.body;
 
           const updatedUser = await User.findOneAndUpdate(
