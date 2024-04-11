@@ -32,8 +32,6 @@ const Stadium = ({ onClick }) => {
     setCookie("locationLatitude", locationLatitude);
   };
 
-  console.log(sportFacilities);
-
   useEffect(() => {
     const loadMap = async () => {
       const script = document.createElement("script");

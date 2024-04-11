@@ -4,16 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import Button from "@/components/button";
 import { useRouter } from "next/router";
-
 import { getCookie } from "cookies-next";
-
 import { setCookie } from "cookies-next";
-
 
 const ModalMatch = ({ isOpen }) => {
   const location = getCookie("location");
   const locationAddress = getCookie("locationAddress");
-  const locationPhoneNumber = getCookie("locationPhoneNumber");
+  // const locationPhoneNumber = getCookie("locationPhoneNumber");
   const locationLongitude = getCookie("locationLongitude");
   const locationLatitude = getCookie("locationLatitude");
 
@@ -44,6 +41,11 @@ const ModalMatch = ({ isOpen }) => {
       cost: parseInt(cost),
       players: playersRequired[0],
       inProgress: true,
+      // phoneNumber e' la indirizzo. Abbiamo un bug che non riesco a sistemare
+      phoneNumber: locationAddress,
+      location: location,
+      longitude: locationLongitude,
+      latitude: locationLatitude,
     };
 
     try {
@@ -59,9 +61,8 @@ const ModalMatch = ({ isOpen }) => {
       }
       const responseData = await response.json();
       console.log("dati response: ===>", responseData);
-      const matchID = responseData.data.matchID;
-      setCookie("matchID", matchID);
-      router.push("/matchDetails");
+      const matchID = responseData.data._id;
+      router.push(`/matchDetails/${matchID}`);
     } catch (error) {
       console.error("Error:", error);
     }

@@ -40,6 +40,7 @@ const matchSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  // Questa chiave e' l'indirizzo. Abbiamo un bug che non riesco a sistemare
   phoneNumber: {
     type: String,
     required: false,
