@@ -1,83 +1,76 @@
 @import "./../../styles/mixins.scss";
 @import "./../../styles/variables.scss";
 
-.signUp {
-  @include display(flex, column, center, center, 5px, 15px 0 0 0);
-  width: 100%;
+.wrapper {
+  @include display(flex, column, center, center, 0, 0);
   height: 100%;
-  padding: 1% 3%;
+  width: 100%;
   max-width: 640px;
+}
 
-  .wrapper {
+.Image {
+  width: 250px;
+  height: auto;
+}
+.container {
+  @include display(flex, column, center, center, 0, 0);
+  .form {
+    @include display(flex, column, center, center, 10px, 0);
     width: 100%;
-    @include display(flex, column, center, center, 0, 0);
-  }
 
-  .Image {
-    width: 250px;
-    height: auto;
-  }
-  .container {
-    @include display(flex, column, center, center, 0, 0);
-    width: 80%;
-    .form {
-      @include display(flex, column, center, center, 10px, 0);
+    input {
+      @include font("Montserrat", 500, inherit, none, none, 0, 0);
+
+      border: none;
       width: 100%;
-
-      input {
-        @include font("Montserrat", 500, inherit, none, none, 0, 0);
-
-        border: none;
-        width: 100%;
-        height: 2rem;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: $box-shadow;
-        width: 100%;
-      }
-
-      .button {
-        @include display(flex, column, center, center, 0, 0);
-        @include font(
-          "Montserrat",
-          600,
-          0.9rem,
-          none,
-          uppercase,
-          1px,
-          20px 0 10px 0
-        );
-        color: $whiteSmoke;
-        padding: 4% 3%;
-        border-radius: 5px;
-        border: none;
-        box-shadow: $box-shadow;
-        transition: all 0.55s;
-        background: $mint;
-      }
-
-      .button:hover {
-        background: rgba($mint, 0.6);
-      }
-    }
-
-    .title {
-      @include font("Montserrat", 500, 1.2rem, none, none, 1px, 20px 0 15px 0);
+      height: 2rem;
+      border-radius: 5px;
       text-align: center;
-      color: $whiteSmoke;
-      width: 100%;
-    }
-    .paragraph {
-      color: $whiteSmoke;
+      margin: 10px;
+      box-shadow: $box-shadow;
     }
 
-    .link {
+    .button {
+      @include display(flex, column, center, center, 0, 0);
+      @include font(
+        "Montserrat",
+        600,
+        0.9rem,
+        none,
+        uppercase,
+        1px,
+        20px 0 10px 0
+      );
+      color: $whiteSmoke;
+      padding: 4% 3%;
+      border-radius: 5px;
+      border: none;
+      box-shadow: $box-shadow;
+      transition: all 0.55s;
+      background: $mint;
+    }
+
+    .button:hover {
+      background: rgba($mint, 0.6);
+    }
+  }
+
+  .title {
+    @include font("Montserrat", 500, 1.2rem, none, none, 1px, 20px 0 15px 0);
+    text-align: center;
+    color: $whiteSmoke;
+    width: 100%;
+  }
+  .paragraph {
+    color: $whiteSmoke;
+  }
+
+  .link {
+    color: $lightGreen;
+    font-weight: 500;
+
+    &:hover {
       color: $lightGreen;
-      font-weight: 500;
-
-      &:hover {
-        color: $lightGreen;
-      }
     }
   }
 }
