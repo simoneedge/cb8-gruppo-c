@@ -6,6 +6,7 @@ import BlueShield from "../../../public/Blue-shield.svg";
 import RedShield from "../../../public/Red-shield.svg";
 import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
+import Button from "@/components/button";
 
 export default function singleMatch() {
   const router = useRouter();
@@ -92,6 +93,7 @@ export default function singleMatch() {
         <input type="text" placeholder="Costo Opzionale" />
         <input type="submit" value="Partecipa ora" className={styles.btn} />
       </form>
+      <Button text="Preferiti" className={styles.button} />
     </>
   );
 }
