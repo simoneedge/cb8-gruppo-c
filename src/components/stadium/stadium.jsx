@@ -127,21 +127,6 @@ const Stadium = ({ onClick }) => {
     loadMap();
   }, []);
 
-  // const setCookiesWithResult = (name, address, phoneNumber) => {
-  //   const parts = [
-  //     { name: "name", value: name },
-  //     { name: "address", value: address },
-  //     { name: "phoneNumber", value: phoneNumber },
-  //   ];
-
-  //   parts.forEach((part, index) => {
-  //     const cookieName = `sportFacility_${part.name}`;
-  //     setTimeout(() => {
-  //       setCookie(cookieName, part.value);
-  //     }, 100 * index); // Delay setting each cookie to ensure they're set separately
-  //   });
-  // };
-
   return (
     <form className={styles.form}>
       <input
@@ -163,14 +148,6 @@ const Stadium = ({ onClick }) => {
               border: "1px solid #ccc",
               borderRadius: "5px",
             }}
-            // onClick={() => {
-            //   setCookiesWithResult(
-            //     facility.name,
-            //     facility.formatted_address,
-            //     facility.formatted_phone_number,
-            //     index
-            //   );
-            // }}
           >
             <h3>{facility.name}</h3>
             <p>
@@ -181,11 +158,6 @@ const Stadium = ({ onClick }) => {
                 <strong>Telefono:</strong> {facility.formatted_phone_number}
               </p>
             )}
-            {/* {setCookieWithResult(
-              facility.name,
-              facility.formatted_address,
-              facility.formatted_phone_number
-            )} */}
           </div>
         ))}
       </div>
