@@ -5,6 +5,7 @@
   @include display(flex, column, center, center, 0, 0);
   height: 100%;
   width: 100%;
+  max-width: 640px;
 }
 
 .logo {

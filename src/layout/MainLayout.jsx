@@ -1,7 +1,6 @@
 import styles from "./index.module.scss";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const MainLayout = ({ children }) => {
   const router = useRouter();
