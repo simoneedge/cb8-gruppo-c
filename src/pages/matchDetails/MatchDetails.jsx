@@ -6,6 +6,7 @@ import Versus from "../../../public/Versus.svg";
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import MatchList from "@/components/matchList";
 
 export default function MatchDetails() {
   const [playerNameBlueTeam, setPlayerNameBlueTeam] = useState("");
@@ -15,10 +16,7 @@ export default function MatchDetails() {
     try {
       const playerName =
         team === "team1" ? playerNameBlueTeam : playerNameRedTeam;
-      // await axios.put(`/api/matches/${id}?team=${team}`, { playerName });
-      await axios.put(`/api/matches/6616e5787e26ea5f2a48311f?team=${team}`, {
-        playerName,
-      });
+      await axios.put(`/api/matches/${_id}?team=${team}`, { playerName });
       if (team === "team1") {
         setPlayerNameBlueTeam("");
       } else {
