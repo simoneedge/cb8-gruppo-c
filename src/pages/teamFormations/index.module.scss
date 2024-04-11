@@ -38,43 +38,29 @@
 }
 
 .buttonContainer {
-  @include display(flex, column, inherit, inherit, 16px, 0);
-  padding: 10px 3% 20px 3%;
+  width: 100%;
+  @include font("Montserrat", 600, 0.9rem, none, uppercase, 1px, 0);
+  color: $whiteSmoke;
+  padding: 10px;
+  box-shadow: $box-shadow;
   position: fixed;
   bottom: 0px;
   width: 100%;
-  background-color: $petrol;
 
   .button_formation {
-    width: 100%;
-
+    @include display(flex, column, center, center, 0, 0);
     @include font("Montserrat", 600, 0.9rem, none, uppercase, 1px, 0);
     color: $whiteSmoke;
-    padding: 10px;
+    padding: 10px 20px;
+    width: 100%;
     border-radius: 5px;
-    border: 1px solid $mint;
+    border: none;
     box-shadow: $box-shadow;
-    background: linear-gradient(90deg, $petrol 0%, $mint 50%, $lightGreen 100%);
-    background-size: 400% 400%;
-    animation: AnimationGradient 6s linear infinite;
-    transition: background-color 0.35s;
-    margin: 0 auto;
-  }
-
-  @keyframes AnimationGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    transition: all 0.55s;
+    background: $mint;
   }
 
   .button_formation:hover {
-    background-color: $petrol;
-    animation: none;
+    background: rgba($mint, 0.6);
   }
 }
