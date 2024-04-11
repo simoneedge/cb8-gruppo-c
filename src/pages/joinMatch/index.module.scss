@@ -1,21 +1,21 @@
-@import "./../../styles/mixins.scss";
-@import "./../../styles/variables.scss";
+// @import "./../../styles/mixins.scss";
+// @import "./../../styles/variables.scss";
 
-.container {
-  @include display(flex, column, center, center, 20px, 0);
+// .container {
+//   @include display(flex, column, center, center, 20px, 0);
 
-  form {
-    @include display(flex, column, center, center, 0, 0);
-    padding-top: 40px;
-  }
+//   form {
+//     @include display(flex, column, center, center, 0, 0);
+//     padding-top: 40px;
+//   }
 
-  input {
-    @include font("Montserrat", 500, inherit, none, none, 0, 0);
-    border: none;
-    width: 20rem;
-    height: 2rem;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: $box-shadow;
-  }
-}
+//   input {
+//     @include font("Montserrat", 500, inherit, none, none, 0, 0);
+//     border: none;
+//     width: 20rem;
+//     height: 2rem;
+//     border-radius: 5px;
+//     text-align: center;
+//     box-shadow: $box-shadow;
+//   }
+// }

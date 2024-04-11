@@ -1,35 +1,36 @@
 import styles from "./index.module.scss";
-import Image from "next/image";
-import BlueShield from "../../../public/Blue-shield.svg";
-import RedShield from "../../../public/Red-shield.svg";
-import Versus from "../../../public/Versus.svg";
-import Button from "@/components/button";
+// import Image from "next/image";
+// import BlueShield from "../../../public/Blue-shield.svg";
+// import RedShield from "../../../public/Red-shield.svg";
+// import Versus from "../../../public/Versus.svg";
+// import Button from "@/components/button";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import MatchList from "@/components/matchList";
 
 export default function MatchDetails() {
-  const [playerNameBlueTeam, setPlayerNameBlueTeam] = useState("");
-  const [playerNameRedTeam, setPlayerNameRedTeam] = useState("");
+  // const [playerNameBlueTeam, setPlayerNameBlueTeam] = useState("");
+  // const [playerNameRedTeam, setPlayerNameRedTeam] = useState("");
 
-  const handleAddPlayer = async (team) => {
-    try {
-      const playerName =
-        team === "team1" ? playerNameBlueTeam : playerNameRedTeam;
-      await axios.put(`/api/matches/${_id}?team=${team}`, { playerName });
-      if (team === "team1") {
-        setPlayerNameBlueTeam("");
-      } else {
-        setPlayerNameRedTeam("");
-      }
-    } catch (error) {
-      console.error("Error adding player:", error);
-    }
-  };
+  // const handleAddPlayer = async (team) => {
+  //   try {
+  //     const playerName =
+  //       team === "team1" ? playerNameBlueTeam : playerNameRedTeam;
+  //     await axios.put(`/api/matches/${_id}?team=${team}`, { playerName });
+  //     if (team === "team1") {
+  //       setPlayerNameBlueTeam("");
+  //     } else {
+  //       setPlayerNameRedTeam("");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error adding player:", error);
+  //   }
+  // };
 
   return (
     <>
-      <div className={styles.teamFormations}>
+      <MatchList />
+      {/* <div className={styles.teamFormations}>
         <div className={styles.team}>
           <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
           <input
@@ -80,7 +81,7 @@ export default function MatchDetails() {
         <input type="text" placeholder="Orario" />
         <input type="text" placeholder="Costo Opzionale" />
         <input type="submit" value="Partecipa ora" className={styles.btn} />
-      </form>
+      </form> */}
     </>
   );
 }
