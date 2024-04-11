@@ -53,7 +53,7 @@ const Stadium = ({ onClick }) => {
 
       await loadScript;
 
-      const pyrmont = new window.google.maps.LatLng(41.8719, 12.5674); // Coordinate di Roma come esempio
+      const pyrmont = new window.google.maps.LatLng(41.8719, 12.5674); // Coordinate di Roma come esempio!!!
       map = new window.google.maps.Map(document.createElement("div"), {
         center: pyrmont,
         zoom: 15,
