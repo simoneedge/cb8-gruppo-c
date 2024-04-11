@@ -26,44 +26,42 @@ export default function Home({ username }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className={styles.body}>
-        <main className={styles.main}>
-          <div className={styles.header}>
-            {username ? (
-              <>
-                <h3>JustPlay: gioca o organizza partite</h3>
-                <p className={styles.paragraph}>
-                  Trova e partecipa a partite vicino a te o organizza la tua.
-                  Clicca sullo sport di tuo interesse per connetterti con
-                  appassionati e scoprire nuove sfide nella tua città
-                </p>
-                <div className={styles.CardSports}>
-                  <CardSport
-                    image="./Soccer.jpg"
-                    title="Calcio"
-                    onClick={handleCardClick}
-                  />
-                  <CardSport
-                    image="./Tennis.jpg"
-                    title="Tennis"
-                    onClick={handleCardClick}
-                  />
-                  <CardSport
-                    image="./Volley.jpg"
-                    title="Pallavolo"
-                    onClick={handleCardClick}
-                  />
-                  <CardSport
-                    image="./Basket.jpg"
-                    title="Basket"
-                    onClick={handleCardClick}
-                  />
-                </div>
-              </>
-            ) : null}
-          </div>
-        </main>
-      </div>
+      <main className={styles.main}>
+        <div className={styles.header}>
+          {username ? (
+            <>
+              <h3>JustPlay: gioca o organizza partite</h3>
+              <p className={styles.paragraph}>
+                Trova e partecipa a partite vicino a te o organizza la tua.
+                Clicca sullo sport di tuo interesse per connetterti con
+                appassionati e scoprire nuove sfide nella tua città
+              </p>
+              <div className={styles.CardSports}>
+                <CardSport
+                  image="./Soccer.jpg"
+                  title="Calcio"
+                  onClick={handleCardClick}
+                />
+                <CardSport
+                  image="./Tennis.jpg"
+                  title="Tennis"
+                  onClick={handleCardClick}
+                />
+                <CardSport
+                  image="./Volley.jpg"
+                  title="Pallavolo"
+                  onClick={handleCardClick}
+                />
+                <CardSport
+                  image="./Basket.jpg"
+                  title="Basket"
+                  onClick={handleCardClick}
+                />
+              </div>
+            </>
+          ) : null}
+        </div>
+      </main>
     </>
   );
 }

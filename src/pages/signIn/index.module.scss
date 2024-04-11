@@ -4,10 +4,11 @@
 .wrapper {
   @include display(flex, column, center, center, 0, 0);
   height: 100%;
-  width: 80%;
   max-width: 640px;
   position: fixed;
   top: 0;
+  width: 100%;
+  padding: 0 3%;
 }
 
 .logo {
@@ -16,6 +17,8 @@
 }
 .container {
   @include display(flex, column, center, center, 0, 0);
+  width: 100%;
+
   .form {
     @include display(flex, column, center, center, 5px, 0);
     width: 100%;

@@ -1,13 +1,18 @@
 @import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
 
 .container {
-  position: relative;
-  padding: 3%;
-  margin: 0 auto;
   @include display(flex, inherit, center, center, 0, 0);
-  flex-wrap: wrap;
+  height: 100%;
+  max-width: 640px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 3%;
 
   .container_image {
+    @include display(flex, inherit, center, center, 0, 0);
+
     padding-top: 3%;
     padding-bottom: 3%;
   }
@@ -21,20 +26,41 @@
   }
 
   .form {
-    @include display(flex, inherit, center, center, 20px, 12px);
-    position: absolute;
+    columns: 2;
+    width: 100%;
     flex-wrap: wrap;
-    top: 13rem;
-
     input {
+      @include font("Montserrat", 500, inherit, none, none, 0, 0);
+      @include display(flex, inherit, center, center, 0, 0 0 10px 0);
+      border: none;
+      width: 100%;
+      padding: 5px 10px;
+      border-radius: 5px;
       text-align: center;
-      width: 45%;
-      border-radius: 20px;
-      height: 2rem;
+      box-shadow: $box-shadow;
     }
+  }
+  .button {
+    @include display(flex, column, center, center, 0, 0);
+    @include font(
+      "Montserrat",
+      600,
+      0.9rem,
+      none,
+      uppercase,
+      1px,
+      10px 0 10px 0
+    );
+    color: $whiteSmoke;
+    padding: 4% 3%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: $box-shadow;
+    transition: all 0.55s;
+    background: $mint;
+  }
 
-    .sport {
-      width: 94%;
-    }
+  .button:hover {
+    background: rgba($mint, 0.6);
   }
 }
