@@ -14,8 +14,7 @@ export default function ModalReport() {
       .then((data) => {
         setMatch(data.data);
       });
-    console.log(match);
-  });
+  }, [id]);
 
   return (
     <div className={styles.modal_match}>

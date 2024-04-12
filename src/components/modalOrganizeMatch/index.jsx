@@ -1,3 +1,3 @@
-import ModalMatch from "./ModalMatch";
+import ModalMatch from "./modalMatch";
 
 export default ModalMatch;
