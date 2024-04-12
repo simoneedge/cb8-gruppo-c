@@ -36,11 +36,23 @@ export default async function handler(req, res) {
               .json({ success: false, error: "Username is required" });
           }
 
-          const updatedUserData = req.body;
+          const { newFriends, ...updatedUserData } = req.body; // Extracting newFriends from the request body
+
+          if (!Array.isArray(newFriends) || newFriends.length === 0) {
+            return res
+              .status(400)
+              .json({
+                success: false,
+                error: "Invalid or empty list of new friends",
+              });
+          }
 
           const updatedUser = await User.findOneAndUpdate(
             { username },
-            updatedUserData,
+            {
+              ...updatedUserData, // Previous logic for updating user data
+              $push: { friends: { $each: newFriends } }, // Pushing new friends to the existing array
+            },
             { new: true }
           );
 

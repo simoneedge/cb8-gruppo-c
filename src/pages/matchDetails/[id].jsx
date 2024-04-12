@@ -6,55 +6,102 @@ import BlueShield from "../../../public/Blue-shield.svg";
 import RedShield from "../../../public/Red-shield.svg";
 import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
-import Button from "@/components/button";
+import { getCookie } from "cookies-next";
 
 export default function singleMatch() {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
   const [match, setMatch] = useState(null);
-  const [playerNameBlueTeam, setPlayerNameBlueTeam] = useState("");
-  const [playerNameRedTeam, setPlayerNameRedTeam] = useState("");
+  const playerName = getCookie("userData");
+
+  const playerExists =
+    match &&
+    (match.team1.includes(playerName) || match.team2.includes(playerName));
+
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/matches/${id}`)
+        .then((res) => res.json())
+        .then((data) => setMatch(data.data));
+    }
+  }, [id]);
+
+  const maxPlayersPerTeam = match ? Math.ceil(match.players / 2) : 0;
+  const blueTeamIsFull = match && match.team1.length >= maxPlayersPerTeam;
+  const redTeamIsFull = match && match.team2.length >= maxPlayersPerTeam;
 
   const handleAddPlayer = async (team) => {
     try {
-      const playerName =
-        team === "team1" ? playerNameBlueTeam : playerNameRedTeam;
+      if (!playerName) {
+        console.error("Player name not found in cookie");
+        return;
+      }
+
       await axios.put(`/api/matches/${id}?team=${team}`, { playerName });
-      if (team === "team1") {
-        setPlayerNameBlueTeam("");
-      } else {
-        setPlayerNameRedTeam("");
+      setMatch((prevMatch) => ({
+        ...prevMatch,
+        [team]: [...prevMatch[team], playerName],
+      }));
+
+      const playerExists = match && match[team].includes(playerName);
+      if (playerExists) {
+        console.error("Player already exists in the team");
+        return;
       }
     } catch (error) {
       console.error("Error adding player:", error);
     }
   };
 
-  useEffect(() => {
-    if (id) {
-      fetch(`/api/matches/${id}`)
-        .then((res) => res.json())
-        .then((data) => setMatch(data));
+  const handleAddFriend = async (player) => {
+    try {
+      if (!playerName) {
+        console.error("Player name not found in cookie");
+        return;
+      }
+
+      // Construct the data to be sent in the PUT request
+      const data = {
+        newFriends: [player],
+      };
+
+      await axios.put(`/api/${playerName}`, data);
+    } catch (error) {
+      console.error("Error adding friend:", error);
     }
-  }, [id]);
+  };
 
   return (
     <>
       <div className={styles.teamFormations}>
-        <div className={styles.team}>
+        <h2>{match && match.sport}</h2>
+        <h3>{match && match.location}</h3>
+        <p>{match && match.phoneNumber}</p>
+        <p>{match && match.date}</p>
+        <p>{match && match.time}</p>
+        <div className={styles.team1}>
           <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
-          <input
-            type="text"
-            value={playerNameBlueTeam}
-            onChange={(e) => setPlayerNameBlueTeam(e.target.value)}
-            placeholder="Add yourself here"
-          />
+          {match &&
+            match.team1.map((player, index) => (
+              <div key={index}>
+                <p>{player}</p>
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    handleAddFriend(player);
+                  }}
+                >
+                  Add {player} to your frineds
+                </button>
+              </div>
+            ))}
           <button
+            text="Join Team Blue"
             onClick={() => handleAddPlayer("team1")}
             className={styles.btnAdd}
+            disabled={blueTeamIsFull || playerExists}
           >
-            Add Player
+            BLUE
           </button>
         </div>
         <div className={styles.vs}>
@@ -65,35 +112,33 @@ export default function singleMatch() {
             height={134}
             className={styles.imgVs}
           />
-          <input
-            type="text"
-            value={playerNameRedTeam}
-            onChange={(e) => setPlayerNameRedTeam(e.target.value)}
-            placeholder="Add yourself here"
-          />
+        </div>
+        <div className={styles.team2}>
+          <Image src={RedShield} alt="Team Red" width={295} height={234} />
+          {match &&
+            match.team2.map((player, index) => (
+              <div key={index}>
+                <p>{player}</p>
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    handleAddFriend(player);
+                  }}
+                >
+                  Add {player} to your frineds
+                </button>
+              </div>
+            ))}
           <button
+            text="Join Team Red"
             onClick={() => handleAddPlayer("team2")}
             className={styles.btnAdd}
+            disabled={redTeamIsFull || playerExists}
           >
-            Add Player
+            RED
           </button>
         </div>
-        <div className={styles.team}>
-          <Image src={RedShield} alt="Team Red" width={295} height={234} />
-        </div>
       </div>
-      <form action="" className={styles.form}>
-        <input
-          type="text"
-          placeholder="Sport scelto"
-          className={styles.sport}
-        />
-        <input type="text" placeholder="data" />
-        <input type="text" placeholder="Orario" />
-        <input type="text" placeholder="Costo Opzionale" />
-        <input type="submit" value="Partecipa ora" className={styles.btn} />
-      </form>
-      <Button text="Preferiti" className={styles.button} />
     </>
   );
 }
