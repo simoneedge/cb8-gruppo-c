@@ -24,60 +24,56 @@
   position: fixed;
   z-index: 1;
   top: 10vh;
-  .lists {
+}
+.lists {
+  z-index: 1;
+  width: 640px;
+
+  .listsDetail {
+    padding: 5% 20px;
+
+    @include display(flex, column, inherit, inherit, 20px, 0);
+    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
+    color: $whiteSmoke;
+    list-style-type: none;
+    background-color: $petrol;
+    width: 40%;
+    height: 100vh;
     box-shadow: $box-shadow;
-    position: fixed;
-    z-index: 1;
-    width: 60%;
-    height: 100%;
-    left: 0;
-
+  }
+  @media screen and (min-width: 640px) {
     .listsDetail {
-      padding: 10% 10%;
-
-      @include display(flex, column, inherit, inherit, 20px, 0);
-      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
-      color: $whiteSmoke;
-      list-style-type: none;
-      background-color: $petrol;
-      width: 100%;
-      height: 100%;
+      width: 50%;
     }
+  }
 
-    li {
-      @include display(flex, column, flex-start, flex-start, 0, 0);
+  li {
+    @include display(flex, column, flex-start, flex-start, 0, 0);
+
+    &:hover,
+    &active {
+      color: $mint;
+      font-size: 0.8rem;
 
       &:hover,
       &active {
         color: $mint;
-        font-size: 0.8rem;
-
-        &:hover,
-        &active {
-          color: $mint;
-        }
       }
     }
-
-    .navbarButton {
-      @include display(flex, column, center, center, 0, 0);
-      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
-      color: $whiteSmoke;
-      padding: 10px 20px;
-      background-color: $mint;
-      border-radius: 5px;
-      border: none;
-      box-shadow: $box-shadow;
-      transition: background-color 0.35s;
-    }
-    .navbarButton:hover {
-      background-color: $petrol;
-    }
   }
-}
 
-@media screen and (min-width: 640px) {
-  .navbarContainer {
-    max-width: 1920px;
+  .navbarButton {
+    @include display(flex, column, center, center, 0, 0);
+    @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
+    color: $whiteSmoke;
+    padding: 10px 20px;
+    background-color: $mint;
+    border-radius: 5px;
+    border: none;
+    box-shadow: $box-shadow;
+    transition: background-color 0.35s;
+  }
+  .navbarButton:hover {
+    background-color: $petrol;
   }
 }
