@@ -8,7 +8,7 @@ import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
 
-export default function singleMatch() {
+export default function SingleMatch() {
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
