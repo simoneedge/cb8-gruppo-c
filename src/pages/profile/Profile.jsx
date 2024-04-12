@@ -1,6 +1,8 @@
 import Styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
+import Avatar from "boring-avatars";
+import Button from "@/components/button";
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -15,19 +17,30 @@ export default function Profile() {
 
   return (
     <div className={Styles.container}>
-      <h1 className={Styles.title}>Profilo</h1>
       {userData && (
-        <>
-          <p>
-            nome:{userData.name} cognome {userData.surname}
-          </p>
-          <p>username:{userData.username}</p>
-          <p>città:{userData.location}</p>
-          <p>ratingGames:{userData.ratingGames}</p>
-          <p>ruolo:{userData.roles}</p>
-          <p>sport:{userData.sports}</p>
-        </>
+        <div className={Styles.container_image}>
+          <Avatar
+            size={50}
+            name={userData.name + " " + userData.surname}
+            variant="beam"
+            square={true}
+            colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
+          />
+          <div className={Styles.container_details}>
+            <p>
+              {userData.name} {userData.surname}
+            </p>
+            <p>Nickname: {userData.username}</p>
+            <p>{userData.location}</p>
+            <p>ratingGames:{userData.ratingGames}</p>
+            <p>ruolo:{userData.roles}</p>
+            <p>sport:{userData.sports}</p>
+          </div>
+        </div>
       )}
+      <>
+        <Button text="Modifica profilo" className={Styles.button_profile} />
+      </>
     </div>
   );
 }
