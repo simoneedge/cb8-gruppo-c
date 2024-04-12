@@ -7,8 +7,12 @@ import RedShield from "../../../public/Red-shield.svg";
 import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
+import Link from "next/link";
+import ModalReport from "@/components/modalReport";
 
-export default function singleMatch() {
+export default function SingleMatch() {
+  const [isModalOpen, setIsModalOpen] = useState(false); //prova
+
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
@@ -137,6 +141,16 @@ export default function singleMatch() {
           >
             RED
           </button>
+        </div>
+        <div>
+          <button onClick={() => setIsModalOpen(true)}>Report</button>
+          {/* Renderizza la modale solo se isModalOpen è true */}
+          {isModalOpen && (
+            <ModalReport
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
+          )}
         </div>
       </div>
     </>
