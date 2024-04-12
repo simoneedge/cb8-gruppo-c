@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
@@ -14,12 +14,14 @@ const ModalMatch = ({ isOpen }) => {
   const locationLongitude = getCookie("locationLongitude");
   const locationLatitude = getCookie("locationLatitude");
 
+  const selectedSport = getCookie("selectedSport");
+
   //props onClose?
   const [sport, setSport] = useState("");
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [cost, setCost] = useState("");
-  const [playersRequired, setPlayersRequired] = useState(0); // useState per i giocatori richiesti
+  const [playersRequired, setPlayersRequired] = useState(0);
 
   const router = useRouter();
   const playersOptions = {
@@ -29,8 +31,16 @@ const ModalMatch = ({ isOpen }) => {
     "Tennis singolo": [2],
     "Tennis doppio": [4],
     Pallavolo: [12],
-    Basket: [10],
+    "Basket a 3": [6],
+    "Basket a 6": [12],
   };
+
+  useEffect(() => {
+    if (selectedSport) {
+      setSport(selectedSport);
+      setPlayersRequired(playersOptions[selectedSport]);
+    }
+  }, [selectedSport]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +51,6 @@ const ModalMatch = ({ isOpen }) => {
       cost: parseInt(cost),
       players: playersRequired[0],
       inProgress: true,
-      // phoneNumber e' la indirizzo. Abbiamo un bug che non riesco a sistemare
       phoneNumber: locationAddress,
       location: location,
       longitude: locationLongitude,
@@ -85,11 +94,21 @@ const ModalMatch = ({ isOpen }) => {
               }}
             >
               <option value="">Seleziona lo sport</option>
-              {Object.keys(playersOptions).map((sportName) => (
-                <option key={sportName} value={sportName}>
-                  {sportName}
-                </option>
-              ))}
+              {Object.keys(playersOptions).map((sportName) => {
+                if (selectedSport && sportName.includes(selectedSport)) {
+                  return (
+                    <option key={sportName} value={sportName}>
+                      {sportName}
+                    </option>
+                  );
+                } else if (!selectedSport) {
+                  return (
+                    <option key={sportName} value={sportName}>
+                      {sportName}
+                    </option>
+                  );
+                }
+              })}
             </select>
           </label>
           {sport && <p>Giocatori richiesti: {playersOptions[sport]}</p>}
