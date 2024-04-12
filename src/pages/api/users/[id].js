@@ -21,15 +21,41 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false, error: error.message });
       }
       break;
+    // case "PUT":
+    //   try {
+    //     const body = req.body;
+    //     const user = await User.findByIdAndUpdate(id, body);
+
+    //     if (!user) {
+    //       return res.status(400).json({ success: false });
+    //     }
+    //     res.status(200).json({ success: true, data: user });
+    //   } catch (error) {
+    //     res.status(400).json({ success: false, error: error.message });
+    //   }
+    //   break;
     case "PUT":
       try {
         const body = req.body;
-        const user = await User.findByIdAndUpdate(id, body);
+        const existingUser = await User.findById(id);
 
-        if (!user) {
-          return res.status(400).json({ success: false });
+        if (!existingUser) {
+          return res
+            .status(400)
+            .json({ success: false, error: "User not found" });
         }
-        res.status(200).json({ success: true, data: user });
+
+        // Compare the incoming data with the existing user data
+        for (const key in body) {
+          if (body.hasOwnProperty(key) && existingUser[key] !== body[key]) {
+            existingUser[key] = body[key];
+          }
+        }
+
+        // Save the updated user data
+        const updatedUser = await existingUser.save();
+
+        res.status(200).json({ success: true, data: updatedUser });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
