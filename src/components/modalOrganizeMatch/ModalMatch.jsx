@@ -28,7 +28,8 @@ export default function ModalMatch({ isOpen }) {
     "Tennis singolo": [2],
     "Tennis doppio": [4],
     Pallavolo: [12],
-    Basket: [10],
+    "Basket a 3": [6],
+    "Basket a 6": [12],
   };
 
   useEffect(() => {
