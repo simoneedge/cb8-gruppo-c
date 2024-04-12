@@ -45,7 +45,7 @@ export default function Profile() {
         </Link>
       </>{" "}
       <div className={Styles.preferiti}>
-        <h3>Preferiti</h3>
+        <h3>Preferiti </h3>
         {userData &&
           userData.friends &&
           userData.friends.map((friend, index) => (
