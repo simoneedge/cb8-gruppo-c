@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import Stadium from "@/components/stadium";
 import Button from "@/components/button";
+import Link from "next/link";
 
 //ModalMatch component
 import ModalMatch from "@/components/modalOrganizeMatch";
@@ -25,7 +26,9 @@ export default function OrganizeMatch() {
       </div>
       <div className={styles.fixed}>
         <h4>oppure</h4>
-        <Button text="Partecipa ad un match" className={styles.orgButton} />
+        <Link href="/matchDetails">
+          <Button text="Partecipa ad un match" className={styles.orgButton} />
+        </Link>
       </div>
     </>
   );
