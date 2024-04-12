@@ -6,7 +6,7 @@ import Button from "@/components/button";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 
-export default function ModalMatch({ isOpen }) {
+export default function ModalMatch({ isOpen, onClose }) {
   const location = getCookie("location");
   const locationAddress = getCookie("locationAddress");
   const locationLongitude = getCookie("locationLongitude");
@@ -79,6 +79,9 @@ export default function ModalMatch({ isOpen }) {
   return (
     <div className={styles.modal_match}>
       <div className={styles.modal_content}>
+        <button className={styles.close_button} onClick={onClose}>
+          ❌
+        </button>
         <h2>Crea la tua partita</h2>
         <form onSubmit={handleSubmit}>
           <label>
