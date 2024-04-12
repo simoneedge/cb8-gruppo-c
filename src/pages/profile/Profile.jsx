@@ -13,8 +13,7 @@ export default function Profile() {
     fetch(`/api/${user}`)
       .then((res) => res.json())
       .then((data) => setUserData(data.data));
-  }, []);
-  console.log(userData);
+  }, [user]);
 
   return (
     <div className={Styles.container}>
