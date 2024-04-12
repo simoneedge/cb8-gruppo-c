@@ -40,7 +40,7 @@ export default function Profile() {
         </div>
       )}
       <>
-        <Link href="/profile/editProfile" className={Styles.button_profile}>
+        <Link href="/editProfile" className={Styles.button_profile}>
           Modifica Profilo
         </Link>
       </>{" "}
