@@ -4,7 +4,9 @@ import styles from "./index.module.scss";
 import Avatar from "boring-avatars";
 
 const User = ({ name, surname }) => {
-  const fullName = `${name} ${surname}`;
+
+  const fullName = `${name} ${surname ? surname : ""}`;
+
 
   return (
     <div className={styles.user}>

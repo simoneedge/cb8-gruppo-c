@@ -2,7 +2,7 @@ import Styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import Avatar from "boring-avatars";
-// import User from "../../components/User";
+import User from "../../components/User";
 import Link from "next/link";
 
 export default function Profile() {
@@ -45,7 +45,12 @@ export default function Profile() {
         </Link>
       </>{" "}
       <div className={Styles.preferiti}>
-        <h3>Preferiti</h3>
+        <h3>Preferiti </h3>
+        {userData &&
+          userData.friends &&
+          userData.friends.map((friend, index) => (
+            <User key={index} name={friend} />
+          ))}
       </div>
     </div>
   );
