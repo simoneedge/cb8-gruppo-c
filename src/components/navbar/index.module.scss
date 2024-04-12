@@ -2,7 +2,7 @@
 @import "./../../styles/mixins.scss";
 
 .Navbar {
-  @include display(flex, inherit, space-between, center, 0, 0);
+  @include display(flex, row, center, center, 0, 0);
   padding: 2% 3%;
   box-shadow: $box-shadow;
   position: fixed;
@@ -12,6 +12,12 @@
   z-index: 1;
   height: 10vh;
   background-color: $petrol;
+}
+
+.navbarContainer {
+  @include display(flex, inherit, space-between, center, 0, 0);
+  width: 100%;
+  max-width: 640px;
 }
 
 .menu {
@@ -24,6 +30,7 @@
     z-index: 1;
     width: 60%;
     height: 100%;
+    left: 0;
 
     .listsDetail {
       padding: 10% 10%;
@@ -56,7 +63,7 @@
       @include display(flex, column, center, center, 0, 0);
       @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
       color: $whiteSmoke;
-      padding: 5% 5%;
+      padding: 10px 20px;
       background-color: $mint;
       border-radius: 5px;
       border: none;
@@ -66,5 +73,11 @@
     .navbarButton:hover {
       background-color: $petrol;
     }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .navbarContainer {
+    max-width: 1920px;
   }
 }
