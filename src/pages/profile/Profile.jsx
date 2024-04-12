@@ -2,7 +2,8 @@ import Styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import Avatar from "boring-avatars";
-import Button from "@/components/button";
+// import User from "../../components/User";
+import Link from "next/link";
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
@@ -39,8 +40,13 @@ export default function Profile() {
         </div>
       )}
       <>
-        <Button text="Modifica profilo" className={Styles.button_profile} />
-      </>
+        <Link href="/profile/editProfile" className={Styles.button_profile}>
+          Modifica Profilo
+        </Link>
+      </>{" "}
+      <div className={Styles.preferiti}>
+        <h3>Preferiti</h3>
+      </div>
     </div>
   );
 }
