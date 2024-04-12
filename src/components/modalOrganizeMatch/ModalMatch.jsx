@@ -85,7 +85,6 @@ export default function ModalMatch({ isOpen, onClose }) {
         <h2>Crea la tua partita</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Seleziona lo sport:
             <select
               value={sport}
               onChange={(e) => {
@@ -93,7 +92,6 @@ export default function ModalMatch({ isOpen, onClose }) {
                 setPlayersRequired(playersOptions[e.target.value]);
               }}
             >
-              <option value="">Seleziona lo sport</option>
               {Object.keys(playersOptions).map((sportName) => {
                 if (selectedSport && sportName.includes(selectedSport)) {
                   return (
@@ -111,13 +109,10 @@ export default function ModalMatch({ isOpen, onClose }) {
               })}
             </select>
           </label>
-          {sport && <p>Giocatori richiesti: {playersOptions[sport]}</p>}
           <label>
-            Calendar data:
             <DatePicker selected={date} onChange={(date) => setDate(date)} />
           </label>
           <label>
-            Orario:
             <DatePicker
               selected={time}
               onChange={(time) => setTime(time)}
@@ -129,14 +124,14 @@ export default function ModalMatch({ isOpen, onClose }) {
             />
           </label>
           <label>
-            Costo (€):
             <input
               type="number"
               value={cost}
               onChange={(e) => setCost(e.target.value)}
+              placeholder="Prezzo del campo? (Opzionale)"
             />
           </label>
-          <Button text="Crea Partita" className={styles.modal_button} />
+          <Button text="Crea la partita" className={styles.modal_button} />
         </form>
       </div>
     </div>

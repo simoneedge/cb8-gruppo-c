@@ -67,3 +67,7 @@ p {
 .hamburger-react {
   color: whitesmoke;
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
