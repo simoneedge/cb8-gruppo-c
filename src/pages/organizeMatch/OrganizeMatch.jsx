@@ -4,7 +4,7 @@ import Button from "@/components/button";
 import Link from "next/link";
 
 //ModalMatch component
-import ModalMatch from "@/components/modalOrganizeMatch";
+import ModalMatch from "@/components/modalMatch";
 import { useState } from "react";
 
 export default function OrganizeMatch() {
