@@ -5,12 +5,10 @@ import styles from "./index.module.scss";
 import Button from "@/components/button";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
-import { setCookie } from "cookies-next";
 
-const ModalMatch = ({ isOpen }) => {
+export default function ModalMatch({ isOpen }) {
   const location = getCookie("location");
   const locationAddress = getCookie("locationAddress");
-  // const locationPhoneNumber = getCookie("locationPhoneNumber");
   const locationLongitude = getCookie("locationLongitude");
   const locationLatitude = getCookie("locationLatitude");
 
@@ -31,8 +29,7 @@ const ModalMatch = ({ isOpen }) => {
     "Tennis singolo": [2],
     "Tennis doppio": [4],
     Pallavolo: [12],
-    "Basket a 3": [6],
-    "Basket a 6": [12],
+    Basket: [10],
   };
 
   useEffect(() => {
@@ -141,6 +138,4 @@ const ModalMatch = ({ isOpen }) => {
       </div>
     </div>
   );
-};
-
-export default ModalMatch;
+}
