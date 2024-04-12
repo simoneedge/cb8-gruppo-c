@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
   ratingGames: {
     type: [Number],
     required: false,
-    default: [0],
+    default: [],
   },
   friends: {
     type: Array,

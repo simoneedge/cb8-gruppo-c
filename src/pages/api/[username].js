@@ -36,23 +36,28 @@ export default async function handler(req, res) {
               .json({ success: false, error: "Username is required" });
           }
 
-          const { newFriends, ...updatedUserData } = req.body; // Extracting newFriends from the request body
+          const { newFriends, newRatings, ...updatedUserData } = req.body; // Extracting newFriends and newRatings from the request body
 
-          if (!Array.isArray(newFriends) || newFriends.length === 0) {
-            return res
-              .status(400)
-              .json({
-                success: false,
-                error: "Invalid or empty list of new friends",
-              });
+          const updateFields = { ...updatedUserData }; // Initialize updateFields with updatedUserData
+
+          if (Array.isArray(newFriends) && newFriends.length > 0) {
+            updateFields.$push = { friends: { $each: newFriends } }; // Pushing new friends to the existing array
+          }
+
+          if (Array.isArray(newRatings) && newRatings.length > 0) {
+            updateFields.$push = { ratingGames: { $each: newRatings } }; // Pushing new ratings to the existing array
+          }
+
+          if (!updateFields.$push) {
+            return res.status(400).json({
+              success: false,
+              error: "Invalid or empty list of new friends or ratings",
+            });
           }
 
           const updatedUser = await User.findOneAndUpdate(
             { username },
-            {
-              ...updatedUserData, // Previous logic for updating user data
-              $push: { friends: { $each: newFriends } }, // Pushing new friends to the existing array
-            },
+            updateFields,
             { new: true }
           );
 
