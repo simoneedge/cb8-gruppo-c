@@ -1,0 +1,36 @@
+@import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container_details {
+  @include display(flex, column, flex-start, flex-start, 0, 0);
+  width: auto;
+  //   height: 2rem;
+  border: solid 1px $whiteSmoke;
+  border-radius: 20px;
+  background-color: whitheSmoke;
+  display: block;
+  //   margin-top: 20px;
+  // Styles for the button inside container_details
+}
+
+.container_image {
+  @include display(flex, column, center, flex-end, 0, 0);
+  width: 100%;
+  height: 100%;
+
+  margin-left: auto;
+}
+.button_profile {
+  width: 100%;
+  height: 2rem;
+  border: solid 1px $whiteSmoke;
+  border-radius: 20px;
+  background-color: $mint;
+  display: block;
+  margin-top: 20px; // Adjust as needed
+  // Other styles as needed
+}
