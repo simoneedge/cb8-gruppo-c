@@ -54,8 +54,11 @@ export default function Navbar() {
                   <Link href="/profile">
                     <li>Profilo</li>
                   </Link>
+                  <Link href="/editProfile">
+                    <li>Modifica Profilo</li>
+                  </Link>
                   <Link href="/userMatch">
-                    <li>Partite in corso</li>
+                    <li>Le mie partite</li>
                   </Link>
                   <Link href="/api/logout">Logout</Link>
                   <Link href="/profile">
