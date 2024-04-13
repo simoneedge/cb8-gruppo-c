@@ -4,7 +4,7 @@
 .container {
   width: 100%;
   @include display(flex, column, normal, inherit, 5px, 15px 0 0 0);
-  position: absolute;
+  position: fixed;
   top: 10vh;
   max-width: 640px;
   padding: 1% 3%;
