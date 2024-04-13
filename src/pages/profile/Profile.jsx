@@ -24,13 +24,13 @@ export default function Profile() {
             name={userData.name + " " + userData.surname}
             variant="beam"
             square={true}
-            colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
+            colors={["#59ce93", "#e5ffb2", "#9ff7aa"]}
           />
           <div className={Styles.container_details}>
             <p>
               {userData.name} {userData.surname}
             </p>
-            <p>Nickname: {userData.username}</p>
+            <p> {userData.username}</p>
             <p>{userData.location}</p>
             <p>ratingGames:{userData.ratingGames}</p>
             <p>ruolo:{userData.roles}</p>

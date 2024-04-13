@@ -4,9 +4,7 @@ import styles from "./index.module.scss";
 import Avatar from "boring-avatars";
 
 const User = ({ name, surname }) => {
-
   const fullName = `${name} ${surname ? surname : ""}`;
-
 
   return (
     <div className={styles.user}>
@@ -16,7 +14,7 @@ const User = ({ name, surname }) => {
           name={fullName}
           variant="beam"
           square={true} // false la rende tonda
-          colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
+          colors={["#59ce93", "#e5ffb2", "#9ff7aa"]}
         />
       </div>
       <div className={styles.details}>

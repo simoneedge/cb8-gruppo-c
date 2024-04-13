@@ -71,9 +71,10 @@
     border-radius: 5px;
     border: none;
     box-shadow: $box-shadow;
-    transition: background-color 0.35s;
+    transition: all 0.35s;
   }
   .navbarButton:hover {
-    background-color: $petrol;
+    background-color: $lightGreen;
+    color: $black;
   }
 }
