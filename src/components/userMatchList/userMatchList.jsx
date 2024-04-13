@@ -11,7 +11,6 @@ export default function UserMatchList() {
     fetch("/api/matches")
       .then((res) => res.json())
       .then((data) => {
-        // Filtra i dati per l'utente corrente
         const userMatches = data.data.filter((match) => {
           return match.team1.includes(user) || match.team2.includes(user);
         });

@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Button from "../button";
 import { motion } from "framer-motion";
 import logo from "./../../../public/JustPlay.svg";
+import { setCookie } from "cookies-next";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
@@ -27,6 +28,10 @@ export default function Navbar() {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  const clearCookie = () => {
+    setCookie("userData", "");
+  };
 
   return (
     <>
@@ -54,10 +59,15 @@ export default function Navbar() {
                   <Link href="/profile">
                     <li>Profilo</li>
                   </Link>
-                  <Link href="/userMatch">
-                    <li>Partite in corso</li>
+                  <Link href="/editProfile">
+                    <li>Modifica Profilo</li>
                   </Link>
-                  <Link href="/api/logout">Logout</Link>
+                  <Link href="/userMatch">
+                    <li>Le mie partite</li>
+                  </Link>
+                  <Link href="/api/logout" onClick={clearCookie}>
+                    Logout
+                  </Link>
                   <Link href="/profile">
                     <Button text="About" className={styles.navbarButton} />
                   </Link>

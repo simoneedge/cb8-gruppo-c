@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       break;
     case "PUT":
       try {
-        const { team } = req.query;
+        const { team, inProgress } = req.query;
         if (!team || (team !== "team1" && team !== "team2")) {
           return res
             .status(400)
@@ -37,14 +37,17 @@ export default async function handler(req, res) {
             .json({ success: false, error: "Player name is required" });
         }
 
-        const updateQuery = {};
+        let updateQuery = {};
         updateQuery[team] = playerName;
 
-        const updatedMatch = await Match.findByIdAndUpdate(
-          id,
-          { $push: updateQuery },
-          { new: true }
-        );
+        // Check and set inProgress if provided
+        if (inProgress !== undefined) {
+          updateQuery.inProgress = inProgress === "true";
+        }
+
+        const updatedMatch = await Match.findByIdAndUpdate(id, updateQuery, {
+          new: true,
+        });
 
         if (!updatedMatch) {
           return res
