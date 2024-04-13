@@ -63,7 +63,7 @@ export default function Profile() {
             ))}
         </div>
         <Link href="/editProfile" className={styles.button}>
-          Modifica Profilo
+          Modifica Dati
         </Link>
       </div>
     </div>
