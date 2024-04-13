@@ -77,8 +77,8 @@ const Stadium = ({ onClick }) => {
           const includedLanguages = ["en", "it"];
           const request = {
             location: place.geometry.location,
-            radius: "50000",
-            keyword: sport,
+            radius: "6000",
+            keyword: "struttura sportiva: " + sport,
             language: "en",
           };
 

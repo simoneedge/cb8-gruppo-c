@@ -128,7 +128,7 @@ export default function EditProfile() {
           />
         </div>
         <div className={styles.inputGroup}>
-          <label>Hai terminato le modifiche?</label>
+          <label>Modifiche terminate?</label>
           <button
             type="submit"
             className={styles.button}
