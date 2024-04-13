@@ -25,7 +25,12 @@ export default function SignIn() {
 
       {msg ? <h3 className="red">{msg}</h3> : <></>}
       <div className={styles.container}>
-        <h4 className={styles.title}>Ciao, accedi per continuare</h4>
+        <h4 className={styles.title}>JustPlay: gioca o organizza partite</h4>
+        <p className={styles.paragraph}>
+          Trova e partecipa a partite vicino a te o organizza la tua. Cnnetterti
+          con appassionati e scoprire nuove sfide nella tua città, effettua il
+          login!
+        </p>
         <form action="/api/login" method="POST" className={styles.form}>
           <input
             minLength="3"
@@ -56,6 +61,11 @@ export default function SignIn() {
             Iscriviti qui
           </Link>
         </p>
+        <footer>
+          <Link href="/about" className={styles.paragraph2}>
+            Made with stubborn love ❤️{" "}
+          </Link>
+        </footer>
       </div>
     </div>
   );

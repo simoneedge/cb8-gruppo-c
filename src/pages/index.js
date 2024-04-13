@@ -29,12 +29,9 @@ export default function Home({ username }) {
         <div className={styles.header}>
           {username ? (
             <>
-              <h3>JustPlay: gioca o organizza partite</h3>
-              <p className={styles.paragraph}>
-                Trova e partecipa a partite vicino a te o organizza la tua.
-                Clicca sullo sport di tuo interesse per connetterti con
-                appassionati e scoprire nuove sfide nella tua città
-              </p>
+              <h3>JustPlay</h3>
+              <h4>pensa solo a giocare</h4>
+
               <div className={styles.CardSports}>
                 <CardSport
                   image="./Soccer.jpg"
