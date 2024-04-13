@@ -3,6 +3,7 @@ import { getCookie, setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import logo from "./../../../public/JustPlay.svg";
 
 export default function SignIn() {
   const handleBtnClick = () => {
@@ -15,17 +16,18 @@ export default function SignIn() {
   const { msg } = router.query;
   return (
     <div className={styles.wrapper}>
-      <Image
-        src="/JustPlay.svg"
-        alt="logo"
-        width={300}
-        height={300}
-        className={styles.logo}
-      />
+      <Link href="/" className={styles.logo}>
+        <Image src={logo} width={240} height={"auto"} alt="logo" />
+      </Link>
 
       {msg ? <h3 className="red">{msg}</h3> : <></>}
       <div className={styles.container}>
-        <h4 className={styles.title}>Ciao, accedi per continuare</h4>
+        <h4 className={styles.title}>JustPlay: gioca o organizza partite</h4>
+        <p className={styles.paragraph}>
+          Trova e partecipa a partite vicino a te o organizza la tua. Cnnetterti
+          con appassionati e scoprire nuove sfide nella tua città, effettua il
+          login!
+        </p>
         <form action="/api/login" method="POST" className={styles.form}>
           <input
             minLength="3"
@@ -56,6 +58,11 @@ export default function SignIn() {
             Iscriviti qui
           </Link>
         </p>
+        <footer>
+          <Link href="/about" className={styles.paragraph2}>
+            Made with stubborn love ❤️{" "}
+          </Link>
+        </footer>
       </div>
     </div>
   );
