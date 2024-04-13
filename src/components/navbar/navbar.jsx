@@ -54,8 +54,8 @@ export default function Navbar() {
                   <Link href="/profile">
                     <li>Profilo</li>
                   </Link>
-                  <Link href="/matchDetails">
-                    <li>Partita in corso</li>
+                  <Link href="/userMatch">
+                    <li>Partite in corso</li>
                   </Link>
                   <Link href="/api/logout">Logout</Link>
                   <Link href="/profile">
