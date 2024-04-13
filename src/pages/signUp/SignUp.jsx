@@ -3,6 +3,7 @@ import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import logo from "./../../../public/JustPlay.svg";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -10,16 +11,12 @@ export default function SignUpPage() {
   return (
     <div className={styles.wrapper}>
       {msg ? <h3 className="red">{msg}</h3> : <></>}
-      <Image
-        src="/JustPlay.svg"
-        alt="logo"
-        width={300}
-        height={300}
-        className={styles.Image}
-      />
+      <Link href="/" className={styles.logo}>
+        <Image src={logo} width={240} height={"auto"} alt="logo" />
+      </Link>
       <div className={styles.container}>
         <h4 className={styles.title}>
-          Benvenuto, inserisci i tuoi dati e inizia a giocare
+          Ciao, inserisci i tuoi dati e inizia a giocare
         </h4>
         <form action="/api/signup" method="POST" className={styles.form}>
           <input

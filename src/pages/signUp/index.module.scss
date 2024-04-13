@@ -22,6 +22,8 @@
   .form {
     @include display(flex, column, center, center, 5px, 0);
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     input {
       @include font("Montserrat", 500, inherit, none, none, 0, 0);
@@ -36,17 +38,9 @@
 
     .button {
       @include display(flex, column, center, center, 0, 0);
-      @include font(
-        "Montserrat",
-        600,
-        0.9rem,
-        none,
-        uppercase,
-        1px,
-        10px 0 10px 0
-      );
+      @include font("Montserrat", 600, 0.9rem, none, uppercase, 1px, 0);
       color: $whiteSmoke;
-      padding: 10px 10px;
+      padding: 5px 10px;
       border-radius: 5px;
       border: none;
       box-shadow: $box-shadow;
@@ -60,12 +54,13 @@
   }
 
   .title {
-    @include font("Montserrat", 500, 1.2rem, none, none, 1px, 10px 0 10px 0);
+    @include font("Montserrat", 400, 1rem, none, none, 1px, 10px 0 10px 0);
     text-align: center;
     color: $whiteSmoke;
     width: 100%;
   }
   .paragraph {
+    margin-top: 10px;
     color: $whiteSmoke;
   }
 
