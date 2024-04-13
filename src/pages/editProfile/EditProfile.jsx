@@ -10,6 +10,15 @@ export default function EditProfile() {
   const [formData, setFormData] = useState({});
   const router = useRouter();
   const user = getCookie("userData");
+  const userCookie = getCookie("userData");
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/signIn");
+    } else {
+      router.push("/editProfile");
+    }
+  }, [userCookie]);
 
   useEffect(() => {
     if (user) {
