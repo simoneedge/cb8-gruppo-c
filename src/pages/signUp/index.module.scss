@@ -77,4 +77,22 @@
       color: $lightGreen;
     }
   }
+  footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    max-width: 640px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    .paragraph2 {
+      color: $whiteSmoke;
+      text-align: center;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+  }
 }
