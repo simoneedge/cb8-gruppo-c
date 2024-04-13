@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function ModalReport({ onClose }) {
   const [match, setMatch] = useState(null);
@@ -112,6 +113,7 @@ export default function ModalReport({ onClose }) {
             </div>
           </div>
         </form>
+        <Link href="/profile">Salva</Link>
       </div>
     </div>
   );

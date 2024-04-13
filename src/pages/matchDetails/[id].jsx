@@ -101,6 +101,7 @@ export default function SingleMatch() {
         ...prevMatch,
         inProgress: switchInProgress,
       }));
+      setIsModalOpen(false);
     } catch (error) {
       console.error("Error updating match in progress:", error);
     }

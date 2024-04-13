@@ -65,6 +65,9 @@ export default function Navbar() {
                   <Link href="/userMatch">
                     <li>Le mie partite</li>
                   </Link>
+                  <Link href="/closedMatch">
+                    <li>Cronologia partite</li>
+                  </Link>
                   <Link href="/api/logout" onClick={clearCookie}>
                     Logout
                   </Link>
