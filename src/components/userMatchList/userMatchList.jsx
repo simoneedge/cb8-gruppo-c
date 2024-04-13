@@ -12,7 +12,10 @@ export default function UserMatchList() {
       .then((res) => res.json())
       .then((data) => {
         const userMatches = data.data.filter((match) => {
-          return match.team1.includes(user) || match.team2.includes(user);
+          return (
+            (match.team1.includes(user) || match.team2.includes(user)) &&
+            match.inProgress
+          );
         });
         setMatches(userMatches);
       })

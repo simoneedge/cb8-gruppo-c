@@ -6,7 +6,9 @@ const MainLayout = ({ children }) => {
   const router = useRouter();
 
   const authentication =
-    router.pathname === "/signIn" || router.pathname === "/signUp";
+    router.pathname === "/signIn" ||
+    router.pathname === "/signUp" ||
+    router.pathname === "/about";
 
   return (
     <>
