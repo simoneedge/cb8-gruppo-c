@@ -48,7 +48,7 @@ export default function Profile() {
             <div className={styles.containerImage}>
               <Avatar
                 size={150}
-                name={userData.name + " " + userData.surname}
+                name={userData.username}
                 variant="beam"
                 colors={["#9ff7aa", "#216869", "#f4f6f5"]}
               />

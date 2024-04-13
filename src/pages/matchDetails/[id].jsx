@@ -10,32 +10,32 @@ import { getCookie } from "cookies-next";
 import ModalReport from "@/components/modalReport";
 
 export default function SingleMatch() {
-  const [isModalOpen, setIsModalOpen] = useState(false); //prova
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
   const playerName = getCookie("userData");
-  const userCookie = getCookie("userData");
-
-  useEffect(() => {
-    if (!userCookie) {
-      router.push("/signIn");
-    } else {
-      router.push(`/matchDetails/${id}`);
-    }
-  }, [userCookie]);
-
   const playerExists =
     match &&
     (match.team1.includes(playerName) || match.team2.includes(playerName));
 
   useEffect(() => {
-    if (id) {
-      fetch(`/api/matches/${id}`)
-        .then((res) => res.json())
-        .then((data) => setMatch(data.data));
+    const fetchMatchDetails = async (matchId) => {
+      try {
+        const response = await fetch(`/api/matches/${matchId}`);
+        const data = await response.json();
+        setMatch(data.data);
+      } catch (error) {
+        console.error("Error fetching match details:", error);
+      }
+    };
+
+    if (!playerName) {
+      router.push("/signIn");
+    } else if (id) {
+      fetchMatchDetails(id);
     }
-  }, [id]);
+  }, [id, playerName, router]);
 
   const maxPlayersPerTeam = match ? Math.ceil(match.players / 2) : 0;
   const blueTeamIsFull = match && match.team1.length >= maxPlayersPerTeam;
@@ -64,35 +64,17 @@ export default function SingleMatch() {
     }
   };
 
-  const handleAddFriend = async (player) => {
-    try {
-      if (!playerName) {
-        console.error("Player name not found in cookie");
-        return;
-      }
-
-      // Construct the data to be sent in the PUT request
-      const data = {
-        newFriends: [player],
-      };
-
-      await axios.put(`/api/${playerName}`, data);
-    } catch (error) {
-      console.error("Error adding friend:", error);
-    }
-  };
-
   const toogleInProgress = async () => {
     try {
       const switchInProgress = !(match && match.inProgress);
       const team = "team1";
       const playerName = getCookie("userData");
-      console.log(playerName);
+
       if (!playerName) {
         console.error("Player name not found in cookie");
         return;
       }
-      console.log(switchInProgress);
+
       await axios.put(
         `/api/matches/${id}?inProgress=${switchInProgress}&team=${team}`,
         { playerName }
@@ -132,15 +114,14 @@ export default function SingleMatch() {
                 <button
                   className={styles.button}
                   onClick={() => {
-                    handleAddFriend(player);
+                    handleAddPlayer(player);
                   }}
                 >
-                  Add {player} to your frineds
+                  Add {player} to your friends
                 </button>
               </div>
             ))}
           <button
-            text="Join Team Blue"
             onClick={() => handleAddPlayer("team1")}
             className={styles.btnAdd}
             disabled={blueTeamIsFull || playerExists}
@@ -166,15 +147,14 @@ export default function SingleMatch() {
                 <button
                   className={styles.button}
                   onClick={() => {
-                    handleAddFriend(player);
+                    handleAddPlayer(player);
                   }}
                 >
-                  Add {player} to your frineds
+                  Add {player} to your friends
                 </button>
               </div>
             ))}
           <button
-            text="Join Team Red"
             onClick={() => handleAddPlayer("team2")}
             className={styles.btnAdd}
             disabled={redTeamIsFull || playerExists}
@@ -186,7 +166,6 @@ export default function SingleMatch() {
           {(!match || match.inProgress) && (
             <button onClick={() => setIsModalOpen(true)}>Report</button>
           )}
-          {/* Renderizza la modale solo se isModalOpen è true */}
           {isModalOpen && (
             <ModalReport
               isOpen={isModalOpen}
@@ -198,9 +177,7 @@ export default function SingleMatch() {
           onClick={toogleInProgress}
           disabled={!match || !match.inProgress}
         >
-          {match && match.inProgress
-            ? "Termina Partita"
-            : "Partita già terminata"}
+          {match && match.inProgress ? "End Match" : "Match Already Ended"}
         </button>
       </div>
     </>
