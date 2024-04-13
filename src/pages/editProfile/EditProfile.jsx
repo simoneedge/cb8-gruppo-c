@@ -112,7 +112,7 @@ export default function EditProfile() {
           className={styles.button}
           onClick={() => router.push("/profile")}
         >
-          Salva le modifiche
+          Salva
         </button>
       </form>
     </div>

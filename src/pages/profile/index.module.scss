@@ -2,17 +2,18 @@
 @import "../../styles/mixins.scss";
 
 .wrapper {
-  @include display(flex, column, center, flex-start, 0, 0);
-  height: 100%;
-  max-width: 640px;
-  position: relative;
-  top: 15%;
   width: 100%;
-  padding: 0 3%;
+  @include display(flex, column, normal, inherit, 5px, 15px 0 0 0);
 
-  @media (min-width: 450px) {
-    top: 4%;
+  position: absolute;
+  top: 10vh;
+  max-width: 640px;
+  padding: 1% 3%;
+
+  @media (min-width: 640px) {
+    top: 10%;
   }
+
   svg {
     width: 100%;
   }
@@ -30,12 +31,13 @@
       width: 100%;
 
       .containerDetails {
-        @include display(flex, column, inherit, center, 5px, 0);
+        @include display(flex, column, inherit, flex-start, 5px, 0);
 
         .title {
           @include font("Montserrat", 600, 1.8rem, none, capitalize, 0, 0);
           color: $whiteSmoke;
           text-align: center;
+          line-height: 20px;
         }
         h3 {
           @include font("Montserrat", 600, 1.4rem, none, none, 0, 0);
@@ -45,6 +47,7 @@
         p {
           @include font("Montserrat", 500, 1rem, none, none, 0, 0);
           color: $whiteSmoke;
+          text-align: left;
         }
         strong {
           color: $lightGreen;
