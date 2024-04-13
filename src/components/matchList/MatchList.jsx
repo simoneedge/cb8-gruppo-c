@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-
+import styles from "./index.module.scss";
 import CardMatch from "../cardMatch";
 import { getCookie } from "cookies-next";
+import Image from "next/image";
+import Link from "next/link";
+import Button from "./../button";
 
 export default function MatchList() {
   const [matches, setMatches] = useState([]);
@@ -23,14 +26,32 @@ export default function MatchList() {
 
   return (
     <>
-      {matches.map((match) => (
-        <CardMatch
-          key={match.id}
-          location={match.location}
-          sport={match.sport}
-          _id={match._id}
-        />
-      ))}
+      {matches.length === 0 ? (
+        <div className={styles.container}>
+          <Image
+            src="/not-found.svg"
+            alt="No matches"
+            width={300}
+            height={300}
+          />
+          <h2 className={styles.title}>
+            Non ci sono partite in corso per questo sport <br /> Potresti
+            organizzarne una tu!
+          </h2>
+          <Link href="/">
+            <Button text="Home" className={styles.Button} />
+          </Link>
+        </div>
+      ) : (
+        matches.map((match) => (
+          <CardMatch
+            key={match.id}
+            location={match.location}
+            sport={match.sport}
+            _id={match._id}
+          />
+        ))
+      )}
     </>
   );
 }
