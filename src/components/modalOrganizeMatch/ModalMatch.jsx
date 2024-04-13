@@ -91,8 +91,10 @@ export default function ModalMatch({ isOpen, onClose }) {
                 setSport(e.target.value);
                 setPlayersRequired(playersOptions[e.target.value]);
               }}
+              required
             >
-              <option value=""></option>
+              {" "}
+              <option value="">Seleziona il tipo di match</option>
               {Object.keys(playersOptions).map((sportName) => {
                 if (selectedSport && sportName.includes(selectedSport)) {
                   return (
