@@ -105,6 +105,9 @@ export default function SingleMatch() {
         <p>{match && match.phoneNumber}</p>
         <p>{match && formatDate(match.date)}</p>
         <p>{match && match.time}</p>
+        <p>{match && match.longitude}</p>
+        <p>{match && match.latitude}</p>
+
         <div className={styles.team1}>
           <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
           {match &&
