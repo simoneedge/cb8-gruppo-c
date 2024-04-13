@@ -15,6 +15,15 @@ export default function SingleMatch() {
   const { id } = router.query;
   const [match, setMatch] = useState(null);
   const playerName = getCookie("userData");
+  const userCookie = getCookie("userData");
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/signIn");
+    } else {
+      router.push(`/matchDetails/${id}`);
+    }
+  }, [userCookie]);
 
   const playerExists =
     match &&

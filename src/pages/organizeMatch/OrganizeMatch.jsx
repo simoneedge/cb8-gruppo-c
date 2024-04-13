@@ -2,6 +2,9 @@ import styles from "./index.module.scss";
 import Stadium from "@/components/stadium";
 import Button from "@/components/button";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { getCookie } from "cookies-next";
 
 //ModalMatch component
 import ModalMatch from "@/components/modalOrganizeMatch";
@@ -9,6 +12,16 @@ import { useState } from "react";
 
 export default function OrganizeMatch() {
   const [isModalOpen, setIsModalOpen] = useState(false); //prova
+  const router = useRouter();
+  const userCookie = getCookie("userData");
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/signIn");
+    } else {
+      router.push(`/organizeMatch`);
+    }
+  }, [userCookie]);
 
   return (
     <>
