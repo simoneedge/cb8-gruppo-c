@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-export default function ModalReport() {
+export default function ModalReport({ onClose }) {
   const [match, setMatch] = useState(null);
   const [ratings, setRatings] = useState({});
   const [disabledScores, setDisabledScores] = useState([]);
@@ -48,6 +48,9 @@ export default function ModalReport() {
   return (
     <div className={styles.modal_match}>
       <div className={styles.modal_content}>
+        <button className={styles.close_button} onClick={onClose}>
+          ❌
+        </button>
         <h2>Pagelle</h2>
         <form className={styles.form}>
           <div className={styles.team}>
