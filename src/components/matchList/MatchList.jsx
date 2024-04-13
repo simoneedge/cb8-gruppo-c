@@ -11,10 +11,10 @@ export default function MatchList() {
     fetch("/api/matches")
       .then((res) => res.json())
       .then((data) => {
-        const sportMatches = data.data.filter((match) => {
-          return match.sport.includes(selectedSport);
+        const sportMatchesInProgress = data.data.filter((match) => {
+          return match.sport.includes(selectedSport) && match.inProgress;
         });
-        setMatches(sportMatches);
+        setMatches(sportMatchesInProgress);
       })
       .catch((error) => {
         console.error("Errore durante il recupero dei match:", error);

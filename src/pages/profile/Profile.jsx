@@ -15,6 +15,18 @@ export default function Profile() {
       .then((data) => setUserData(data.data));
   }, [user]);
 
+  const calculateAverageRating = () => {
+    if (userData && userData.ratingGames) {
+      const sum = userData.ratingGames.reduce(
+        (acc, currentValue) => acc + currentValue,
+        0
+      );
+      const average = sum / userData.ratingGames.length;
+      return average.toFixed(1);
+    }
+    return 0;
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperProfile}>
@@ -46,12 +58,12 @@ export default function Profile() {
         <div className={styles.containerRating}>
           <h2 className={styles.titleRating}>Il tuo Rating</h2>
           <p className={styles.paragraphRating}>
-            Qui c&apos;è la media dei voti ricevuti duranti i tuoi match
+            Qui c&apos;è la media dei voti ricevuti durante i tuoi match
           </p>
           <h4 className={styles.ratingTitle}>
             Fair Play 🤝 - Abilità 💪 - Puntualità 🕙
           </h4>
-          <label className={styles.rating}>{userData.ratingGames}</label>
+          <label className={styles.rating}>{calculateAverageRating()}</label>
         </div>
         <h3>I tuoi amici: </h3>
 
@@ -66,6 +78,7 @@ export default function Profile() {
           Modifica Profilo
         </Link>
       </div>
+         
     </div>
   );
 }
