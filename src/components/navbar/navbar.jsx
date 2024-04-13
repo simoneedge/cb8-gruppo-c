@@ -68,7 +68,7 @@ export default function Navbar() {
                   <Link href="/api/logout" onClick={clearCookie}>
                     Logout
                   </Link>
-                  <Link href="/profile">
+                  <Link href="/about">
                     <Button text="About" className={styles.navbarButton} />
                   </Link>
                 </motion.div>

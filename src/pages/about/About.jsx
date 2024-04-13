@@ -1,10 +1,5 @@
 import React from "react";
-import chiara_fell from "../../../image/foto/chiara_fell.jpg";
-import martina_focieri from "../../../image/foto/martina_forcieri.jpg";
-import giovanni_scivoli from "../../../image/foto/giovanni_scivoli.jpg";
-import giuseppina_liuzza from "../../../image/foto/giuseppina_liuzza.jpg";
-import vincenzo_rogato from "../../../image/foto/vincenzo_rogato.jpg";
-
+import styles from "./index.module.scss";
 import Image from "next/image";
 
 const About = () => {
@@ -33,7 +28,12 @@ const About = () => {
       <section id="the-developers">
         <h2>The Developers</h2>
         <div className="developer">
-          <Image src={chiara_fell} alt="Chiara Fell" width={200} />
+          <Image
+            src="./chiara_fell.jpg"
+            alt="Chiara Fell"
+            width={200}
+            height={170}
+          />
           <div>
             <h3>Chiara Fell</h3>
             <p>Full stack Developer</p>
@@ -43,7 +43,12 @@ const About = () => {
             </div>
           </div>
         </div>
-        <Image src={martina_focieri} alt="Martina Forcieri" width={200} />
+        <Image
+          src="./martina_forcieri.jpg"
+          alt="Martina Forcieri"
+          width={200}
+          height={170}
+        />
         <div>
           <h3>Martina Forcieri</h3>
           <p>Full stack Developer</p>
@@ -54,7 +59,12 @@ const About = () => {
             </a>
           </div>
         </div>
-        <Image src={giuseppina_liuzza} alt="Giuseppina Liuzza" width={200} />
+        <Image
+          src="./giuseppina_liuzza.jpg"
+          alt="Giuseppina Liuzza"
+          width={200}
+          height={170}
+        />
         <div>
           <h3>Giuseppina Liuzza</h3>
           <p>Full stack Developer</p>
@@ -65,7 +75,12 @@ const About = () => {
             </a>
           </div>
         </div>
-        <Image src={vincenzo_rogato} alt="Vincenzo Rogato" width={200} />
+        <Image
+          src="./vincenzo_rogato.jpg"
+          alt="Vincenzo Rogato"
+          width={200}
+          height={170}
+        />
         <div>
           <h3>Vincenzo Rogato</h3>
           <p>Full stack Developer</p>
@@ -76,7 +91,12 @@ const About = () => {
             </a>
           </div>
         </div>
-        <Image src={giovanni_scivoli} alt="Giovanni Scivoli" width={200} />
+        <Image
+          src="./giovanni_scivoli.jpg"
+          alt="Giovanni Scivoli"
+          width={200}
+          height={170}
+        />
         <div>
           <h3>Giovanni Scivoli</h3>
           <p>Full stack Developer</p>

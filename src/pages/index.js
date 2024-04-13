@@ -4,7 +4,6 @@ import CardSport from "@/components/cardSport";
 import { getCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import About from "./about";
 
 export default function Home({ username }) {
   const router = useRouter();
