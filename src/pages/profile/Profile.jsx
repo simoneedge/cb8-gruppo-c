@@ -2,7 +2,7 @@ import Styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import Avatar from "boring-avatars";
-import User from "../../components/User";
+import User from "@/components/user";
 import Link from "next/link";
 
 export default function Profile() {
