@@ -2,7 +2,7 @@
 @import "./../../styles/variables.scss";
 
 .CardSport {
-  @include display(flex, column, center, center, 0, 0);
+  @include display(flex, column, flex-start, center, 0, 0);
   position: relative;
   box-shadow: $box-shadow;
   border-radius: 10px;
@@ -26,8 +26,9 @@
   .title {
     position: absolute;
     left: 10%;
+    top: 40%;
     font-weight: bold;
-    color: $petrol;
+    color: $black;
     @include font("Montserrat", 700, 1.6rem, none, none, 0, 0);
   }
 }

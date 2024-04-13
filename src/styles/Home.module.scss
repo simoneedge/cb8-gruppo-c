@@ -9,9 +9,17 @@
   top: 6%;
   width: 100%;
   padding: 0 3%;
+
   .CardSports {
     @include display(flex, inherit, inherit, inherit, 16px, 10px 0 10px 0);
+    width: 100%;
+
+    @media (min-width: 450px) {
+      width: 80%;
+      margin: 10px auto;
+    }
   }
+
   .header {
     width: 100%;
     @include display(flex, column, center, center, 5px, 0);

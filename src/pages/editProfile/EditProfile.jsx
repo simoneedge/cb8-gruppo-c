@@ -63,7 +63,7 @@ export default function EditProfile() {
           size={115}
           name="Maria Mitchell"
           variant="beam"
-          colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
+          colors={["#59ce93", "#e5ffb2", "#9ff7aa"]}
         />
         <h4>Modifica i tuoi dati personali</h4>
       </div>

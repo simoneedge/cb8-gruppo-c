@@ -24,7 +24,7 @@ export default function Profile() {
             name={userData.name + " " + userData.surname}
             variant="beam"
             square={true}
-            colors={["#216869", "#57b288", "#c4e6c9", "#e9e9e9"]}
+            colors={["#59ce93", "#e5ffb2", "#9ff7aa"]}
           />
           <div className={Styles.container_details}>
             <p>
