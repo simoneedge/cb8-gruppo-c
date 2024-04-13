@@ -7,12 +7,10 @@ import RedShield from "../../../public/Red-shield.svg";
 import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
-import Link from "next/link";
 import ModalReport from "@/components/modalReport";
 
 export default function SingleMatch() {
   const [isModalOpen, setIsModalOpen] = useState(false); //prova
-
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
@@ -75,13 +73,45 @@ export default function SingleMatch() {
     }
   };
 
+  const toogleInProgress = async () => {
+    try {
+      const switchInProgress = !(match && match.inProgress);
+      const team = "team1";
+      const playerName = getCookie("userData");
+      console.log(playerName);
+      if (!playerName) {
+        console.error("Player name not found in cookie");
+        return;
+      }
+      console.log(switchInProgress);
+      await axios.put(
+        `/api/matches/${id}?inProgress=${switchInProgress}&team=${team}`,
+        { playerName }
+      );
+      setMatch((prevMatch) => ({
+        ...prevMatch,
+        inProgress: switchInProgress,
+      }));
+    } catch (error) {
+      console.error("Error updating match in progress:", error);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <>
       <div className={styles.teamFormations}>
         <h2>{match && match.sport}</h2>
         <h3>{match && match.location}</h3>
         <p>{match && match.phoneNumber}</p>
-        <p>{match && match.date}</p>
+        <p>{match && formatDate(match.date)}</p>
         <p>{match && match.time}</p>
         <div className={styles.team1}>
           <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
@@ -152,6 +182,14 @@ export default function SingleMatch() {
             />
           )}
         </div>
+        <button
+          onClick={toogleInProgress}
+          disabled={!match || !match.inProgress}
+        >
+          {match && match.inProgress
+            ? "Termina Partita"
+            : "Partita già terminata"}
+        </button>
       </div>
     </>
   );
