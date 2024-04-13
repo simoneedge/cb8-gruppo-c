@@ -30,7 +30,7 @@ export default function Profile() {
             <p>
               {userData.name} {userData.surname}
             </p>
-            <p>Nickname: {userData.username}</p>
+            <p> {userData.username}</p>
             <p>{userData.location}</p>
             <p>ratingGames:{userData.ratingGames}</p>
             <p>ruolo:{userData.roles}</p>
