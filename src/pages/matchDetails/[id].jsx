@@ -183,7 +183,9 @@ export default function SingleMatch() {
           </button>
         </div>
         <div>
-          <button onClick={() => setIsModalOpen(true)}>Report</button>
+          {(!match || match.inProgress) && (
+            <button onClick={() => setIsModalOpen(true)}>Report</button>
+          )}
           {/* Renderizza la modale solo se isModalOpen è true */}
           {isModalOpen && (
             <ModalReport
