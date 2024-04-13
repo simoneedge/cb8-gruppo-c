@@ -3,8 +3,8 @@ import React from "react";
 import styles from "./index.module.scss";
 import Avatar from "boring-avatars";
 
-const User = ({ username }) => {
-  const user = ` ${username ? username : ""}`;
+const User = ({ name, username }) => {
+  const user = ` ${name} ${username ? username : ""}`;
 
   return (
     <div className={styles.user}>
