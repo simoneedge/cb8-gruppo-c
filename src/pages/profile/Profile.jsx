@@ -46,7 +46,7 @@ export default function Profile() {
         <div className={styles.containerRating}>
           <h2 className={styles.titleRating}>Il tuo Rating</h2>
           <p className={styles.paragraphRating}>
-            Qui c'è la media dei voti ricevuti duranti i tuoi match
+            Qui c&apos;è la media dei voti ricevuti duranti i tuoi match
           </p>
           <h4 className={styles.ratingTitle}>
             Fair Play 🤝 - Abilità 💪 - Puntualità 🕙
