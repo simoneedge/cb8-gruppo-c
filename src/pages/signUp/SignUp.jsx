@@ -86,6 +86,11 @@ export default function SignUpPage() {
             torna al login
           </Link>
         </p>
+        <footer>
+          <Link href="/about" className={styles.paragraph2}>
+            Made with stubborn love ❤️{" "}
+          </Link>
+        </footer>
       </div>
     </div>
   );
