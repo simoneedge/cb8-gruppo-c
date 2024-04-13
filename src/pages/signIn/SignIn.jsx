@@ -3,6 +3,7 @@ import { getCookie, setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import logo from "./../../../public/JustPlay.svg";
 
 export default function SignIn() {
   const handleBtnClick = () => {
@@ -15,13 +16,9 @@ export default function SignIn() {
   const { msg } = router.query;
   return (
     <div className={styles.wrapper}>
-      <Image
-        src="/JustPlay.svg"
-        alt="logo"
-        width={300}
-        height={300}
-        className={styles.logo}
-      />
+      <Link href="/" className={styles.logo}>
+        <Image src={logo} width={240} height={"auto"} alt="logo" />
+      </Link>
 
       {msg ? <h3 className="red">{msg}</h3> : <></>}
       <div className={styles.container}>
