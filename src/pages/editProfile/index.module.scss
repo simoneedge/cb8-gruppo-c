@@ -16,6 +16,11 @@
     padding-bottom: 3%;
   }
 
+  label {
+    @include font("Montserrat", 500, inherit, none, none, 0, 0);
+    color: $whiteSmoke;
+  }
+
   h4 {
     text-align: center;
     color: whitesmoke;
@@ -25,7 +30,9 @@
   }
 
   .form {
-    columns: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     width: 100%;
     flex-wrap: wrap;
     input {
@@ -41,15 +48,7 @@
   }
   .button {
     @include display(flex, column, center, center, 0, 0);
-    @include font(
-      "Montserrat",
-      600,
-      0.9rem,
-      none,
-      uppercase,
-      1px,
-      10px 0 10px 0
-    );
+    @include font("Montserrat", 600, 0.9rem, none, uppercase, 1px, 0 0 10px 0);
     color: $whiteSmoke;
     padding: 5px 10px;
     border-radius: 5px;

@@ -77,43 +77,66 @@ export default function EditProfile() {
         <h4>Modifica i tuoi dati personali</h4>
       </div>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          name="name"
-          placeholder={userID.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="surname"
-          placeholder={userID.surname}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="location"
-          placeholder={userID.location}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="sports"
-          placeholder={userID.sports}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder={userID.email}
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className={styles.button}
-          onClick={() => router.push("/profile")}
-        >
-          Salva
-        </button>
+        <div className={styles.inputGroup}>
+          <label>Nome:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder={userID.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label>Cognome:</label>
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            placeholder={userID.surname}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label>Località:</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder={userID.location}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label>Sport preferito:</label>
+          <input
+            type="text"
+            id="sports"
+            name="sports"
+            placeholder={userID.sports}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label>Email:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder={userID.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label>Hai terminato le modifiche?</label>
+          <button
+            type="submit"
+            className={styles.button}
+            onClick={() => router.push("/profile")}
+          >
+            Si, Salva
+          </button>
+        </div>
       </form>
     </div>
   );
