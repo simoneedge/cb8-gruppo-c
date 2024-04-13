@@ -49,6 +49,9 @@ export default function ModalReport({ onClose }) {
   return (
     <div className={styles.modal_match}>
       <div className={styles.modal_content}>
+        <button className={styles.save_button} onClick={onClose}>
+          Salva
+        </button>
         <button className={styles.close_button} onClick={onClose}>
           ❌
         </button>
@@ -113,7 +116,6 @@ export default function ModalReport({ onClose }) {
             </div>
           </div>
         </form>
-        <Link href="/profile">Salva</Link>
       </div>
     </div>
   );
