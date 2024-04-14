@@ -72,6 +72,7 @@
     border: none;
     box-shadow: $box-shadow;
     transition: all 0.35s;
+    cursor: pointer;
   }
   .navbarButton:hover {
     background-color: $lightGreen;

@@ -119,6 +119,8 @@
       box-shadow: $box-shadow;
       transition: all 0.55s;
       background: $mint;
+      cursor: pointer;
+
       .button:hover {
         background: rgba($mint, 0.6);
       }
