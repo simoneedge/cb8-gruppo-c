@@ -4,10 +4,21 @@ import { getCookie } from "cookies-next";
 import Avatar from "boring-avatars";
 import User from "@/components/user";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
   const user = getCookie("userData");
+  const userCookie = getCookie("userData");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/signIn");
+    } else {
+      router.push("/profile");
+    }
+  }, [userCookie]);
 
   useEffect(() => {
     fetch(`/api/${user}`)
