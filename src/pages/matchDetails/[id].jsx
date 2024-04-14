@@ -15,6 +15,7 @@ export default function SingleMatch() {
   const { id } = router.query;
   const [match, setMatch] = useState(null);
   const playerName = getCookie("userData");
+
   const playerExists =
     match &&
     (match.team1.includes(playerName) || match.team2.includes(playerName));
@@ -89,6 +90,23 @@ export default function SingleMatch() {
     }
   };
 
+  const handleAddFriends = async (player) => {
+    try {
+      if (!playerName) {
+        console.error("Player name not found in cookie");
+        return;
+      }
+
+      const data = {
+        newFriends: [player],
+      };
+
+      await axios.put(`/api/${playerName}`, data);
+    } catch (error) {
+      console.error("Error adding friend:", error);
+    }
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
@@ -117,8 +135,10 @@ export default function SingleMatch() {
                 <button
                   className={styles.button}
                   onClick={() => {
-                    handleAddPlayer(player);
+                    handleAddFriends(player);
+                    console.log(player);
                   }}
+                  disabled={player === playerName}
                 >
                   Add {player} to your friends
                 </button>
@@ -150,8 +170,9 @@ export default function SingleMatch() {
                 <button
                   className={styles.button}
                   onClick={() => {
-                    handleAddPlayer(player);
+                    handleAddFriends(player);
                   }}
+                  disabled={player === playerName}
                 >
                   Add {player} to your friends
                 </button>

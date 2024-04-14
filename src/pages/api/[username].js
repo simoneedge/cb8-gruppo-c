@@ -41,18 +41,21 @@ export default async function handler(req, res) {
           const updateFields = { ...updatedUserData }; // Initialize updateFields with updatedUserData
 
           if (Array.isArray(newFriends) && newFriends.length > 0) {
+            console.log("Adding new friends:", newFriends);
             updateFields.$push = { friends: { $each: newFriends } }; // Pushing new friends to the existing array
+            console.log(
+              "Updated updateFields after adding new friends:",
+              updateFields
+            );
           }
 
           if (Array.isArray(newRatings) && newRatings.length > 0) {
+            console.log("Adding new ratings:", newRatings);
             updateFields.$push = { ratingGames: { $each: newRatings } }; // Pushing new ratings to the existing array
-          }
-
-          if (!updateFields.$push) {
-            return res.status(400).json({
-              success: false,
-              error: "Invalid or empty list of new friends or ratings",
-            });
+            console.log(
+              "Updated updateFields after adding new ratings:",
+              updateFields
+            );
           }
 
           const updatedUser = await User.findOneAndUpdate(
