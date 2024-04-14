@@ -38,6 +38,16 @@ export default function Profile() {
     return 0;
   };
 
+  const getRatingColorClass = (rating) => {
+    if (rating >= 7) {
+      return styles.goodRating;
+    } else if (rating >= 4 && rating < 6.9) {
+      return styles.middleRating;
+    } else {
+      return styles.badRating;
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperProfile}>
@@ -74,7 +84,13 @@ export default function Profile() {
           <h4 className={styles.ratingTitle}>
             Fair Play 🤝 - Abilità 💪 - Puntualità 🕙
           </h4>
-          <label className={styles.rating}>{calculateAverageRating()}</label>
+          <label
+            className={`${styles.rating} ${getRatingColorClass(
+              calculateAverageRating()
+            )}`}
+          >
+            {calculateAverageRating()}
+          </label>
         </div>
         <h3>I tuoi amici: </h3>
 
@@ -89,7 +105,6 @@ export default function Profile() {
           Modifica Profilo
         </Link>
       </div>
-         
     </div>
   );
 }

@@ -66,6 +66,19 @@
       box-shadow: $box-shadow;
       width: 100%;
       margin: 20px 0;
+
+      .goodRating {
+        color: $lightGreen;
+      }
+
+      .middleRating {
+        color: #fab482;
+      }
+
+      .badRating {
+        color: #fe7a7a;
+      }
+
       .titleRating {
         @include font("Montserrat", 600, 1.4rem, none, capitalize, 0, 0);
         color: $whiteSmoke;
@@ -88,7 +101,6 @@
 
       .rating {
         @include font("Montserrat", 500, 6rem, none, none, 0, 0);
-        color: $lightGreen;
       }
     }
 
