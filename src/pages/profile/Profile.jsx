@@ -59,13 +59,13 @@ export default function Profile() {
               </h2>
               <h3> {userData.username}</h3>
               <p>
-                Città di riferimento per i match:{" "}
-                <strong>{userData.location}</strong>
+                Sono di: <strong>{userData.location}</strong>
               </p>
               <p>
                 Mi piace praticare: <strong>{userData.sports}</strong>
               </p>
             </div>
+
             <div className={styles.containerImage}>
               <Avatar
                 size={150}
@@ -81,9 +81,7 @@ export default function Profile() {
           <p className={styles.paragraphRating}>
             Qui c&apos;è la media dei voti ricevuti durante i tuoi match
           </p>
-          <h4 className={styles.ratingTitle}>
-            Fair Play 🤝 - Abilità 💪 - Puntualità 🕙
-          </h4>
+          <h4>Fair Play 🤝 - Abilità 💪 - Puntualità 🕙</h4>
           <label
             className={`${styles.rating} ${getRatingColorClass(
               calculateAverageRating()
@@ -93,7 +91,6 @@ export default function Profile() {
           </label>
         </div>
         <h3>I tuoi amici: </h3>
-
         <div className={styles.preferiti}>
           {userData &&
             userData.friends &&
