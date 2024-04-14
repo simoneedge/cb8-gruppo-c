@@ -8,6 +8,7 @@ import Versus from "../../../public/Versus.svg";
 import styles from "./index.module.scss";
 import { getCookie } from "cookies-next";
 import ModalReport from "@/components/modalReport";
+import User from "@/components/user";
 
 export default function SingleMatch() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,92 +118,119 @@ export default function SingleMatch() {
 
   return (
     <>
-      <div className={styles.teamFormations}>
-        <h2>{match && match.sport}</h2>
-        <h3>{match && match.location}</h3>
-        <p>{match && match.phoneNumber}</p>
-        <p>{match && formatDate(match.date)}</p>
-        <p>{match && match.time}</p>
-        <p>{match && match.longitude}</p>
-        <p>{match && match.latitude}</p>
+      <div className={styles.match}>
+        <div className={styles.match_content}>
+          <div className={styles.teams}>
+            <div className={styles.team1}>
+              <Image
+                src={BlueShield}
+                alt="Team Blue"
+                width={295}
+                height={234}
+                className={styles.img}
+              />
+              {match &&
+                match.team1.map((player, index) => (
+                  <div className={styles.userAction}>
+                    <User key={index} name={player} />
+                    <button
+                      className={styles.button}
+                      onClick={() => {
+                        handleAddFriends(player);
+                      }}
+                      disabled={player === playerName}
+                    >
+                      +
+                    </button>
+                  </div>
+                ))}
+              <button
+                onClick={() => handleAddPlayer("team1")}
+                className={styles.btnAdd}
+                disabled={blueTeamIsFull || playerExists}
+              >
+                BLUE
+              </button>
+            </div>
+            <div className={styles.vs}>
+              <Image
+                src={Versus}
+                alt="Versus"
+                width={195}
+                height={134}
+                className={styles.imgVs}
+              />
+            </div>
+            <div className={styles.team2}>
+              <Image
+                src={RedShield}
+                alt="Team Red"
+                width={295}
+                height={234}
+                className={styles.img}
+              />
+              {match &&
+                match.team2.map((player, index) => (
+                  <div className={styles.userAction}>
+                    <User key={index} name={player} />
 
-        <div className={styles.team1}>
-          <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
-          {match &&
-            match.team1.map((player, index) => (
-              <div key={index}>
-                <p>{player}</p>
-                <button
-                  className={styles.button}
-                  onClick={() => {
-                    handleAddFriends(player);
-                    console.log(player);
-                  }}
-                  disabled={player === playerName}
-                >
-                  Add {player} to your friends
-                </button>
+                    <button
+                      className={styles.button}
+                      onClick={() => {
+                        handleAddFriends(player);
+                      }}
+                      disabled={player === playerName}
+                    >
+                      +{" "}
+                    </button>
+                  </div>
+                ))}
+              <button
+                onClick={() => handleAddPlayer("team2")}
+                className={styles.btnAdd}
+                disabled={redTeamIsFull || playerExists}
+              >
+                RED
+              </button>
+            </div>
+          </div>
+          <div>
+            {(!match || match.inProgress) && (
+              <button onClick={() => setIsModalOpen(true)}>Report</button>
+            )}
+            {isModalOpen && (
+              <ModalReport
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
+            )}
+          </div>
+          <div className={styles.detailMAtch}>
+            <h2>{match && match.sport}</h2>
+            <h3>{match && match.location}</h3>
+            <p>{match && match.phoneNumber}</p>
+            <p>{match && formatDate(match.date)}</p>
+            <p>{match && match.time}</p>
+            <div>
+              <div>
+                <iframe
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  src={`https://www.google.com/maps/embed/v1/place?key=${
+                    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+                  }&q=${encodeURIComponent(match && match.phoneNumber)}`}
+                ></iframe>
               </div>
-            ))}
+            </div>
+          </div>
           <button
-            onClick={() => handleAddPlayer("team1")}
-            className={styles.btnAdd}
-            disabled={blueTeamIsFull || playerExists}
+            onClick={toogleInProgress}
+            disabled={!match || !match.inProgress}
           >
-            BLUE
+            {match && match.inProgress ? "End Match" : "Match Already Ended"}
           </button>
         </div>
-        <div className={styles.vs}>
-          <Image
-            src={Versus}
-            alt="Versus"
-            width={195}
-            height={134}
-            className={styles.imgVs}
-          />
-        </div>
-        <div className={styles.team2}>
-          <Image src={RedShield} alt="Team Red" width={295} height={234} />
-          {match &&
-            match.team2.map((player, index) => (
-              <div key={index}>
-                <p>{player}</p>
-                <button
-                  className={styles.button}
-                  onClick={() => {
-                    handleAddFriends(player);
-                  }}
-                  disabled={player === playerName}
-                >
-                  Add {player} to your friends
-                </button>
-              </div>
-            ))}
-          <button
-            onClick={() => handleAddPlayer("team2")}
-            className={styles.btnAdd}
-            disabled={redTeamIsFull || playerExists}
-          >
-            RED
-          </button>
-        </div>
-        <div>
-          {(!match || match.inProgress) && (
-            <button onClick={() => setIsModalOpen(true)}>Report</button>
-          )}
-          {isModalOpen && (
-            <ModalReport
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-            />
-          )}
-        </div>
-        <button
-          onClick={toogleInProgress}
-          disabled={!match || !match.inProgress}
-        >
-          {match && match.inProgress ? "End Match" : "Match Already Ended"}
-        </button>
       </div>
     </>
   );
