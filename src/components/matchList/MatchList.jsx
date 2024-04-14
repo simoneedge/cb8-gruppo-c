@@ -8,22 +8,39 @@ import Button from "./../button";
 
 export default function MatchList() {
   const [matches, setMatches] = useState([]);
+
   const selectedSport = getCookie("selectedSport");
+  const user = getCookie("userData");
 
   useEffect(() => {
-    fetch("/api/matches")
+    fetch(`/api/${user}`)
       .then((res) => res.json())
-      .then((data) => {
-        const sportMatchesInProgress = data.data.filter((match) => {
-          return match.sport.includes(selectedSport) && match.inProgress;
-        });
-        setMatches(sportMatchesInProgress);
+      .then((userData) => {
+        const userLocation = userData.data.location;
+
+        fetch("/api/matches")
+          .then((res) => res.json())
+          .then((data) => {
+            const sportMatchesInProgress = data.data.filter((match) => {
+              return (
+                match.sport.includes(selectedSport) &&
+                match.inProgress &&
+                match.phoneNumber.includes(userLocation)
+              );
+            });
+            setMatches(sportMatchesInProgress);
+          })
+          .catch((error) => {
+            console.error("Errore durante il recupero dei match:", error);
+          });
       })
       .catch((error) => {
-        console.error("Errore durante il recupero dei match:", error);
+        console.error(
+          "Errore durante il recupero delle informazioni dell'utente:",
+          error
+        );
       });
   }, []);
-
   return (
     <>
       {matches.length === 0 ? (
