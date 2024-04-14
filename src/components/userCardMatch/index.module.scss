@@ -3,9 +3,24 @@
 
 .container {
   @include display(flex, column, center, center, 0, 0);
-  width: 70%;
-  height: 3rem;
+  width: 100%;
+  height: 5rem;
   border: solid 1px $whiteSmoke;
   border-radius: 20px;
   background-color: $mint;
+  color: $whiteSmoke;
+  cursor: pointer;
+  transition: transform 0.1s;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $lightGreen;
+    color: $black;
+    transform: scale(1.02);
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
 }

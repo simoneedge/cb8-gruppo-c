@@ -32,3 +32,36 @@
     }
   }
 }
+
+.match_list {
+  @include display(flex, column, flex-start, center, 0, 0);
+  // border: solid red;
+  width: 100%;
+  height: 75%;
+  .description {
+    position: relative;
+    // bottom: 12%;
+    .title {
+      @include font("Montserrat", 600, 1.5rem, none, none, 0, 0);
+      text-align: center;
+      color: $whiteSmoke;
+    }
+
+    p {
+      color: $whiteSmoke;
+      text-align: center;
+      padding-bottom: 2%;
+      padding-left: 2%;
+      padding-right: 2%;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+    }
+  }
+
+  .card_match {
+    @include display(flex, column, center, center, 0, 0);
+    width: 90%;
+    margin: 10px;
+  }
+}

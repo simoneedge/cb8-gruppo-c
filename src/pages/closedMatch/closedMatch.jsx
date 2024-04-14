@@ -17,7 +17,7 @@ export default function ClosedMatch() {
   }, [userCookie]);
   return (
     <div className={styles.container}>
-      <h1>Cronologia Partite</h1>
+      <h2>Cronologia Partite</h2>
       <ClosedMatchList />
     </div>
   );

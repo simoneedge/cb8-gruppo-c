@@ -60,14 +60,24 @@ export default function MatchList() {
           </Link>
         </div>
       ) : (
-        matches.map((match) => (
-          <CardMatch
-            key={match.id}
-            location={match.location}
-            sport={match.sport}
-            _id={match._id}
-          />
-        ))
+        <div className={styles.match_list}>
+          <div className={styles.description}>
+            <h1 className={styles.title}>Partecipa ad un match</h1>
+            <p>
+              Trova le partite più vicine e partecipa insieme ad altri
+              appassionati come te!
+            </p>
+          </div>
+          {matches.map((match) => (
+            <div key={match.id} className={styles.card_match}>
+              <CardMatch
+                location={match.location}
+                sport={match.sport}
+                _id={match._id}
+              />
+            </div>
+          ))}
+        </div>
       )}
     </>
   );

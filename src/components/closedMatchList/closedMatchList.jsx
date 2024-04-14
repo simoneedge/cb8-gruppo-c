@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import styles from "./index.module.scss";
 import CardMatch from "../cardMatch";
 import { getCookie } from "cookies-next";
 
@@ -26,14 +26,17 @@ export default function ClosedMatchList() {
 
   return (
     <>
-      {matches.map((match) => (
-        <CardMatch
-          key={match.id}
-          location={match.location}
-          sport={match.sport}
-          _id={match._id}
-        />
-      ))}
+      <div className={styles.match_list}>
+        {matches.map((match) => (
+          <div key={match.id} className={styles.card_match}>
+            <CardMatch
+              location={match.location}
+              sport={match.sport}
+              _id={match._id}
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 }
