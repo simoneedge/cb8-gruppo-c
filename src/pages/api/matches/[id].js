@@ -37,24 +37,31 @@ export default async function handler(req, res) {
             .json({ success: false, error: "Player name is required" });
         }
 
-        let updateQuery = {};
-        updateQuery[team] = playerName;
-
-        // Check and set inProgress if provided
-        if (inProgress !== undefined) {
-          updateQuery.inProgress = inProgress === "true";
-        }
-
-        const updatedMatch = await Match.findByIdAndUpdate(id, updateQuery, {
-          new: true,
-        });
-
-        if (!updatedMatch) {
+        let match = await Match.findById(id);
+        if (!match) {
           return res
             .status(404)
             .json({ success: false, error: "Match not found" });
         }
-        res.status(200).json({ success: true, data: updatedMatch });
+
+        // Ensure that team1 and team2 are initialized as arrays
+        match.team1 = match.team1 || [];
+        match.team2 = match.team2 || [];
+
+        // Update team and inProgress fields
+        if (team === "team1") {
+          match.team1.push(playerName);
+        } else {
+          match.team2.push(playerName);
+        }
+        if (inProgress !== undefined) {
+          match.inProgress = inProgress === "true";
+        }
+
+        // Save the updated match document
+        match = await match.save();
+
+        res.status(200).json({ success: true, data: match });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
