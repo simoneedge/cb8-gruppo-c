@@ -8,28 +8,31 @@
   width: 100%;
   height: 100%;
   background: rgba($black, 0.5);
+  z-index: 10;
 
   .modal_content {
-    @include display(flex, column, center, center, 0, 0);
-    position: fixed;
+    @include display(flex, column, inherit, center, 0, 0);
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    background: $whiteSmoke;
+    padding: 40px 5px;
+    background: $petrol;
     width: 90%;
+    max-height: 100%; /* Imposta l'altezza massima del contenuto */
+    overflow-y: auto; /* Abilita lo scrolling verticale */
 
     .save_button {
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      top: 250px;
-      right: 0px;
-      background: none;
+      @include display(flex, column, center, center, 0, 20px 0 0 0);
+      color: $whiteSmoke;
+      padding: 10px 20px;
+      background-color: $mint;
+      border-radius: 5px;
       border: none;
-
-      font-size: 20px;
+      box-shadow: $box-shadow;
+      transition: all 0.35s;
       cursor: pointer;
+      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
     }
 
     .close_button {
@@ -38,51 +41,99 @@
       right: 15px;
       background: none;
       border: none;
-
       font-size: 20px;
       cursor: pointer;
     }
 
-    .form {
-      @include display(flex, row, center, flex-start, 0, 20px 0 20px 0);
+    h4 {
+      @include font("Montserrat", 600, 1.4rem, none, capitalize, 0, 0);
+      color: $whiteSmoke;
+      text-align: center;
+    }
 
-      width: 100%;
-      gap: 20px;
+    .paragraphRating {
+      @include font("Montserrat", 500, 1rem, none, none, 0, 10px 0 20px 0);
+      color: $whiteSmoke;
+      text-align: center;
+    }
+
+    .form {
+      @include display(flex, row, center, flex-start, 0, 0);
+      background-color: rgba($whiteSmoke, 0.5);
+      border-radius: 10px;
+      padding: 20px 0 20px 0;
 
       .team {
-        @include display(flex, column, center, center, 0, 0);
+        @include display(flex, column, center, center, 20px, 0);
 
         h3 {
           @include font("Montserrat", 500, inherit, none, none, 0, 0);
         }
         img {
-          width: 40%;
+          width: 80%;
           height: auto;
         }
         .players {
-          .user {
-            @include display(flex, row, space-between, center, 0, 0);
-            background-color: #e5ffb2;
-            border-radius: 5px;
-            width: 100%;
-            height: 50px;
+          .containerUser {
             box-shadow: $box-shadow;
-
-            .container_image {
-              height: 100%;
-              border-bottom: 1px solid $mint;
-              margin-right: 20px;
-              width: 20%;
+            margin-bottom: 5px;
+            width: 150px;
+            select {
+              border: none;
+              background-color: $petrol;
+              color: $whiteSmoke;
+              padding: 5px;
+              width: 100%;
+              box-sizing: border-box;
+              transition: all 0.3s ease;
+              border-radius: 0 0 5px 5px;
             }
-
-            .details {
+            input {
+              border: none;
+              background-color: $petrol;
+              color: $whiteSmoke;
+              padding: 5px;
+              width: 100%;
+              box-sizing: border-box;
+              transition: all 0.3s ease;
+              margin-bottom: 5px;
+            }
+            .user {
               @include display(flex, row, space-between, center, 0, 0);
-              width: 70%;
-              padding: 0 1%;
+              background-color: $petrol;
+              width: 100%;
+              height: 50px;
+              border-radius: 5px 5px 0 0;
 
-              h2 {
-                @include font("Montserrat", 500, 1.1rem, none, none, 0, 0);
-                color: $mint;
+              .container_image {
+                height: 100%;
+                border-bottom: 1px solid $mint;
+                margin-right: 20px;
+                width: 20%;
+
+                svg {
+                  border-radius: 5px 0 0 0;
+                }
+              }
+
+              .details {
+                @include display(flex, row, center, center, 0, 0);
+                width: 80%;
+                padding: 0 1%;
+
+                h2 {
+                  @include font(
+                    "Montserrat",
+                    500,
+                    0.9rem,
+                    none,
+                    capitalize,
+                    0,
+                    0
+                  );
+                  color: $whiteSmoke;
+                  word-break: break-all;
+                }
               }
             }
           }

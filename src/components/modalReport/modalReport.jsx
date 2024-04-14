@@ -43,27 +43,24 @@ export default function ModalReport({ onClose }) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // Optionally handle response or update UI
       })
       .catch((error) => {
         console.error("Error updating user rating:", error);
-        // Optionally handle error
       });
   };
 
   return (
     <div className={styles.modal_match}>
       <div className={styles.modal_content}>
-        <button className={styles.save_button} onClick={onClose}>
-          Salva
-        </button>
         <button className={styles.close_button} onClick={onClose}>
           ❌
         </button>
-        <h2>Pagelle</h2>
+        <h4>Fair Play 🤝 - Abilità 💪 - Puntualità 🕙</h4>
+        <p className={styles.paragraphRating}>
+          Valuta i tuoi compagni e i tuoi avversari sulla base di:
+        </p>
         <form className={styles.form}>
           <div className={styles.team}>
-            <h3>Team 1:</h3>
             <Image src={BlueShield} alt="Team Blue" width={295} height={234} />
             <div className={styles.players}>
               {match &&
@@ -71,7 +68,7 @@ export default function ModalReport({ onClose }) {
                 match.team1.map(
                   (player, index) =>
                     player !== user && (
-                      <div key={index}>
+                      <div className={styles.containerUser} key={index}>
                         <div className={styles.user}>
                           <div className={styles.container_image}>
                             <Avatar
@@ -79,7 +76,7 @@ export default function ModalReport({ onClose }) {
                               name={player}
                               variant="beam"
                               square={true} // false la rende tonda
-                              colors={["#59ce93", "#e5ffb2", "#9ff7aa"]}
+                              colors={["#216869", "#59ce93", "#9ff7aa"]}
                             />
                           </div>
                           <div className={styles.details}>
@@ -105,7 +102,6 @@ export default function ModalReport({ onClose }) {
             </div>
           </div>
           <div className={styles.team}>
-            <h3>Team 2:</h3>
             <Image src={RedShield} alt="Team Red" width={295} height={234} />
 
             <div className={styles.players}>
@@ -115,7 +111,7 @@ export default function ModalReport({ onClose }) {
                   (player, index) =>
                     // Exclude the user from appearing in the list
                     player !== user && (
-                      <div key={index}>
+                      <div className={styles.containerUser} key={index}>
                         <div className={styles.user}>
                           <div className={styles.container_image}>
                             <Avatar
@@ -158,6 +154,9 @@ export default function ModalReport({ onClose }) {
             </div>
           </div>
         </form>
+        <button className={styles.save_button} onClick={onClose}>
+          Salva
+        </button>
       </div>
     </div>
   );
