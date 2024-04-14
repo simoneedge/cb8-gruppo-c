@@ -17,7 +17,7 @@ export default function UserMatch() {
   }, [userCookie]);
   return (
     <div className={styles.container}>
-      <h1>UserMatch</h1>
+      <h2>Le mie partite</h2>
       <UserMatchList />
     </div>
   );

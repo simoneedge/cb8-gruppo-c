@@ -12,8 +12,8 @@ export default function CardMatch({ location, sport, _id }) {
   return (
     <div className={styles.container} onClick={onHandleClick}>
       <div className={styles.match}>
-        <p>{location}</p>
-        <p>{sport}</p>
+        <h4>{location}</h4>
+        <h4>{sport}</h4>
       </div>
     </div>
   );
