@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
   birthdate: {
     type: Date,
     required: false,
-    default: "No birthdate provided",
+    default: Date.now,
   },
   email: {
     type: String,

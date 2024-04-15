@@ -21,19 +21,6 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false, error: error.message });
       }
       break;
-    // case "PUT":
-    //   try {
-    //     const body = req.body;
-    //     const user = await User.findByIdAndUpdate(id, body);
-
-    //     if (!user) {
-    //       return res.status(400).json({ success: false });
-    //     }
-    //     res.status(200).json({ success: true, data: user });
-    //   } catch (error) {
-    //     res.status(400).json({ success: false, error: error.message });
-    //   }
-    //   break;
     case "PUT":
       try {
         const body = req.body;

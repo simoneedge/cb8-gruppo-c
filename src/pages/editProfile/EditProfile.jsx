@@ -1,5 +1,4 @@
 import styles from "./index.module.scss";
-import Button from "@/components/button";
 import Avatar from "boring-avatars";
 import { getCookie } from "cookies-next";
 import { useState, useEffect, useCallback } from "react";
@@ -45,11 +44,13 @@ export default function EditProfile() {
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
+      birthdate: Date.now(),
     }));
   }, []); // Empty dependency array to memoize the function
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(userID._id);
 
     fetch(`/api/users/${userID._id}`, {
       method: "PUT",
@@ -59,7 +60,9 @@ export default function EditProfile() {
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
-      .then((data) => {})
+      .then((data) => {
+        console.log(data);
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
