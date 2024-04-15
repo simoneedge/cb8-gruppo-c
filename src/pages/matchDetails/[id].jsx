@@ -15,6 +15,8 @@ export default function SingleMatch() {
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
+  const [friendsList, setFriendsList] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
   const playerName = getCookie("userData");
 
   const playerExists =
@@ -91,6 +93,22 @@ export default function SingleMatch() {
     }
   };
 
+  useEffect(() => {
+    const fetchFriendsList = async () => {
+      try {
+        const response = await fetch(`/api/${playerName}`);
+        const data = await response.json();
+        setFriendsList(data.data.friends);
+      } catch (error) {
+        console.error("Error fetching friends list:", error);
+      }
+    };
+
+    if (playerName) {
+      fetchFriendsList();
+    }
+  }, [playerName]);
+
   const handleAddFriends = async (player) => {
     try {
       if (!playerName) {
@@ -98,9 +116,17 @@ export default function SingleMatch() {
         return;
       }
 
+      // Check if the player is already in the list of friends
+      if (friendsList.includes(player)) {
+        setIsClicked(true);
+        alert("Player is already added as a friend");
+        return;
+      }
+
       const data = {
         newFriends: [player],
       };
+      console.log(data);
 
       await axios.put(`/api/${playerName}`, data);
     } catch (error) {
@@ -131,14 +157,16 @@ export default function SingleMatch() {
               />
               {match &&
                 match.team1.map((player, index) => (
-                  <div className={styles.userAction}>
-                    <User key={index} name={player} />
+                  <div key={index} className={styles.userAction}>
+                    <User name={player} />
                     <button
                       className={styles.button}
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={player === playerName}
+                      disabled={
+                        player === playerName || friendsList.includes(player)
+                      }
                     >
                       +
                     </button>
@@ -171,8 +199,8 @@ export default function SingleMatch() {
               />
               {match &&
                 match.team2.map((player, index) => (
-                  <div className={styles.userAction}>
-                    <User key={index} name={player} />
+                  <div key={index} className={styles.userAction}>
+                    <User name={player} />
 
                     <button
                       className={styles.button}

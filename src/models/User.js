@@ -4,12 +4,12 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: false,
-    default: "User",
+    default: "No name provided",
   },
   surname: {
     type: String,
     required: false,
-    default: "User",
+    default: "No surname provided",
   },
   username: {
     type: String,
@@ -27,27 +27,27 @@ const userSchema = new mongoose.Schema({
   birthdate: {
     type: Date,
     required: false,
-    default: Date.now,
+    default: "No birthdate provided",
   },
   email: {
     type: String,
     required: false,
-    default: "blablabla",
+    default: "No email provided",
   },
   location: {
     type: String,
     required: false,
-    default: "blablabla",
+    default: "No location provided",
   },
   sports: {
     type: Array,
     required: false,
-    default: ["blablabla"],
+    default: [],
   },
   roles: {
     type: Array,
     required: false,
-    default: ["blablabla"],
+    default: [],
   },
   matchPlayedCount: {
     type: Number,
@@ -67,7 +67,7 @@ const userSchema = new mongoose.Schema({
   friends: {
     type: Array,
     required: false,
-    default: ["blablabla"],
+    default: [],
   },
 });
 
