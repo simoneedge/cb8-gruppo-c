@@ -1,11 +1,17 @@
 import styles from "./index.module.scss";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "./../../../public/JustPlay.svg";
 
 export default function SignUpPage() {
+  const handleBtnClick = () => {
+    const usernameInput = document.getElementById("username");
+    const username = usernameInput.value;
+    setCookie("userData", username);
+  };
+
   const router = useRouter();
   const { msg } = router.query;
   return (
@@ -75,7 +81,12 @@ export default function SignUpPage() {
             placeholder="Password"
             required
           ></input>
-          <input type="submit" value="Signup" className={styles.button} />
+          <input
+            type="submit"
+            value="Signup"
+            onClick={handleBtnClick}
+            className={styles.button}
+          />
         </form>
         <p className={styles.paragraph}>
           Se sei già iscritto, allora{" "}
