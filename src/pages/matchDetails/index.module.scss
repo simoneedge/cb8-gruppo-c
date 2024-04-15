@@ -115,6 +115,11 @@
             background-color: $lightGreen;
             color: $black;
           }
+          .button:disabled {
+            background-color: grey;
+            color: $whiteSmoke;
+            cursor: initial;
+          }
         }
       }
     }
