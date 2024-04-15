@@ -12,11 +12,13 @@ import User from "@/components/user";
 
 export default function SingleMatch() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
   const [friendsList, setFriendsList] = useState([]);
   const playerName = getCookie("userData");
+  const [isFriendAlready, setIsFriendAlready] = useState(false);
 
   const playerExists =
     match &&
@@ -143,6 +145,24 @@ export default function SingleMatch() {
     return `${day}/${month}/${year}`;
   };
 
+  const greyOutIfAlreadyFriend = () => {
+    if (friendsList.includes(playerName)) {
+      setIsFriendAlready(true);
+    }
+  };
+
+  useEffect(() => {
+    greyOutIfAlreadyFriend();
+  }, [friendsList, playerName]);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <div className={styles.match}>
@@ -165,7 +185,7 @@ export default function SingleMatch() {
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={player === playerName}
+                      disabled={player === playerName || isFriendAlready}
                     >
                       ⭐
                     </button>
@@ -206,7 +226,7 @@ export default function SingleMatch() {
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={player === playerName}
+                      disabled={player === playerName || isFriendAlready}
                     >
                       ⭐
                     </button>
@@ -254,17 +274,13 @@ export default function SingleMatch() {
             {(!match || match.inProgress) && (
               <button
                 className={styles.report}
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleOpenModal}
+                disabled={isModalOpen}
               >
                 Pagelle
               </button>
             )}
-            {isModalOpen && (
-              <ModalReport
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-              />
-            )}
+            {isModalOpen && <ModalReport onClose={handleCloseModal} />}
           </div>
         </div>
       </div>
