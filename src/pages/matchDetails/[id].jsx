@@ -16,7 +16,6 @@ export default function SingleMatch() {
   const { id } = router.query;
   const [match, setMatch] = useState(null);
   const [friendsList, setFriendsList] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
   const playerName = getCookie("userData");
 
   const playerExists =
@@ -116,10 +115,11 @@ export default function SingleMatch() {
         return;
       }
 
+      console.log(playerName, player);
       // Check if the player is already in the list of friends
       if (friendsList.includes(player)) {
-        setIsClicked(true);
-        alert("Player is already added as a friend");
+        console.log(player);
+        alert("Questo giocatore è già tuo amico!");
         return;
       }
 
@@ -164,9 +164,7 @@ export default function SingleMatch() {
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={
-                        player === playerName || friendsList.includes(player)
-                      }
+                      disabled={player === playerName}
                     >
                       +
                     </button>
