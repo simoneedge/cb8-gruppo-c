@@ -42,7 +42,7 @@
     background: linear-gradient(90deg, $petrol 0%, $mint 50%, $lightGreen 100%);
     background-size: 400% 400%;
     animation: AnimationGradient 6s linear infinite;
-    transition: background-color 0.35s;
+    transition: all 0.35s ease-in-out;
     margin: 0 auto;
     cursor: pointer;
   }

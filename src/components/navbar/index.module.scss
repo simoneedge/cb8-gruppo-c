@@ -63,19 +63,19 @@
   }
 
   .navbarButton {
-    @include display(flex, column, center, center, 0, 0);
     @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
     color: $whiteSmoke;
     padding: 10px 20px;
-    background-color: $mint;
     border-radius: 5px;
     border: none;
     box-shadow: $box-shadow;
-    transition: all 0.35s;
+    transition: all 0.55s;
+    background-color: $mint;
     cursor: pointer;
-  }
-  .navbarButton:hover {
-    background-color: $lightGreen;
-    color: $black;
+
+    &:hover {
+      background-color: $lightGreen;
+      color: $petrol;
+    }
   }
 }

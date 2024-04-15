@@ -71,3 +71,7 @@ p {
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+select {
+  padding: 10px;
+}

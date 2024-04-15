@@ -64,6 +64,9 @@ export default function Profile() {
               <p>
                 Mi piace praticare: <strong>{userData.sports}</strong>
               </p>
+              <Link href="/editProfile" className={styles.button}>
+                Modifica Profilo
+              </Link>
             </div>
 
             <div className={styles.containerImage}>
@@ -98,9 +101,6 @@ export default function Profile() {
               <User key={index} name={friend} />
             ))}
         </div>
-        <Link href="/editProfile" className={styles.button}>
-          Modifica Profilo
-        </Link>
       </div>
     </div>
   );

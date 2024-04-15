@@ -87,6 +87,7 @@ export default function SingleMatch() {
         inProgress: switchInProgress,
       }));
       setIsModalOpen(false);
+      router.push("/");
     } catch (error) {
       console.error("Error updating match in progress:", error);
     }
@@ -166,7 +167,7 @@ export default function SingleMatch() {
                       }}
                       disabled={player === playerName}
                     >
-                      +
+                      ⭐
                     </button>
                   </div>
                 ))}
@@ -175,7 +176,7 @@ export default function SingleMatch() {
                 className={styles.btnAdd}
                 disabled={blueTeamIsFull || playerExists}
               >
-                BLUE
+                ALFA
               </button>
             </div>
             <div className={styles.vs}>
@@ -207,7 +208,7 @@ export default function SingleMatch() {
                       }}
                       disabled={player === playerName}
                     >
-                      +{" "}
+                      ⭐
                     </button>
                   </div>
                 ))}
@@ -216,21 +217,11 @@ export default function SingleMatch() {
                 className={styles.btnAdd}
                 disabled={redTeamIsFull || playerExists}
               >
-                RED
+                OMEGA
               </button>
             </div>
           </div>
-          <div>
-            {(!match || match.inProgress) && (
-              <button onClick={() => setIsModalOpen(true)}>Report</button>
-            )}
-            {isModalOpen && (
-              <ModalReport
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-              />
-            )}
-          </div>
+
           <div className={styles.detailMAtch}>
             <h2>{match && match.sport}</h2>
             <h3>{match && match.location}</h3>
@@ -250,12 +241,31 @@ export default function SingleMatch() {
               </div>
             </div>
           </div>
-          <button
-            onClick={toogleInProgress}
-            disabled={!match || !match.inProgress}
-          >
-            {match && match.inProgress ? "End Match" : "Match Already Ended"}
-          </button>
+          <div className={styles.endButton}>
+            <button
+              className={styles.endMatch}
+              onClick={toogleInProgress}
+              disabled={!match || !match.inProgress}
+            >
+              {match && match.inProgress
+                ? "Termina partita"
+                : "Partita terminata"}
+            </button>
+            {(!match || match.inProgress) && (
+              <button
+                className={styles.report}
+                onClick={() => setIsModalOpen(true)}
+              >
+                Pagelle
+              </button>
+            )}
+            {isModalOpen && (
+              <ModalReport
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

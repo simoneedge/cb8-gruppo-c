@@ -21,7 +21,7 @@
 
     form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
     }
 
     h2 {
@@ -65,27 +65,22 @@
     }
 
     .modal_button {
-      @include display(flex, column, center, center, 0, 0);
-      @include font(
-        "Montserrat",
-        600,
-        0.9rem,
-        none,
-        uppercase,
-        1px,
-        10px 0 10px 0
-      );
+      @include font("Montserrat", 600, 0.8rem, none, uppercase, 1px, 0);
       color: $whiteSmoke;
       padding: 10px 20px;
       border-radius: 5px;
       border: none;
       box-shadow: $box-shadow;
-      transition: all 0.55s;
-      background: $mint;
+      transition: all 0.35s ease-in-out;
+      background-color: $mint;
       cursor: pointer;
+      margin-bottom: 20px;
+      width: 100%;
     }
-    .modal_button:hover {
-      background: rgba($mint, 0.6);
+
+    .button:hover {
+      background-color: $lightGreen;
+      color: $petrol;
     }
   }
 }
