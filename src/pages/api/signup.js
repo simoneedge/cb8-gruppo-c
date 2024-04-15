@@ -34,6 +34,7 @@ export default async function handler(req, res) {
         location: location,
         sports: sports,
         email: email,
+        birthdate: Date.now(),
       });
 
       await collection.insertOne(newUser);
