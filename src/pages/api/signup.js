@@ -45,6 +45,6 @@ export default async function handler(req, res) {
       res.status(400).json({ error: "An error occurred. Please try again." });
     }
   } else {
-    res.redirect("/signIn");
+    res.redirect("/");
   }
 }
