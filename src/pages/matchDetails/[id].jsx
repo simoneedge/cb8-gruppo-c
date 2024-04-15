@@ -12,7 +12,6 @@ import User from "@/components/user";
 
 export default function SingleMatch() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const router = useRouter();
   const { id } = router.query;
   const [match, setMatch] = useState(null);
@@ -272,11 +271,7 @@ export default function SingleMatch() {
                 : "Partita terminata"}
             </button>
             {(!match || match.inProgress) && (
-              <button
-                className={styles.report}
-                onClick={handleOpenModal}
-                disabled={isModalOpen}
-              >
+              <button className={styles.report} onClick={handleOpenModal}>
                 Pagelle
               </button>
             )}
