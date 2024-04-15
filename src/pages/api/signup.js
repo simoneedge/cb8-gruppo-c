@@ -1,5 +1,6 @@
 import dbConnect from "../../../utils/dbConnect";
 import Cookies from "cookies";
+import { getCookie, setCookie } from "cookies-next";
 import { clientPromise } from "../../../utils/dbConnect";
 import { createHash } from "crypto";
 import User from "../../models/User";
@@ -40,7 +41,9 @@ export default async function handler(req, res) {
       await collection.insertOne(newUser);
       const cookies = new Cookies(req, res);
       cookies.set("username", username);
-      res.redirect("/signIn");
+      setCookie("userData", username);
+      // res.redirect("/signIn");
+      res.redirect("/");
     } catch (error) {
       res.status(400).json({ error: "An error occurred. Please try again." });
     }
