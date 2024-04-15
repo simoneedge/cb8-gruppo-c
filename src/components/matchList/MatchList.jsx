@@ -8,6 +8,7 @@ import Button from "./../button";
 
 export default function MatchList() {
   const [matches, setMatches] = useState([]);
+  const [userLocation, setUserLocation] = useState("");
 
   const selectedSport = getCookie("selectedSport");
   const user = getCookie("userData");
@@ -17,6 +18,7 @@ export default function MatchList() {
       .then((res) => res.json())
       .then((userData) => {
         const userLocation = userData.data.location;
+        setUserLocation(userLocation);
 
         fetch("/api/matches")
           .then((res) => res.json())
@@ -62,7 +64,9 @@ export default function MatchList() {
       ) : (
         <div className={styles.match_list}>
           <div className={styles.description}>
-            <h1 className={styles.title}>Partecipa ad un match</h1>
+            <h1 className={styles.title}>
+              Partite organizzate a {userLocation}
+            </h1>
             <p>
               Trova le partite più vicine e partecipa insieme ad altri
               appassionati come te!

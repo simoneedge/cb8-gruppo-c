@@ -2,13 +2,17 @@
 @import "../../styles/mixins.scss";
 
 .container {
-  @include display(flex, column, center, center, 0, 0);
-
   width: 100%;
-  height: 80%;
-  text-align: center;
+  @include display(flex, column, normal, inherit, 5px, 15px 0 0 0);
+  position: absolute;
+  top: 10vh;
+  max-width: 640px;
+  padding: 1% 3%;
 
   h2 {
+    @include font("Montserrat", 600, 1.6rem, none, none, 0, 0);
+
+    text-align: center;
     position: relative;
     color: $whiteSmoke;
     bottom: 5%;

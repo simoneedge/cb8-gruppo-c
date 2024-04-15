@@ -43,7 +43,7 @@
           @include font("Montserrat", 600, 1.8rem, none, capitalize, 0, 0);
           color: $whiteSmoke;
           text-align: left;
-          line-height: 1.8rem;
+          line-height: 2rem;
         }
 
         p {
@@ -84,14 +84,17 @@
 
       .goodRating {
         color: $lightGreen;
+        @include font("Montserrat", 600, 8rem, none, none, 0, 0);
       }
 
       .middleRating {
         color: #fab482;
+        @include font("Montserrat", 600, 8rem, none, none, 0, 0);
       }
 
       .badRating {
         color: #fe7a7a;
+        @include font("Montserrat", 600, 8rem, none, none, 0, 0);
       }
     }
 
@@ -99,7 +102,6 @@
       @include font("Montserrat", 600, 1.5rem, none, none, 0, 0);
       color: $whiteSmoke;
       text-align: center;
-      margin-bottom: 20px;
     }
 
     .preferiti {
@@ -110,7 +112,7 @@
       margin-bottom: 20px;
 
       @media (min-width: 450px) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
       }
     }
 
@@ -121,12 +123,13 @@
       border-radius: 5px;
       border: none;
       box-shadow: $box-shadow;
-      transition: all 0.55s;
-      background: $mint;
+      transition: all 0.35s ease-in-out;
+      background-color: $mint;
       cursor: pointer;
 
-      .button:hover {
-        background: rgba($mint, 0.6);
+      &:hover {
+        background-color: $lightGreen;
+        color: $petrol;
       }
     }
   }
