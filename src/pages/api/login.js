@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      res.redirect("/signIn?msg=Please provide both username and password");
+      res.redirect("/signIn?msg=Per favore inserisci username e password");
       return;
     }
 
@@ -20,14 +20,14 @@ export default async function handler(req, res) {
       const user = await collection.findOne({ username: username });
 
       if (!user) {
-        res.redirect("/signIn?msg=Username not found");
+        res.redirect("/signIn?msg=Utente non trovato");
         return;
       }
 
       const password_hash = createHash("sha256").update(password).digest("hex");
 
       if (user.password !== password_hash) {
-        res.redirect("/signIn?msg=Incorrect password");
+        res.redirect("/signIn?msg=Password errata");
         return;
       }
 
@@ -35,7 +35,9 @@ export default async function handler(req, res) {
       cookies.set("username", username);
       res.redirect("/");
     } catch (error) {
-      res.status(400).json({ error: "An error occurred. Please try again." });
+      res
+        .status(400)
+        .json({ error: "Mi dispiace c'è stato un errore, riprova." });
     }
   } else {
     res.redirect("/");

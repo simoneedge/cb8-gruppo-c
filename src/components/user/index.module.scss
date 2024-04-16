@@ -4,6 +4,7 @@
 .containerUser {
   box-shadow: $box-shadow;
   width: 100%;
+  cursor: pointer;
 
   .user {
     @include display(flex, row, space-between, center, 5px, 0);
