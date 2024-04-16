@@ -1,38 +1,32 @@
-import styles from "./index.module.scss";
-import { useEffect, useState } from "react";
-import { getCookie } from "cookies-next";
-import Avatar from "boring-avatars";
-import User from "@/components/user";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import styles from "./index.module.scss";
+import Link from "next/link";
+import User from "@/components/user";
+import Avatar from "boring-avatars";
 
-export default function Profile({ onClick }) {
-  const [userData, setUserData] = useState("");
-  const user = getCookie("userData");
-  const userCookie = getCookie("userData");
+const UserProfile = () => {
+  const [user, setUser] = useState(null);
+
   const router = useRouter();
-
   useEffect(() => {
-    if (!userCookie) {
-      router.push("/signIn");
-    } else {
-      router.push("/profile");
+    if (router.query.id && decodeURIComponent(router.query.id) !== user) {
+      const cleanedId = decodeURIComponent(router.query.id).trim();
+      fetch(`/api/${cleanedId}`)
+        .then((res) => res.json())
+        .then((data) => setUser(data.data))
+        .catch((error) => console.error("Error fetching user data:", error));
+      console.log(user);
     }
-  }, [userCookie]);
-
-  useEffect(() => {
-    fetch(`/api/${user}`)
-      .then((res) => res.json())
-      .then((data) => setUserData(data.data));
-  }, [user]);
+  }, [router.query.id]);
 
   const calculateAverageRating = () => {
-    if (userData && userData.ratingGames) {
-      const sum = userData.ratingGames.reduce(
+    if (user && user.ratingGames) {
+      const sum = user.ratingGames.reduce(
         (acc, currentValue) => acc + currentValue,
         0
       );
-      const average = sum / userData.ratingGames.length;
+      const average = sum / user.ratingGames.length;
       return average.toFixed(1);
     }
     return 0;
@@ -51,25 +45,25 @@ export default function Profile({ onClick }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperProfile}>
-        {userData && (
+        {user && (
           <div className={styles.container}>
             <div className={styles.containerDetails}>
               <h2 className={styles.title}>
-                {userData.name} {userData.surname}
+                {user.name} {user.surname}
               </h2>
-              <h3> {userData.username}</h3>
+              <h3> {user.username}</h3>
               <p>
-                Sono di: <strong>{userData.location}</strong>
+                Sono di: <strong>{user.location}</strong>
               </p>
               <p>
-                Mi piace praticare: <strong>{userData.sports}</strong>
+                Mi piace praticare: <strong>{user.sports}</strong>
               </p>
             </div>
 
             <div className={styles.containerImage}>
               <Avatar
                 size={150}
-                name={userData.username}
+                name={user.username}
                 variant="beam"
                 colors={["#9ff7aa", "#216869", "#f4f6f5"]}
               />
@@ -92,10 +86,10 @@ export default function Profile({ onClick }) {
         </div>
         <h3>I tuoi amici: </h3>
         <div className={styles.preferiti}>
-          {userData &&
-            userData.friends &&
-            userData.friends.map((friend, index) => (
-              <User key={index} name={friend} onClick={onClick} />
+          {user &&
+            user.friends &&
+            user.friends.map((friend, index) => (
+              <User key={index} name={friend} />
             ))}
         </div>
         <Link href="/editProfile" className={styles.button}>
@@ -104,4 +98,6 @@ export default function Profile({ onClick }) {
       </div>
     </div>
   );
-}
+};
+
+export default UserProfile;
