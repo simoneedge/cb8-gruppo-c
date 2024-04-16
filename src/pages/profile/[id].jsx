@@ -94,8 +94,8 @@ const UserProfile = () => {
               </div>
             ))}
         </div>
-        <Link href="/editProfile" className={styles.button}>
-          Modifica Profilo
+        <Link href="/profile" className={styles.button}>
+          Torna al tuo profilo
         </Link>
       </div>
     </div>
