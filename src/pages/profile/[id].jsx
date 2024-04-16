@@ -89,7 +89,9 @@ const UserProfile = () => {
           {user &&
             user.friends &&
             user.friends.map((friend, index) => (
-              <User key={index} name={friend} />
+              <div key={index}>
+                <User name={friend} />
+              </div>
             ))}
         </div>
         <Link href="/editProfile" className={styles.button}>
