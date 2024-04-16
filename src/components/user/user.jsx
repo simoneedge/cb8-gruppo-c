@@ -1,13 +1,18 @@
 import React from "react";
-
+import { useRouter } from "next/router";
 import styles from "./index.module.scss";
 import Avatar from "boring-avatars";
 
-const User = ({ name, username }) => {
+const User = ({ name, username, _id }) => {
   const user = ` ${name} ${username ? username : ""}`;
+  const router = useRouter();
+
+  const onHandleClick = (e) => {
+    router.push(`/profile/${user}`);
+  };
 
   return (
-    <div className={styles.containerUser}>
+    <div className={styles.containerUser} onClick={onHandleClick}>
       <div className={styles.user}>
         <div className={styles.container_image}>
           <Avatar
