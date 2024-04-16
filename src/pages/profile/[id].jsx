@@ -84,7 +84,7 @@ const UserProfile = () => {
             {calculateAverageRating()}
           </label>
         </div>
-        <h3>I tuoi amici: </h3>
+        <h3>Amici di {user && user.username} </h3>
         <div className={styles.preferiti}>
           {user &&
             user.friends &&
