@@ -26,12 +26,12 @@
     h3 {
       color: $whiteSmoke;
       font-size: 1.3rem;
-      font-weight: 500;
+      @include font("Montserrat", 500, 1.3rem, none, none, 0, 0);
     }
     h4 {
       color: $whiteSmoke;
-      font-weight: 400;
-      font-size: 1rem;
+
+      @include font("Montserrat", 400, 1rem, none, none, 0, 0);
     }
   }
 }

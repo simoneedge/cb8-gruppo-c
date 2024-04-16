@@ -118,7 +118,6 @@ export default function SingleMatch() {
       }
 
       console.log(playerName, player);
-      // Check if the player is already in the list of friends
       if (friendsList.includes(player)) {
         console.log(player);
         alert("Questo giocatore è già tuo amico!");
@@ -184,7 +183,9 @@ export default function SingleMatch() {
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={player === playerName || isFriendAlready}
+                      disabled={
+                        player === playerName || friendsList.includes(player)
+                      }
                     >
                       ⭐
                     </button>
@@ -225,7 +226,9 @@ export default function SingleMatch() {
                       onClick={() => {
                         handleAddFriends(player);
                       }}
-                      disabled={player === playerName || isFriendAlready}
+                      disabled={
+                        player === playerName || friendsList.includes(player)
+                      }
                     >
                       ⭐
                     </button>
